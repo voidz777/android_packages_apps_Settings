@@ -17,4 +17,7 @@
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version_eos">Euphoria version</string>
     <string name="mod_version_default">Unknown</string>
+    <!-- About phone screen, build date -->
+    <string name="build_date">Build date</string>
+    <string name="build_date_default">2014-01-01-0000</string>
 </resources>
