@@ -1173,4 +1173,11 @@
     <string name="live_display_enhance_color_summary">Improve color vibrance of flesh tones, scenery, and other images</string>
 
     <string name="bluetooth_pan_profile_summary_use_for_error">Connection error; is Bluetooth tethering enabled on this device?</string>
+
+    <!-- Wi-Fi region code -->
+    <string name="wifi_setting_countrycode_title">Wi\u2011Fi region code</string>
+    <!-- Wi-Fi settings screen, setting summary for setting the wifi frequency band [CHAR LIMIT=50]-->
+    <string name="wifi_setting_countrycode_summary">Specify the region code for Wi\u2011Fi</string>
+    <!-- Wi-Fi settings screen, error message when the frequency band could not be set [CHAR LIMIT=50]. -->
+    <string name="wifi_setting_countrycode_error">There was a problem setting the region code.</string>
 </resources>
