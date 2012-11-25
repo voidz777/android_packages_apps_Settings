@@ -69,6 +69,7 @@
     <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     <uses-permission android:name="android.permission.READ_SEARCH_INDEXABLES" />
     <uses-permission android:name="android.permission.OEM_UNLOCK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <permission
         android:name="cyanogenmod.permission.PROTECTED_APP"
@@ -2129,6 +2130,9 @@
                 android:value="true" />
         </activity>
 
+
+        <activity android:name=".cyanogenmod.PerformanceSettings" />
+
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
@@ -2152,10 +2156,10 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".cyanogenmod.BootReceiver" android:enabled="true">$
-            <intent-filter android:priority="2147483647">$
-                <action android:name="android.intent.action.BOOT_COMPLETED" />$
-            </intent-filter>$
+        <receiver android:name=".cyanogenmod.BootReceiver" android:enabled="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
         </receiver>
 
         <receiver android:name=".cyanogenmod.UserChangedReceiver" android:enabled="true">
