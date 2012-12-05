@@ -178,6 +178,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
 
+    private static final String DEVELOPMENT_TOOLS = "development_tools";
+
     private static final String ADVANCED_REBOOT_KEY = "advanced_reboot";
 
     private static final String DEVELOPMENT_SHORTCUT_KEY = "development_shortcut";
@@ -260,6 +262,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private PreferenceScreen mProcessStats;
     private ListPreference mRootAccess;
     private Object mSelectedRootValue;
+    private PreferenceScreen mDevelopmentTools;
 
     private SwitchPreference mAdvancedReboot;
 
@@ -422,6 +425,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         if (!removeRootOptionsIfRequired()) {
             mAllPrefs.add(mRootAccess);
         }
+
+        mDevelopmentTools = (PreferenceScreen) findPreference(DEVELOPMENT_TOOLS);
+        mAllPrefs.add(mDevelopmentTools);
     }
 
     private ListPreference addListPreference(String prefKey) {
