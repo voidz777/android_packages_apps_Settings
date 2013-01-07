@@ -70,13 +70,6 @@
                 android:title="@string/vibrate_when_ringing_title"
                 android:persistent="false" />
 
-        <!-- Interruptions -->
-        <PreferenceScreen
-                android:key="zen_mode"
-                android:title="@string/zen_mode_settings_title"
-                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
-                android:fragment="com.android.settings.notification.ZenModeSettings" />
-
         <!-- Phone ringtone -->
         <com.android.settings.DefaultRingtonePreference
                 android:key="ringtone"
@@ -93,12 +86,26 @@
                 android:persistent="false"
                 android:ringtoneType="notification" />
 
+        <!-- Interruptions -->
+        <PreferenceScreen
+                android:key="zen_mode"
+                android:title="@string/zen_mode_settings_title"
+                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
+                android:fragment="com.android.settings.notification.ZenModeSettings" />
+
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
                 android:title="@string/other_sound_settings"
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.OtherSoundSettings" />
+
+        <!-- Headset -->
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="headset_connect_player"
+                android:title="@string/headset_connect_player_title"
+                android:summary="@string/headset_connect_player_summary"
+                android:defaultValue="false" />
 
     </PreferenceCategory>
 
