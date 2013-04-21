@@ -57,6 +57,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_MEDIA_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+    private static final String KEY_VOLUME_CONTROL_RING_STREAM = "volume_keys_control_ring_stream";
 
     private SwitchPreference mNavbarLeft;
     private SwitchPreference mPowerEndCall;
@@ -65,6 +66,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeKeyMediaControl;
     private ListPreference mVolumeKeyCursorControl;
     private SwitchPreference mSwapVolumeButtons;
+    private SwitchPreference mVolumeControlRingStream;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -128,6 +130,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mSwapVolumeButtons = (SwitchPreference)
                     prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
             mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+
+            mVolumeControlRingStream = (SwitchPreference)
+                    findPreference(KEY_VOLUME_CONTROL_RING_STREAM);
+            int volumeControlRingtone = Settings.System.getInt(getContentResolver(),
+                    Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, 1);
+            if (mVolumeControlRingStream != null) {
+                mVolumeControlRingStream.setChecked(volumeControlRingtone > 0);
+            }
         } else {
             if (volumeCategory != null) {
                 prefScreen.removePreference(volumeCategory);
@@ -206,6 +216,11 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     ? (ScreenType.isTablet(getActivity()) ? 2 : 1) : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
+            return true;
+        } else if (preference == mVolumeControlRingStream) {
+            int value = mVolumeControlRingStream.isChecked() ? 1 : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.VOLUME_KEYS_CONTROL_RING_STREAM, value);
             return true;
         }
 
