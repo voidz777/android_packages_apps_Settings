@@ -83,12 +83,6 @@
                     android:dialogTitle="@string/dialog_title_font_size" />
 
                 <PreferenceScreen
-                    android:key="wallpaper"
-                    android:title="@string/wallpaper_settings_title"
-                    settings:keywords="@string/keywords_display_wallpaper"
-                    android:fragment="com.android.settings.WallpaperTypeSettings" />
-
-                <PreferenceScreen
                     android:key="screensaver"
                     android:title="@string/screensaver_settings_title"
                     android:fragment="com.android.settings.DreamSettings" />
