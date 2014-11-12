@@ -553,4 +553,8 @@
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
     <string name="reset_lockscreen_wallpaper">Set to default</string>
 
+    <!-- Screenshot sound -->
+    <string name="screenshot_sound_title">Screenshot sound</string>
+    <string name="screenshot_sound_summary">Plays sound effect when screenshot is taken</string>
+
 </resources>
