@@ -24,4 +24,11 @@
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">メモリ</string>
     <!-- About phone screen, status item label -->
+    
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">ウェイクアップ</string>
+
+    <!--Wakeup when plugged/unplugged -->
+    <string name="wakeup_when_plugged_unplugged_title">充電時にウェイクアップ</string>
+    <string name="wakeup_when_plugged_unplugged_summary">電源の接続/切断時に画面をオンにする</string>
 </resources>
