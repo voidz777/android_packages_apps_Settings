@@ -25,4 +25,11 @@
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">Memory</string>
     <!-- About phone screen, status item label -->
+
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">Wake up</string>
+
+    <!--Wakeup when plugged/unplugged -->
+    <string name="wakeup_when_plugged_unplugged_title">Wake up on charge</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
 </resources>
