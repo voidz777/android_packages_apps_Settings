@@ -36,4 +36,7 @@
     <!-- Font size sample text. This needs to be a very short string, as it is shown in
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Sample</string>
+
+    <!--Back to kill timeout -->
+    <string name="long_press_kill_delay">App kill delay</string>
 </resources>
