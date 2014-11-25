@@ -56,4 +56,5 @@
 
     <!--Status bar -->
     <string name="status_bar_category">Status bar</string>
+    <string name="status_bar_battery_show_percent_title">Show battery status percent</string>
 </resources>
