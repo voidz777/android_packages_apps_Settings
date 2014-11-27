@@ -81,8 +81,14 @@
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
         <PreferenceCategory
-            android:key="category_wakeup_options"
-            android:title="@string/display_category_wakeup_options_title" >
+            android:key="category_advanced_options"
+            android:title="@string/category_advanced_options_title" >
+
+            <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                android:key="double_tap_sleep_gesture"
+                android:title="@string/double_tap_to_sleep_title"
+                android:summary="@string/double_tap_to_sleep_summary"
+                android:defaultValue="true" />
 
             <SwitchPreference
                 android:key="wake_when_plugged_or_unplugged"
