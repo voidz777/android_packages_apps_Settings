@@ -17,6 +17,9 @@
     <!-- Custom settings  -->
     <string name="custom_settings_title">Custom</string>
 
+    <!-- Button settings  -->
+    <string name="button_settings_title">Buttons</string>
+
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Build version</string>
     <string name="mod_version_default">Unknown</string>
@@ -58,4 +61,9 @@
     <string name="status_bar_category">Status bar</string>
     <string name="status_bar_battery_show_percent_title">Show battery status percent</string>
     <string name="lockscreen_show_carrier_title">Lock screen carrier label</string>
+
+    <!--Power menu -->
+    <string name="power_category">Power key</string>
+    <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
+    <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
 </resources>
