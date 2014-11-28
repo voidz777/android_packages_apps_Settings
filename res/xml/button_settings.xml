@@ -25,6 +25,11 @@
             android:summary="@string/lockscreen_enable_power_menu_summary"
             android:defaultValue="true" />
 
+        <SwitchPreference
+            android:key="power_end_call"
+            android:title="@string/accessibility_power_button_ends_call_prerefence_title"
+            android:persistent="false"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>
