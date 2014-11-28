@@ -15,7 +15,9 @@
 */
 package com.android.settings.euphoria;
 
+import android.content.ContentResolver;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
@@ -35,9 +37,11 @@ public class CustomSettings extends SettingsPreferenceFragment
     private static final String CATEGORY_STATUS_BAR = "status_bar";
     private static final String CATEGORY_QUICK_SETTINGS = "quick_settings";
 
+    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String LOCKSCREEN_CARRIER_LABEL = "lock_screen_show_carrier";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 
+    private ListPreference mStatusBarBattery;
     private SystemSettingSwitchPreference mShowCarrierLabel;
     private SwitchPreference mBlockOnSecureKeyguard;
 
@@ -45,13 +49,20 @@ public class CustomSettings extends SettingsPreferenceFragment
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.custom_settings);
+        ContentResolver resolver = getActivity().getContentResolver();
 
         PreferenceCategory status_bar = (PreferenceCategory) findPreference(CATEGORY_STATUS_BAR);
         PreferenceCategory quick_settings = (PreferenceCategory) findPreference(CATEGORY_QUICK_SETTINGS);
 
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
+        int batteryStyle = Settings.System.getInt(
+                resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
+        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
+        mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
+
         mShowCarrierLabel =
                 (SystemSettingSwitchPreference) findPreference(LOCKSCREEN_CARRIER_LABEL);
-
         if (!Utils.isVoiceCapable(getActivity())) {
             status_bar.removePreference(mShowCarrierLabel);
         }
@@ -74,7 +85,15 @@ public class CustomSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mBlockOnSecureKeyguard) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mStatusBarBattery) {
+            int batteryStyle = Integer.valueOf((String) newValue);
+            int index = mStatusBarBattery.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryStyle);
+            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            return true;
+        } else if (preference == mBlockOnSecureKeyguard) {
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                     (Boolean) newValue ? 1 : 0);
