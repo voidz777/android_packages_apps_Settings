@@ -1196,15 +1196,6 @@ public class SettingsActivity extends Activity
                     if (!hasPrintingSupport) {
                         removeTile = true;
                     }
-                } else if (id == R.id.superuser_settings) {
-                    if (!DevelopmentSettings.isRootForAppsEnabled()) {
-                        removeTile = true;
-                    }
-                } else if (id == R.id.development_settings) {
-                    if (!showDev || um.hasUserRestriction(
-                            UserManager.DISALLOW_DEBUGGING_FEATURES)) {
-                        removeTile = true;
-                    }
                 } else if (id == R.id.supersu_settings) {
                     // Embedding into Settings is supported from SuperSU v1.85 and up
                     boolean supported = false;
@@ -1213,6 +1204,22 @@ public class SettingsActivity extends Activity
                     } catch (PackageManager.NameNotFoundException e) {
                     }
                     if (!supported) {
+                        //remove SuperSU header
+                        removeTile = true;
+                    }
+                } else if (id == R.id.superuser_settings) {
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+                    if (supported || !DevelopmentSettings.isRootForAppsEnabled()) {
+                        //SuperSu is installed or root access for apps is disabled so remove SuperUser header
+                        removeTile = true;
+                    }
+                } else if (id == R.id.development_settings) {
+                    if (!showDev || um.hasUserRestriction(
+                            UserManager.DISALLOW_DEBUGGING_FEATURES)) {
                         removeTile = true;
                     }
                 }
