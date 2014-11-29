@@ -16,14 +16,35 @@
 package com.android.settings.euphoria;
 
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceCategory;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
+
+import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
 
 public class CustomSettings extends SettingsPreferenceFragment {
+
+    private static final String CATEGORY_STATUS_BAR = "status_bar";
+
+    private static final String LOCKSCREEN_CARRIER_LABEL = "lock_screen_show_carrier";
+
+    private SystemSettingSwitchPreference mShowCarrierLabel;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.custom_settings);
+
+        PreferenceCategory status_bar = (PreferenceCategory) findPreference(CATEGORY_STATUS_BAR);
+
+        mShowCarrierLabel =
+                (SystemSettingSwitchPreference) findPreference(LOCKSCREEN_CARRIER_LABEL);
+
+        if (!Utils.isVoiceCapable(getActivity())) {
+            status_bar.removePreference(mShowCarrierLabel);
+        }
     }
 }
