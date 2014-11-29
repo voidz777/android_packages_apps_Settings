@@ -31,6 +31,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemProperties;
 import android.os.Vibrator;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -76,6 +77,8 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_TOUCH_SOUNDS = "touch_sounds";
     private static final String KEY_DOCK_AUDIO_MEDIA = "dock_audio_media";
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
+    private static final String KEY_CAMERA_SOUNDS = "camera_sounds";
+    private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
     private static final String KEY_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
     private static final String KEY_CATEGORY_POWER_NOTIFICATIONS = "power_notifications_category";
@@ -181,12 +184,28 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
         }
     };
 
+    private static final SettingPref PREF_CAMERA_SOUNDS = new SettingPref(
+            TYPE_SYSTEM, KEY_CAMERA_SOUNDS, null, DEFAULT_ON) {
+        @Override
+        protected boolean setSetting(Context context, int value) {
+            SystemProperties.set(PROP_CAMERA_SOUND, value != 0 ? "1" : "0");
+            return true;
+        }
+
+        @Override
+        public void update(Context context) {
+            final boolean val = SystemProperties.getBoolean(PROP_CAMERA_SOUND, true);
+            mTwoState.setChecked(val);
+        }
+    };
+
     private static final SettingPref[] PREFS = {
         PREF_DIAL_PAD_TONES,
         PREF_SCREEN_LOCKING_SOUNDS,
         PREF_DOCKING_SOUNDS,
         PREF_VOLUME_ADJUST_SOUNDS,
         PREF_TOUCH_SOUNDS,
+        PREF_CAMERA_SOUNDS,
         PREF_DOCK_AUDIO_MEDIA,
         PREF_EMERGENCY_TONE,
     };
