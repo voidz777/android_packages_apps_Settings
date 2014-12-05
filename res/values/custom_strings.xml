@@ -61,7 +61,7 @@
     <string name="lockscreen_show_carrier_title">Lock screen carrier label</string>
 
     <!--Power menu -->
-    <string name="power_category">Power key</string>
+    <string name="power_category">Power button</string>
     <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
     <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
 </resources>
