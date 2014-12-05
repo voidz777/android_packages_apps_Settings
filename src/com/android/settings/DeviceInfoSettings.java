@@ -88,6 +88,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
 
+    private static final String KEY_UPDATE_SETTINGS = "update_settings";
+    private static final String KEY_UPDATE_SETTINGS_PACKAGE_NAME = "com.euphoria.ota";
+
+    private PreferenceScreen mUpdateSettings;
+
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
     long[] mHits = new long[3];
@@ -204,6 +209,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             setStringSummary(KEY_DEVICE_MEMORY, memInfo);
         } else {
             getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_MEMORY));
+        }
+
+        // Remove update settings if it is not present.
+        mUpdateSettings = (PreferenceScreen) findPreference(KEY_UPDATE_SETTINGS);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_UPDATE_SETTINGS_PACKAGE_NAME)) {
+            getPreferenceScreen().removePreference(mUpdateSettings);
         }
     }
 

@@ -27,4 +27,8 @@
     <string name="model_name">Model name</string>
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">Memory</string>
+
+    <!-- Updater -->
+    <string name="updater_title">Updates</string>
+    <string name="updater_summary">Check for updates</string>
 </resources>
