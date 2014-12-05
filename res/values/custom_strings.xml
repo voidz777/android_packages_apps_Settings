@@ -25,7 +25,7 @@
     <string name="button_settings_title">Buttons</string>
 
     <!-- About phone screen,  Mod Version -->
-    <string name="mod_version">Build version</string>
+    <string name="mod_version">Euphoria version</string>
     <string name="mod_version_default">Unknown</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Build date</string>
