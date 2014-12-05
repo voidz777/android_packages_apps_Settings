@@ -17,6 +17,10 @@
     <!-- Custom settings  -->
     <string name="custom_settings_title">Custom</string>
 
+    <!-- Updater -->
+    <string name="updater_title">Updates</string>
+    <string name="updater_summary">Check for updates and more</string>
+
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>
 
