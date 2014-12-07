@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2014 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +46,8 @@ import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -53,8 +56,12 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
+import com.android.settings.hardware.DisplayColor;
+import com.android.settings.hardware.DisplayGamma;
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
@@ -71,6 +78,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
+
+    private static final String CATEGORY_ADVANCED = "category_advanced_options";
+    private static final String KEY_DISPLAY_COLOR = "color_calibration";
+    private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -112,17 +123,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
 
-        mWakeWhenPluggedOrUnplugged =
-                (SwitchPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
-
-        // Default value for wake-on-plug behavior from config.xml
-        boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
-                com.android.internal.R.bool.config_unplugTurnsOnScreen);
-
-        mWakeWhenPluggedOrUnplugged.setChecked(Settings.Global.getInt(resolver,
-                Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
-                (wakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1);
-
         if (isAutomaticBrightnessAvailable(getResources())) {
             mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
             mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
@@ -135,6 +135,26 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mLiftToWakePreference.setOnPreferenceChangeListener(this);
         } else {
             removePreference(KEY_LIFT_TO_WAKE);
+        }
+
+        PreferenceCategory advancedPrefs = (PreferenceCategory) findPreference(CATEGORY_ADVANCED);
+
+        mWakeWhenPluggedOrUnplugged =
+                (SwitchPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
+
+        // Default value for wake-on-plug behavior from config.xml
+        boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
+                com.android.internal.R.bool.config_unplugTurnsOnScreen);
+
+        mWakeWhenPluggedOrUnplugged.setChecked(Settings.Global.getInt(resolver,
+                Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+                (wakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1);
+
+        if (!DisplayColor.isSupported()) {
+            advancedPrefs.removePreference(findPreference(KEY_DISPLAY_COLOR));
+        }
+        if (!DisplayGamma.isSupported()) {
+            advancedPrefs.removePreference(findPreference(KEY_DISPLAY_GAMMA));
         }
 
         if (isDozeAvailable(activity)) {

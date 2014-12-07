@@ -107,6 +107,8 @@
             android:supportsRtl="true"
             android:allowBackup="false">
 
+        <uses-library android:name="org.cyanogenmod.hardware" required="false" />
+
         <!-- Only system/su can open this activity -->
         <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
         <activity
@@ -1802,6 +1804,12 @@
                 <data android:mimeType="cm/profile" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".cyanogenmod.BootReceiver" android:enabled="true">$
+            <intent-filter android:priority="2147483647">$
+                <action android:name="android.intent.action.BOOT_COMPLETED" />$
+            </intent-filter>$
+        </receiver>
 
         <!-- CyanogenMod activities End -->
 

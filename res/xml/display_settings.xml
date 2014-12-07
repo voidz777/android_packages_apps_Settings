@@ -81,21 +81,34 @@
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
         <PreferenceCategory
-            android:key="category_advanced_options"
-            android:title="@string/category_advanced_options_title" >
+                android:key="category_advanced_options"
+                android:title="@string/category_advanced_options_title" >
 
-            <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-                android:key="double_tap_sleep_gesture"
-                android:title="@string/double_tap_to_sleep_title"
-                android:summary="@string/double_tap_to_sleep_summary"
-                android:defaultValue="true" />
+                <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+                    android:key="double_tap_sleep_gesture"
+                    android:title="@string/double_tap_to_sleep_title"
+                    android:summary="@string/double_tap_to_sleep_summary"
+                    android:defaultValue="true" />
 
-            <SwitchPreference
-                android:key="wake_when_plugged_or_unplugged"
-                android:title="@string/wakeup_when_plugged_unplugged_title"
-                android:summary="@string/wakeup_when_plugged_unplugged_summary"
-                android:defaultValue="false" />
+               <SwitchPreference
+                    android:key="wake_when_plugged_or_unplugged"
+                    android:title="@string/wakeup_when_plugged_unplugged_title"
+                    android:summary="@string/wakeup_when_plugged_unplugged_summary"
+                    android:defaultValue="false" />
 
+                <com.android.settings.hardware.DisplayColor
+                    android:key="color_calibration"
+                    android:title="@string/color_calibration_title"
+                    android:dialogTitle="@string/color_calibration_title"
+                    android:summary="@string/color_calibration_summary"
+                    android:persistent="false" />
+
+                <com.android.settings.hardware.DisplayGamma
+                    android:key="gamma_tuning"
+                    android:title="@string/gamma_tuning_title_head"
+                    android:dialogTitle="@string/gamma_tuning_title_head"
+                    android:summary="@string/gamma_tuning_summary_head"
+                    android:persistent="false" />
         </PreferenceCategory>
 
 </PreferenceScreen>
