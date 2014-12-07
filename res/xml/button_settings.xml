@@ -36,6 +36,12 @@
         android:key="volume_keys"
         android:title="@string/hardware_keys_volume_keys_title" >
 
+        <SwitchPreference
+            android:key="volume_key_wake_device"
+            android:title="@string/volbtn_wake_device_title"
+            android:summary="@string/volbtn_wake_device_summary"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="volume_key_cursor_control"
             android:dialogTitle="@string/volbtn_cursor_control_title"
