@@ -109,6 +109,16 @@
                     android:dialogTitle="@string/gamma_tuning_title_head"
                     android:summary="@string/gamma_tuning_summary_head"
                     android:persistent="false" />
+
+                <PreferenceScreen
+                    android:key="touch_control_settings"
+                    android:title="@string/touch_control_settings_title"
+                    android:summary="@string/touch_control_settings_summary">
+                    <intent
+                        android:action="com.mahdi.action.LAUNCH_TOUCH_CONTROL_SETTINGS"
+                        android:targetPackage="com.mahdi.touchcontrol"
+                        android:targetClass="com.mahdi.touchcontrol.settings.TouchControlActivity" />
+                </PreferenceScreen>
         </PreferenceCategory>
 
 </PreferenceScreen>

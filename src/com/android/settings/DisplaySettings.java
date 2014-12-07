@@ -83,6 +83,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DISPLAY_COLOR = "color_calibration";
     private static final String KEY_DISPLAY_GAMMA = "gamma_tuning";
 
+    private static final String KEY_TOUCH_CONTROL_SETTINGS = "touch_control_settings";
+    private static final String KEY_TOUCH_CONTROL_PACKAGE_NAME = "com.mahdi.touchcontrol";
+
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
     private FontDialogPreference mFontSizePref;
@@ -95,6 +98,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mWakeWhenPluggedOrUnplugged;
+    private PreferenceScreen mTouchControl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -153,8 +157,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (!DisplayColor.isSupported()) {
             advancedPrefs.removePreference(findPreference(KEY_DISPLAY_COLOR));
         }
+
         if (!DisplayGamma.isSupported()) {
             advancedPrefs.removePreference(findPreference(KEY_DISPLAY_GAMMA));
+        }
+
+        mTouchControl = (PreferenceScreen) findPreference(KEY_TOUCH_CONTROL_SETTINGS);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_TOUCH_CONTROL_PACKAGE_NAME)) {
+            advancedPrefs.removePreference(mTouchControl);
         }
 
         if (isDozeAvailable(activity)) {

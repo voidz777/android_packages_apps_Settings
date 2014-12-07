@@ -64,4 +64,8 @@
     <string name="power_category">Power button</string>
     <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
     <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
+
+    <!-- Touch control -->
+    <string name="touch_control_settings_title">Touch control</string>
+    <string name="touch_control_settings_summary">Manage advance wakeup option including double tap to wake and more</string>
 </resources>
