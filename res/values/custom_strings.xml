@@ -66,9 +66,10 @@
 
     <!-- Touch control -->
     <string name="touch_control_settings_title">Touch control</string>
-    <string name="touch_control_settings_summary">Manage advance wakeup option including double tap to wake and more</string>
+    <string name="touch_control_settings_summary">Manage advance wakeup options including double tap to wake and more</string>
 
     <!-- Status bar | Clock -->
+    <string name="status_bar_clock_category">Status bar</string>
     <string name="status_bar_clock">Clock and date</string>
     <string name="status_bar_clock_title">Clock and date style</string>
     <string name="clock_title_enable">Alignment</string>
