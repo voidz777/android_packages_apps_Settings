@@ -101,4 +101,9 @@
     <string name="clock_date_format_custom">Custom java format</string>
     <string name="status_bar_ticker_title">Notification Ticker</string>
     <string name="status_bar_ticker_summary">Notification text animation in the statusbar</string>
+
+    <!-- Quick settings -->
+    <string name="quick_settings_category">Quick settings</string>
+    <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
+    <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen.</string>
 </resources>
