@@ -37,7 +37,10 @@
     <!-- About phone screen, status item label -->
 
     <!-- Advanced category -->
-    <string name="category_advanced_options_title">Advanced</string>
+    <string name="advanced_options_title">Advanced</string>
+
+    <!-- Color & brightness category -->
+    <string name="brightness_and_color_options_title">Color and brightness</string>
 
     <!--Wakeup when plugged/unplugged -->
     <string name="wakeup_when_plugged_unplugged_title">Wake up on charge</string>

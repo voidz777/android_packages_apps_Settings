@@ -29,7 +29,7 @@
     <!-- About phone screen, status item label -->
     
     <!-- Advanced category -->
-    <string name="category_advanced_options_title">詳細設定</string>
+    <string name="advanced_options_title">詳細設定</string>
 
     <!--Wakeup when plugged/unplugged -->
     <string name="wakeup_when_plugged_unplugged_title">充電時にウェイクアップ</string>
