@@ -39,8 +39,8 @@
     <!-- Advanced category -->
     <string name="advanced_options_title">Advanced</string>
 
-    <!-- Color & brightness category -->
-    <string name="brightness_and_color_options_title">Color and brightness</string>
+    <!-- General category -->
+    <string name="general_options_title">General</string>
 
     <!--Wakeup when plugged/unplugged -->
     <string name="wakeup_when_plugged_unplugged_title">Wake up on charge</string>
