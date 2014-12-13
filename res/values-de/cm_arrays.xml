@@ -39,5 +39,12 @@
         <item>Deaktiviert</item>
         <item>Aktiviert</item>
     </string-array>
+    
+     <!--Profile Triggers-->
+    <string-array name="trigger_page_title">
+        <item>WLAN</item>
+        <item>Bluetooth</item>
+        <item>NFC</item>
+    </string-array>
 
 </resources>

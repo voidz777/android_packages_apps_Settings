@@ -39,6 +39,9 @@
     <!-- Advanced category -->
     <string name="advanced_options_title">Erweitert</string>
 
+    <!-- General category -->
+    <string name="general_options_title">Allgemein</string>
+    
     <!--Wakeup when plugged/unplugged -->
     <string name="wakeup_when_plugged_unplugged_title">Einschalten beim Laden</string>
     <string name="wakeup_when_plugged_unplugged_summary">Schaltet das Display beim verbinden oder trennen des Ladegerätes an</string>
@@ -105,4 +108,11 @@
     <string name="quick_settings_category">Schnelleinstellungen</string>
     <string name="block_on_secure_keyguard_title">Auf dem Sperrbildschirm deaktivieren</string>
     <string name="block_on_secure_keyguard_summary">Auf sicherem Sperrbildschirm deaktivieren</string>
+    
+    <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
+    <string name="supersu_title">SuperSU</string>
+
+    <!-- Unaccounted and overcounted battery stats -->
+    <string name="show_unac_and_overcounted_stats_title">Zeige Tatsächlicher/Berechneter Akkuverbrauch</string>
+    <string name="show_unac_and_overcounted_stats_summary">Zeigt Statistiken zum Tatsächlichen und Berechneten Akkuverbrauch unter Sonstiges an</string>
 </resources>
