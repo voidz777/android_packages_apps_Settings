@@ -110,6 +110,15 @@
     <!--Back to kill timeout -->
     <string name="long_press_kill_delay">App kill delay</string>
 
+    <!-- Weather in status bar -->
+    <string name="weather_options_title">Weather</string>
+    <string name="status_bar_show_weather_title">Show weather</string>
+    <string name="status_bar_show_weather_summary">Show the weather in the status bar header</string>
+
+    <!--- Lock clock -->
+    <string name="lock_clock_title">Settings</string>
+    <string name="lock_clock_summary">View or change how the weather will be displayed</string>
+
     <!-- Lockscreen weather -->
     <string name="lock_screen_weather_settings_title">Weather</string>
     <string name="weather_cat_notifications_title">Notifications</string>
@@ -209,8 +218,4 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (off)</string>
-
-    <!--- Lock clock -->
-    <string name="lock_clock_title">Settings</string>
-    <string name="lock_clock_summary">View or change how the weather will be displayed</string>
 </resources>
