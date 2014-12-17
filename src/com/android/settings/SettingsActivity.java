@@ -1207,17 +1207,6 @@ public class SettingsActivity extends Activity
                     } catch (PackageManager.NameNotFoundException e) {
                     }
                     if (!supported) {
-                        //remove SuperSU header
-                        removeTile = true;
-                    }
-                } else if (id == R.id.superuser_settings) {
-                    boolean supported = false;
-                    try {
-                        supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
-                    } catch (PackageManager.NameNotFoundException e) {
-                    }
-                    if (supported || !DevelopmentSettings.isRootForAppsEnabled()) {
-                        //SuperSu is installed or root access for apps is disabled so remove SuperUser header
                         removeTile = true;
                     }
                 } else if (id == R.id.development_settings) {
