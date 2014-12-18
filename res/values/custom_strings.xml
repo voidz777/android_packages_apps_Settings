@@ -140,4 +140,8 @@
     <!-- Battery saver color -->
     <string name="battery_saver_color_title">Warning color</string>
     <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
+
+    <!--- Lock clock -->
+    <string name="lock_clock_title">Clock widget</string>
+    <string name="lock_clock_summary">View or change how the \'cLock\' widget will display</string>
 </resources>

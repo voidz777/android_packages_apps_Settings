@@ -21,6 +21,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 
@@ -37,10 +38,14 @@ public class CustomSettings extends SettingsPreferenceFragment
     private static final String CATEGORY_STATUS_BAR = "status_bar";
     private static final String CATEGORY_QUICK_SETTINGS = "quick_settings";
 
+    private static final String KEY_LOCK_CLOCK = "lock_clock";
+    private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
+
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String LOCKSCREEN_CARRIER_LABEL = "lock_screen_show_carrier";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 
+    private PreferenceScreen mLockClock;
     private ListPreference mStatusBarBattery;
     private SystemSettingSwitchPreference mShowCarrierLabel;
     private SwitchPreference mBlockOnSecureKeyguard;
@@ -50,9 +55,15 @@ public class CustomSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.custom_settings);
         ContentResolver resolver = getActivity().getContentResolver();
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         PreferenceCategory status_bar = (PreferenceCategory) findPreference(CATEGORY_STATUS_BAR);
         PreferenceCategory quick_settings = (PreferenceCategory) findPreference(CATEGORY_QUICK_SETTINGS);
+
+        mLockClock = (PreferenceScreen) findPreference(KEY_LOCK_CLOCK);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_LOCK_CLOCK_PACKAGE_NAME)) {
+            prefSet.removePreference(mLockClock);
+        }
 
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
         int batteryStyle = Settings.System.getInt(
