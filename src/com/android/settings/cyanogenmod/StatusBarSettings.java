@@ -37,7 +37,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
 
+    private static final String KEY_LOCK_CLOCK = "lock_clock";
+    private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
+
     private ListPreference mShowCarrierLabel;
+    private PreferenceScreen mLockClock;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,9 +63,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
         mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
         mShowCarrierLabel.setOnPreferenceChangeListener(this);
-
         if (!Utils.isVoiceCapable(getActivity())) {
             prefSet.removePreference(mShowCarrierLabel);
+        }
+
+        mLockClock = (PreferenceScreen) findPreference(KEY_LOCK_CLOCK);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_LOCK_CLOCK_PACKAGE_NAME)) {
+            prefSet.removePreference(mLockClock);
         }
     }
 
