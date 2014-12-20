@@ -16,9 +16,11 @@
 package com.android.settings.euphoria;
 
 import android.content.ContentResolver;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -48,15 +50,18 @@ public class CustomSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_BATTERY_STYLE_HIDDEN = "4";
     private static final String STATUS_BAR_BATTERY_STYLE_TEXT = "6";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-
     private static final String LOCKSCREEN_CARRIER_LABEL = "lock_screen_show_carrier";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+    private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
+    private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
     private PreferenceScreen mLockClock;
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarBattery;
     private SystemSettingSwitchPreference mShowCarrierLabel;
     private SwitchPreference mBlockOnSecureKeyguard;
+    private SwitchPreference mRecentsClearAll;
+    private ListPreference mRecentsClearAllLocation;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -102,6 +107,18 @@ public class CustomSettings extends SettingsPreferenceFragment
         } else {
             quick_settings.removePreference(mBlockOnSecureKeyguard);
         }
+
+        mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
+        mRecentsClearAll.setChecked(Settings.System.getIntForUser(resolver,
+            Settings.System.SHOW_CLEAR_ALL_RECENTS, 1, UserHandle.USER_CURRENT) == 1);
+        mRecentsClearAll.setOnPreferenceChangeListener(this);
+
+        mRecentsClearAllLocation = (ListPreference) prefSet.findPreference(RECENTS_CLEAR_ALL_LOCATION);
+        int location = Settings.System.getIntForUser(resolver,
+                Settings.System.RECENTS_CLEAR_ALL_LOCATION, 0, UserHandle.USER_CURRENT);
+        mRecentsClearAllLocation.setValue(String.valueOf(location));
+        mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+        updateRecentsLocation(location);
     }
 
     @Override
@@ -133,6 +150,17 @@ public class CustomSettings extends SettingsPreferenceFragment
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                     (Boolean) newValue ? 1 : 0);
             return true;
+        } else if (preference == mRecentsClearAll) {
+            boolean show = (Boolean) newValue;
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.SHOW_CLEAR_ALL_RECENTS, show ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mRecentsClearAllLocation) {
+            int location = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
+            updateRecentsLocation(location);
+            return true;
         }
         return false;
     }
@@ -141,5 +169,24 @@ public class CustomSettings extends SettingsPreferenceFragment
         boolean enabled = !(value.equals(STATUS_BAR_BATTERY_STYLE_TEXT)
                 || value.equals(STATUS_BAR_BATTERY_STYLE_HIDDEN));
         mStatusBarBatteryShowPercent.setEnabled(enabled);
+    }
+
+    private void updateRecentsLocation(int value) {
+        ContentResolver resolver = getContentResolver();
+        Resources res = getResources();
+        int summary = -1;
+
+        Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, value);
+
+        if (value == 0) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 0);
+            summary = R.string.recents_clear_all_location_right;
+        } else if (value == 1) {
+            Settings.System.putInt(resolver, Settings.System.RECENTS_CLEAR_ALL_LOCATION, 1);
+            summary = R.string.recents_clear_all_location_left;
+        }
+        if (mRecentsClearAllLocation != null && summary != -1) {
+            mRecentsClearAllLocation.setSummary(res.getString(summary));
+        }
     }
 }
