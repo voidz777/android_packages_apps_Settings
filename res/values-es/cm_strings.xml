@@ -371,6 +371,14 @@
     <string name="status_bar_notif_count_title">Mostrar recuento de notificaciones</string>
     <string name="status_bar_notif_count_summary">Ver el número de notificaciones pendientes</string>
 
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_title">Estilo estado de batería</string>
+    <string name="status_bar_battery_style_icon_portrait">Icono vertical</string>
+    <string name="status_bar_battery_style_icon_landscape">Icono horizontal</string>
+    <string name="status_bar_battery_style_circle">Círculo</string>
+    <string name="status_bar_battery_style_text">Texto</string>
+    <string name="status_bar_battery_style_hidden">Oculto</string>
+
     <!-- Battery percentage -->
     <string name="status_bar_battery_percentage_title">Mostrar porcentaje de batería</string>
     <string name="status_bar_battery_percentage_dialog_title">Porcentaje de batería</string>
@@ -598,6 +606,8 @@
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Muestra</string>
 
+    <string name="volume_adjust_sounds_title">Sonidos de ajuste de volumen</string>
+
     <!-- Hardware tunables - Vibrator intensity -->
     <string name="vibrator_intensity_title">Intensidad de vibración</string>
     <string name="vibrator_warning">Valores superiores a %1$d no son recomendadas</string>
@@ -770,4 +780,8 @@
     <string name="menu_hidden_apps_reset_lock">Restablecer patrón de bloqueo</string>
     <string name="protected_apps">Aplicaciones protegidas</string>
     <string name="saving_protected_components">Guardando el estado del componente</string>
+
+    <!-- Weather in status bar -->
+    <string name="status_bar_show_weather_title">Mostrar tiempo</string>
+    <string name="status_bar_show_weather_summary">Mostrar tiempo en el encabezado de la barra de estado</string>
 </resources>
