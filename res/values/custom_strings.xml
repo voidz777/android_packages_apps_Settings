@@ -20,6 +20,8 @@
     <!-- About phone screen, build date -->
     <string name="build_date">Build date</string>
     <string name="build_date_default">2014-01-01-0000</string>
-    <!-- About phone screen, status item label  [CHAR LIMIT=40] -->
+    <!-- About phone screen, processor [CHAR LIMIT=40] -->
     <string name="processor_info">Processor info</string>
+    <!-- About phone screen, model name -->
+    <string name="model_name">Model name</string>
 </resources>
