@@ -60,7 +60,7 @@
 
     <!--Status bar -->
     <string name="status_bar_category">Status bar</string>
-    <string name="lockscreen_show_carrier_title">Lock screen carrier label</string>
+    <string name="status_bar_show_carrier_title">Show carrier label</string>
 
     <!--Power menu -->
     <string name="power_category">Power button</string>

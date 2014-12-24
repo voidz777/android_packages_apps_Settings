@@ -50,7 +50,7 @@ public class CustomSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_BATTERY_STYLE_HIDDEN = "4";
     private static final String STATUS_BAR_BATTERY_STYLE_TEXT = "6";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-    private static final String LOCKSCREEN_CARRIER_LABEL = "lock_screen_show_carrier";
+    private static final String STATUS_BAR_SHOW_CARRIER = "status_bar_show_carrier";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
@@ -93,7 +93,7 @@ public class CustomSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
 
         mShowCarrierLabel =
-                (SystemSettingSwitchPreference) findPreference(LOCKSCREEN_CARRIER_LABEL);
+                (SystemSettingSwitchPreference) findPreference(STATUS_BAR_SHOW_CARRIER);
         if (!Utils.isVoiceCapable(getActivity())) {
             status_bar.removePreference(mShowCarrierLabel);
         }

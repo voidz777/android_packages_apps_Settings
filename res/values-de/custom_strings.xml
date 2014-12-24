@@ -61,7 +61,7 @@
     <!--Status bar -->
     <string name="status_bar_category">Statusleiste</string>
     <string name="status_bar_battery_show_percent_title">Akkustatus in Prozent</string>
-    <string name="lockscreen_show_carrier_title">Anbietername auf dem Sperrbildschirm</string>
+    <string name="status_bar_show_carrier_title">Anbietername auf dem Sperrbildschirm</string>
 
     <!--Power menu -->
     <string name="power_category">Ein/Aus-Taste</string>

@@ -60,7 +60,7 @@
 
     <!--Status bar -->
     <string name="status_bar_category">Barra de estado</string>
-    <string name="lockscreen_show_carrier_title">Operadora en pantalla de bloqueo</string>
+    <string name="status_bar_show_carrier_title">Operadora en pantalla de bloqueo</string>
 
     <!--Power menu -->
     <string name="power_category">Botón de encendido</string>
