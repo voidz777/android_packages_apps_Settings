@@ -40,11 +40,13 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "ButtonSettings";
 
+    private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_POWER_END_CALL = "power_end_call";
     private static final String KEY_POWER_MENU_LOCKSCREEN = "lockscreen_enable_power_menu";
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
+    private static final String CATEGORY_NAVBAR = "power_key";
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_VOLUME = "volume_keys";
 
@@ -62,12 +64,19 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
+        final PreferenceCategory navbarCategory =
+                (PreferenceCategory) prefScreen.findPreference(CATEGORY_NAVBAR);
         final PreferenceCategory powerCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_POWER);
         final PreferenceCategory volumeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_VOLUME);
 
         final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
+
+        if (!Utils.isPhone(getActivity())) {
+            navbarCategory.removePreference(
+                    findPreference(Settings.System.NAVBAR_LEFT_IN_LANDSCAPE));
+        }
 
         // Power button ends calls.
         mPowerEndCall = (SwitchPreference) findPreference(KEY_POWER_END_CALL);

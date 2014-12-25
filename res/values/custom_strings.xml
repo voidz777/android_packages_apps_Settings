@@ -161,6 +161,8 @@
     <!-- Navigation bar -->
     <string name="navigation_bar_category">Navigation bar</string>
     <string name="navbar_enable_bar">Enable</string>
+    <string name="navigation_bar_left_title">Left-handed mode</string>
+    <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
     <string name="navbar_dimen_title">Dimensions</string>
     <string name="navbar_dimensions_reset_message">Reset all dimensions entries to default?</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
