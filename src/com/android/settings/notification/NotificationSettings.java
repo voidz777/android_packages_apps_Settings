@@ -107,6 +107,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private Preference mNotificationAccess;
     private boolean mSecure;
     private int mLockscreenSelectedValue;
+    private Preference mHeadsUp;
 
     private ListPreference mAnnoyingNotifications;
 
@@ -153,6 +154,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         int notificationThreshold = Settings.System.getInt(getContentResolver(),
                 Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, 0);
         updateAnnoyingNotificationValues();
+
+        mHeadsUp = findPreference(Settings.System.HEADS_UP_NOTIFICATION);
     }
 
     private void updateAnnoyingNotificationValues() {
@@ -173,6 +176,11 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         refreshNotificationListeners();
         lookupRingtoneNames();
         mSettingsObserver.register(true);
+        
+        boolean headsUpEnabled = Settings.System.getInt(
+                getContentResolver(), Settings.System.HEADS_UP_NOTIFICATION, 0) == 1;
+        mHeadsUp.setSummary(headsUpEnabled
+                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
     }
 
     @Override

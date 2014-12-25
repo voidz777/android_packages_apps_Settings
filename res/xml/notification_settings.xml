@@ -128,6 +128,12 @@
                 android:entryValues="@array/less_notification_sounds_values"
                 android:persistent="false" />
 
+        <!-- Heads up notifications -->
+        <Preference
+                android:key="heads_up_enabled"
+                android:fragment="com.android.settings.headsup.HeadsUpSettings"
+                android:title="@string/category_heads_up" />
+
         <!-- App notifications -->
         <PreferenceScreen
                 android:key="app_notifications"
