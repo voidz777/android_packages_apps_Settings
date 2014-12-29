@@ -101,8 +101,12 @@
                 <PreferenceScreen
                     android:key="screen_recorder"
                     android:title="@string/screen_recorder_title"
-                    android:fragment="com.android.settings.euphoria.ScreenRecorderSettings" >
-                </PreferenceScreen>
+                    android:fragment="com.android.settings.euphoria.ScreenRecorderSettings" />
+
+                <PreferenceScreen
+                    android:key="animation_settings"
+                    android:title="@string/animation_title"
+                    android:fragment="com.android.settings.euphoria.animation.AnimationControls" />
 
         </PreferenceCategory>
 
