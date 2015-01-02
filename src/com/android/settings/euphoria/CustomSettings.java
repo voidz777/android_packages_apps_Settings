@@ -50,7 +50,7 @@ public class CustomSettings extends SettingsPreferenceFragment
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
-    private static final String STATUS_BAR_SHOW_CARRIER = "status_bar_show_carrier";
+    private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
@@ -58,7 +58,7 @@ public class CustomSettings extends SettingsPreferenceFragment
     private PreferenceScreen mLockClock;
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarBattery;
-    private SystemSettingSwitchPreference mShowCarrierLabel;
+    private ListPreference mShowCarrierLabel;
     private SwitchPreference mBlockOnSecureKeyguard;
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
@@ -94,7 +94,12 @@ public class CustomSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
 
         mShowCarrierLabel =
-                (SystemSettingSwitchPreference) findPreference(STATUS_BAR_SHOW_CARRIER);
+                (ListPreference) findPreference(SHOW_CARRIER_LABEL);
+        int showCarrierLabel = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_SHOW_CARRIER, 1);
+        mShowCarrierLabel.setValue(String.valueOf(showCarrierLabel));
+        mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
+        mShowCarrierLabel.setOnPreferenceChangeListener(this);
+
         if (!Utils.isVoiceCapable(getActivity())) {
             status_bar.removePreference(mShowCarrierLabel);
         }
@@ -144,6 +149,13 @@ public class CustomSettings extends SettingsPreferenceFragment
             Settings.System.putInt(
                     resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
             mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntries()[index]);
+            return true;
+        } else if (preference == mShowCarrierLabel) {
+            int showCarrierLabel = Integer.valueOf((String) newValue);
+            int index = mShowCarrierLabel.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, Settings.System.STATUS_BAR_SHOW_CARRIER, showCarrierLabel);
+            mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             return true;
         } else if (preference == mBlockOnSecureKeyguard) {
             Settings.Secure.putInt(getContentResolver(),

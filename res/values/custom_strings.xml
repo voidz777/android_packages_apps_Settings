@@ -60,8 +60,13 @@
 
     <!--Status bar -->
     <string name="status_bar_category">Status bar</string>
-    <string name="status_bar_show_carrier_title">Show carrier label</string>
-    <string name="status_bar_show_carrier_summary">Display the carrier label in the status bar</string>
+
+    <!--Status bar carrier -->
+    <string name="show_carrier_title">Carrier label</string>
+    <string name="show_carrier_disabled">Disabled</string>
+    <string name="show_carrier_keyguard">Keyguard carrier</string>
+    <string name="show_carrier_statusbar">Status bar carrier</string>
+    <string name="show_carrier_enabled">Enabled</string>
 
     <!--Power menu -->
     <string name="power_category">Power button</string>
