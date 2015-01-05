@@ -57,7 +57,13 @@
 
     <!--Status bar -->
     <string name="status_bar_category">Barra de estado</string>
-    <string name="status_bar_show_carrier_title">Operadora en pantalla de bloqueo</string>
+
+    <!--Status bar carrier -->
+    <string name="show_carrier_title">Operadora de red</string>
+    <string name="show_carrier_disabled">Deshabilitado</string>
+    <string name="show_carrier_keyguard">Operadora en pantalla de bloqueo</string>
+    <string name="show_carrier_statusbar">Operadora en barra de estado</string>
+    <string name="show_carrier_enabled">Habilitado</string>
 
     <!--Power menu -->
     <string name="power_category">Botón de encendido</string>
@@ -106,19 +112,27 @@
     <string name="block_on_secure_keyguard_title">Deshabilitar en pantalla de bloqueo</string>
     <string name="block_on_secure_keyguard_summary">Deshabilitar ajustes rápidos en pantalla de bloqueo</string>
 
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate_title">Vibrar al tocar</string>
+    <string name="quick_settings_vibrate_summary">Vibrar al tocar toggle</string>
+
+    <!-- QuickSettings collapse panel -->
+    <string name="quick_settings_collapse_title">Cerrar panel automáticamente</string>
+    <string name="quick_settings_collapse_summary">Cerrar panel de ajustes rápidos sobre toggle</string>
+
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
 
     <!-- Unaccounted and overcounted battery stats -->
     <string name="show_unac_and_overcounted_stats_title">Mostrar estadísticas desconocidas/conocidas</string>
     <string name="show_unac_and_overcounted_stats_summary">Mostrar estadísticas de batería para uso desconocido y conocido</string>
-	
-	<!-- Keyguard notifications -->
+
+    <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Mostrar en pantalla de bloqueo</string>
     <string name="app_notification_show_on_keyguard_summary">Mostrar notificaciones de esta aplicación en la pantalla de bloqueo</string>
     <string name="app_notification_no_ongoing_on_keyguard_title">Desactivar en curso sobre pantalla de bloqueo</string>
     <string name="app_notification_no_ongoing_on_keyguard_summary">Nunca mostrar notificaciones en curso de esta aplicación en la pantalla de bloqueo</string>
-	
+
 	<!-- Less Notification sounds -->
     <string name="notifications_category_title">Notificaciones</string>
     <string name="less_notification_sounds_title">Frecuencia de sonidos de notificación</string>
@@ -147,14 +161,17 @@
     <string name="show_clear_all_recents_button_title">Botón de limpieza</string>
     <string name="show_clear_all_recents_button_summary">Mostrar botón de limpieza</string>
     <string name="recents_clear_all_location_title">Posición de botón</string>
-    <string name="recents_clear_all_location_right">Arriba derecha</string>
-    <string name="recents_clear_all_location_left">Arriba izquierda</string>
+    <string name="recents_clear_all_location_top_right">Superior derecha</string>
+    <string name="recents_clear_all_location_top_left">Superior izquierda</string>
+    <string name="recents_clear_all_location_bottom_right">Inferior derecha</string>
+    <string name="recents_clear_all_location_bottom_left">Inferior izquierda</string>
     <string name="recents_searchbar_title">Barra de búsqueda</string>
-    
+    <string name="recents_searchbar_summary">Mostrar barra de búsqueda Google en pantalla de recientes</string>
+
     <!-- Full screen keyboard -->
     <string name="fullscreen_keyboard_title">Teclado a pantalla completa</string>
     <string name="fullscreen_keyboard_summary">Mostrar teclado a pantalla completa en modo horizontal</string>
-    
+
     <!-- Navigation bar -->
     <string name="navigation_bar_category">Barra de navegación</string>
     <string name="navbar_enable_bar">Habilitar</string>
@@ -174,18 +191,20 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (off)</string>
-    
+
     <!-- Wifi connection notifications -->
     <string name="wifi_notify_changed_networks">Notificación conexión Wi\u2011Fi</string>
     <string name="notify_changed_networks_default">Off (por defecto)</string>
     <string name="notify_changed_networks_toast">Toast</string>
     <string name="notify_changed_networks_notification">Notificación</string>
     <string name="notify_changed_networks_notification_sound">Notificación con sonido</string>
-    
+
     <!-- Heads Up -->
     <string name="category_heads_up">Notificaciones Heads up</string>
     <string name="summary_heads_up_enabled">Notificaciones Pop-up están habilitadas</string>
     <string name="summary_heads_up_disabled">Notificaciones Pop-up están deshabilitadas</string>
+    <string name="show_headsup_button_title">Mostrar botón de acceso rápido</string>
+    <string name="show_headsup_button_summary">Muestra un botón de acceso rápido en la cabecera de la barra de estado</string>
     <string name="add_heads_up_package">Añadir app</string>
     <string name="add_heads_up_dnd_summary">No mostrar heads up en estas apps</string>
     <string name="add_heads_up_blacklist_summary">No mostrar heads up desde estas apps</string>
