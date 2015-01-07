@@ -183,7 +183,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
         // Remove update settings if it is not present.
         mUpdateSettings = (PreferenceScreen) findPreference(KEY_UPDATE_SETTINGS);
-        if (!Utils.isPackageInstalled(getActivity(), KEY_UPDATE_SETTINGS_PACKAGE_NAME)) {
+        if (!Utils.isPackageInstalled(getActivity(), KEY_UPDATE_SETTINGS_PACKAGE_NAME, false)) {
             getPreferenceScreen().removePreference(mUpdateSettings);
         }
     }
