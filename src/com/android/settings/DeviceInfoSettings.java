@@ -84,7 +84,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_DEVICE_MEMORY = "device_memory";
 
     private static final String KEY_UPDATE_SETTINGS = "update_settings";
-    private static final String KEY_UPDATE_SETTINGS_PACKAGE_NAME = "com.euphoria.ota";
+    private static final String KEY_UPDATE_SETTINGS_PACKAGE_NAME = "eu.chainfire.opendelta";
 
     private PreferenceScreen mUpdateSettings;
 
