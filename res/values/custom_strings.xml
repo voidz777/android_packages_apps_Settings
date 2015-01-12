@@ -20,7 +20,7 @@
 
     <!-- Updater -->
     <string name="updater_title">Updates</string>
-    <string name="updater_summary">Check for updates and more</string>
+    <string name="updater_summary">Check for updates</string>
 
     <!-- Button settings  -->
     <string name="button_settings_title">Buttons</string>

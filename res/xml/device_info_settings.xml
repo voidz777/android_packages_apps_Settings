@@ -24,7 +24,7 @@
                 android:summary="@string/updater_summary">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="eu.chainfire.opendelta"
-                    android:targetClass="eu.chainfire.opendelta.Application" />
+                    android:targetClass="eu.chainfire.opendelta.MainActivity" />
         </PreferenceScreen>
 
         <!-- Device status - launches activity -->
