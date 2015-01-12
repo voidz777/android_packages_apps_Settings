@@ -68,6 +68,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 
+import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,6 +90,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private static final String KEY_INPUT_METHOD_SELECTOR = "input_method_selector";
     private static final String KEY_USER_DICTIONARY_SETTINGS = "key_user_dictionary_settings";
     private static final String KEY_PREVIOUSLY_ENABLED_SUBTYPES = "previously_enabled_subtypes";
+    private static final String KEY_FULL_SCREEN_KEYBOARD = "fullscreen_keyboard_mode";
     // false: on ICS or later
     private static final boolean SHOW_INPUT_METHOD_SWITCHER_SETTINGS = false;
 
@@ -96,7 +99,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     private PreferenceCategory mKeyboardSettingsCategory;
     private PreferenceCategory mHardKeyboardCategory;
     private PreferenceCategory mGameControllerCategory;
+    private SystemSettingSwitchPreference mFullScreenKeyboard;
     private Preference mLanguagePref;
+
     private final ArrayList<InputMethodPreference> mInputMethodPreferenceList = new ArrayList<>();
     private final ArrayList<PreferenceScreen> mHardKeyboardPreferenceList = new ArrayList<>();
     private InputManager mIm;
@@ -173,9 +178,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                     findPreference(Settings.System.STATUS_BAR_IME_SWITCHER));
         }
 
-        if (!Utils.isPhone(getActivity())) {
-            getPreferenceScreen().removePreference(
-                    findPreference(Settings.System.FULLSCREEN_KEYBOARD_MODE));
+        mFullScreenKeyboard = (
+                SystemSettingSwitchPreference) findPreference(KEY_FULL_SCREEN_KEYBOARD);
+        if (mFullScreenKeyboard != null && !Utils.isPhone(getActivity())) {
+            getPreferenceScreen().removePreference(mFullScreenKeyboard);
         }
 
         // Spell Checker
