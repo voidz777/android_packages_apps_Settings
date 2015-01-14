@@ -43,7 +43,7 @@
     <string name="ring_mode_unchanged">Inchangé</string>
 
     <!-- Profiles settings  -->
-    <string name="profiles_settings_title">profils système</string>
+    <string name="profiles_settings_title">Profils système</string>
     <string name="profiles_add">Ajouter</string>
     <string name="profile_menu_delete">Supprimer</string>
     <string name="profile_settings_title">Profil</string>
@@ -62,6 +62,9 @@
     <string name="profile_unknown_nfc_tag">Profil inconnu</string>
     <string name="profile_add_nfc_text">Ce Tag NFC ne se réfère à aucun profil. Le relier à un profil existant permettra à l\'avenir de le sélectionner.</string>
     <string name="profile_select">Sélectionner un profil</string>
+    <string name="profile_remove_dialog_message">Supprimer le profil %1$s ?</string>
+    <string name="profile_populate_profile_from_state">Configurer le profil en utilisant les paramètres actuels de l\'appareil ?</string>
+    <string name="profile_menu_fill_from_state">Importer les paramètres actuels de l\'appareil</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Créer un nouveau profil</string>
@@ -190,6 +193,21 @@
     <string name="home_answer_call_summary">Appuyer sur le bouton d\'accueil permettra de répondre à l\'appel en cours</string>
     <string name="volbtn_wake_device_title">réveiller l\'appareil</string>
     <string name="volbtn_wake_device_summary">Appuyez sur le bouton volume réveillera l\'appareil</string>
+
+    <!-- Power menu -->
+    <string name="power_menu_title">Menu d\'alimentation</string>
+    <string name="power_menu_power_title">Eteindre</string>
+    <string name="power_menu_reboot_title">Menu de redémarrage</string>
+    <string name="power_menu_screenshot_title">Capture d\'écran</string>
+    <string name="power_menu_profiles_title">Sélécteur de profil</string>
+    <string name="power_menu_airplane_title">Mode avion</string>
+    <string name="power_menu_users_title">Sélecteur d\'utilisateur</string>
+    <string name="power_menu_settings_title">paramètres de raccourci</string>
+    <string name="power_menu_lockdown_title">Verrouillage de l\'appareil</string>
+    <string name="power_menu_bug_report_title">Rapport de Bug</string>
+    <string name="power_menu_sound_title">Panneau du son</string>
+    <string name="power_menu_bug_report_disabled">Le signalement de bug est désactivé dans les paramètres développeur</string>
+    <string name="power_menu_profiles_disabled">Les profils système sont désactivés</string>
 
     <!-- Backlight brightness settings screen -->
     <string name="adaptive_backlight_title">Rétro éclairage adaptatif</string>
@@ -586,14 +604,18 @@
     <string name="profile_tabs_bluetooth">Bluetooth</string>
     <string name="profile_tabs_nfc">NFC</string>
 
+    <string name="profile_triggers_header">Les déclencheurs qui vont activer ce profil</string>
+
     <string name="profile_setup_setup_triggers_title">Etape 1 : Ajouter les déclencheurs</string>
     <string name="profile_setup_setup_triggers_title_config">Modifier les déclencheurs : <xliff:g id="profile_name">%1$s</xliff:g></string>
 
     <string name="profile_setup_actions_title">Etape 2 : Configurer les actions</string>
     <string name="profile_setup_actions_title_config">Reconfigurer les actions</string>
 
-    <string name="no_bluetooth_triggers">Pas de déclencheurs Bluetooth disponibles</string>
-    <string name="no_wifi_triggers">Pas de déclencheurs Wi-Fi disponibles</string>
+    <string name="no_bluetooth_triggers">Aucun périphérique Bluetooth associé.\nAppuyer pour apparier un périphérique Bluetooth avant de configurer les déclencheurs.</string>
+    <string name="no_wifi_triggers">Pas de points d\'accès Wi-Fi configurés.\nAppuyer pour connecter le Wi-Fi avant de configurer les déclencheurs.</string>
+    <string name="no_triggers_configured">Aucun déclencheurs configurés. Appuyer pour en ajouter plus.</string>
+    <string name="no_triggers_configured_nfc">Appuyer pour configurer un nouveau déclencheur NFC.</string>
 
     <string name="profile_setup_setup_triggers_description">Veuillez sélectionner le déclencheur qui activera ce profil</string>
     <string name="profile_setup_actions_description">Maintenant configurer ce qui se passe lorsque le profil est activé</string>
@@ -810,6 +832,15 @@
     <string name="power_notifications_ringtone_silent">Silencieux</string>
 
     <!-- EdgeGesture service -->
-    <string name="edge_gestureBlock_gesture_touch_events_service_title">Bloquer le gestuel des événements tactiles</string>
+    <string name="edge_gesture_service_title">Bloquer le gestuel des événements tactiles</string>
     <string name="edge_gesture_service_summary">Ne pas envoyer les événements tactiles pour la navigation et les gestes de la barre d\'état aux applications</string>
+
+    <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
+    <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
+
+    <!-- Screen security -->
+    <string name="unlock_quick_unlock_control_title">Déverrouillage rapide</string>
+    <string name="unlock_quick_unlock_control_summary">Déverrouiller automatiquement lorsque le PIN / mot de passe correct est entré</string>
+    <string name="unlock_scramble_pin_layout_title">Disposition type Scramble</string>
+    <string name="unlock_scramble_pin_layout_summary">La disposition du code PIN Scramble déverrouillera l\'appareil</string>
 </resources>
