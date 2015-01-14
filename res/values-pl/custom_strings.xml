@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2014 The Euphoria-OS Project
+     Copyright 2013, The ChameleonOS Open Source Project
+
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
+
           http://www.apache.org/licenses/LICENSE-2.0
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -40,7 +44,7 @@
     <string name="general_options_title">Ogólne</string>
 
     <!--Wakeup when plugged/unplugged -->
-    <string name="wakeup_when_plugged_unplugged_title">Wybudź przy podłączaniu</string>
+    <string name="wakeup_when_plugged_unplugged_title">Wybudź przy podłączeniu</string>
     <string name="wakeup_when_plugged_unplugged_summary">Wybudź ekran przy podłączeniu lub odłączeniu źródła zasilania</string>
 
     <!-- Font size sample text. This needs to be a very short string, as it is shown in
@@ -56,8 +60,14 @@
     <string name="show_cpu_info_summary">Nakładka na ekran pokazująca bieżące zużycie procesora</string>
 
     <!--Status bar -->
-    <string name="status_bar_category">Pasek powiadomień</string>
-    <string name="lockscreen_show_carrier_title">Nazwa operatora na ekranie blokady</string>
+    <string name="status_bar_category">Pasek stanu</string>
+    
+    <!--Status bar carrier -->
+    <string name="status_bar_show_carrier_title">Pokaż nazwę operatora</string>
+    <string name="show_carrier_disabled">Wyłączone</string>
+    <string name="show_carrier_keyguard">Na ekranie blokady</string>
+    <string name="show_carrier_statusbar">Na pasku statusu</string>
+    <string name="show_carrier_enabled">Włączone</string>
 
     <!--Power menu -->
     <string name="power_category">Przycisk zasilania</string>
@@ -68,7 +78,7 @@
     <string name="touch_control_settings_summary">Zarządzaj zaawansowanymi opcjami wybudzania, w tym wybudzanie podwójnym dotknięciem i więcej</string>
 
     <!-- Status bar | Clock -->
-    <string name="status_bar_clock_category">Pasek statusu</string>
+    <string name="status_bar_clock_category">Pasek stanu</string>
     <string name="status_bar_clock">Zegar i data</string>
     <string name="status_bar_clock_title">Styl zegara i daty</string>
     <string name="clock_title_enable">Położenie zegara</string>
@@ -78,7 +88,7 @@
     <string name="status_bar_am_pm_title">AM/PM</string>
     <string name="status_bar_am_pm_info">Włączony format 24-godzinny</string>
     <string name="enable_clock_weekday">Dzień tygodnia</string>
-    <string name="enable_clock_weekday_summary">Skrócony dzień tygodnia przed zegarem</string>
+    <string name="enable_clock_weekday_summary">Skrócona nazwa dnia tygodnia przed zegarem</string>
     <string name="right_clock">Zegar z prawej strony</string>
     <string name="center_clock">Zegar na środku</string>
     <string name="dont_show">Nie pokazuj</string>
@@ -98,13 +108,21 @@
     <string name="clock_date_style_lowercase">Małe litery</string>
     <string name="clock_date_style_uppercase">Wielkie litery</string>
     <string name="clock_date_format_custom">Własny format Java</string>
-    <string name="status_bar_ticker_title">Skrót powiadomienia</string>
+    <string name="status_bar_ticker_title">Podgląd powiadomienia</string>
     <string name="status_bar_ticker_summary">Animacja treści powiadomienia na pasku stanu</string>
 
     <!-- Quick settings -->
     <string name="quick_settings_category">Szybkie ustawienia</string>
     <string name="block_on_secure_keyguard_title">Wyłącz na ekranie blokady</string>
     <string name="block_on_secure_keyguard_summary">Wyłącz szybkie ustawienia na zabezpieczonym ekranie blokady</string>
+    
+    <!-- QuickSettings haptic feedback -->
+    <string name="quick_settings_vibrate_title">Wibruj przy dotknięciu</string>
+    <string name="quick_settings_vibrate_summary">Wibruj przy dotknięciu przełącznika</string>
+
+    <!-- QuickSettings collapse panel -->
+    <string name="quick_settings_collapse_title">Automatyczne zamykanie panelu</string>
+    <string name="quick_settings_collapse_summary">Zamyka panel szybkich ustawień po użyciu przełącznika</string>
 
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
@@ -141,4 +159,117 @@
     <!--- Lock clock -->
     <string name="lock_clock_title">Widżet zegara</string>
     <string name="lock_clock_summary">Pokaż lub zmień sposób wyświetlania widżetu "cLock"</string>
+    
+     <!-- Recents panel -->
+    <string name="recents_panel_category">Ostatnio używane aplikacje</string>
+    <string name="show_clear_all_recents_button_title">Przycisk wyczyść wszystkie</string>
+    <string name="show_clear_all_recents_button_summary">Pokaż przycisk usunięcia ostatnio używanych aplikacji</string>
+    <string name="recents_clear_all_location_title">Położenie przycisku wyczyść wszystkie</string>
+    <string name="recents_clear_all_location_top_right">Górny prawy róg</string>
+    <string name="recents_clear_all_location_top_left">Górny lewy róg</string>
+    <string name="recents_clear_all_location_bottom_right">Dolny prawy róg</string>
+    <string name="recents_clear_all_location_bottom_left">Dolny lewy róg</string>
+    <string name="recents_clear_all_dismiss_all_title">Wyczyść wszystkie zadania</string>
+    <string name="recents_clear_all_dismiss_all_summary">Wybierz, czy usuwać wszystkie zadania, czy zignorować ostatnio uruchomione</string>
+    <string name="recents_searchbar_title">Pasek wyszukiwania</string>
+    <string name="recents_searchbar_summary">Pokaż pasek wyszukiwania Google na ekranie ostatnio otwartych aplikacji</string>
+
+    <!-- Full screen keyboard -->
+    <string name="fullscreen_keyboard_title">Klawiatura na pełnym ekranie</string>
+    <string name="fullscreen_keyboard_summary">Pokaż klawiaturę na pełnym ekranie w trybie poziomym</string>
+
+    <!-- Navigation bar -->
+    <string name="navigation_bar_category">Pasek nawigacyjny</string>
+    <string name="navbar_enable_bar">Włączony</string>
+    <string name="navigation_bar_left_title">Tryb leworęczny</string>
+    <string name="navigation_bar_left_summary">W trybie poziomym pokaż pasek nawigacyjny po lewej stronie ekranu</string>
+    <string name="navbar_dimen_title">Wymiary</string>
+    <string name="navbar_dimensions_reset_message">Zresetować wszystkie wymiary do ustawień domyślnych?</string>
+    <string name="navigation_bar_height_title">Wysokość paska nawigacyjnego</string>
+    <string name="navigation_bar_height_landscape_title">Wysokość paska nawigacyjnego w trybie poziomym</string>
+    <string name="navigation_bar_width_title">Szerokość paska nawigacyjnego</string>
+    <string name="navigation_bar_size_42_dp_default">42 dp (domyślnie)</string>
+    <string name="navigation_bar_size_36_dp">36 dp</string>
+    <string name="navigation_bar_size_30_dp">30 dp</string>
+    <string name="navigation_bar_size_24_dp">24 dp</string>
+    <string name="navigation_bar_size_48_dp_default">48 dp (domyślnie)</string>
+    <string name="navigation_bar_size_44_dp">44 dp</string>
+    <string name="navigation_bar_size_40_dp">40 dp</string>
+    <string name="navigation_bar_size_42_dp">42 dp</string>
+    <string name="navigation_bar_size_0_dp">0 dp (wyłączony)</string>
+
+    <!-- Wifi connection notifications -->
+    <string name="wifi_notify_changed_networks">Powiadomienie o połączeniu z siecią Wi\u2011Fi</string>
+    <string name="notify_changed_networks_default">Wyłączone (domyślnie)</string>
+    <string name="notify_changed_networks_toast">Toast</string>
+    <string name="notify_changed_networks_notification">Powiadomienie</string>
+    <string name="notify_changed_networks_notification_sound">Powiadomienie z dźwiękiem</string>
+
+    <!-- Heads Up -->
+    <string name="category_heads_up">Wyskakujące powiadomienia</string>
+    <string name="summary_heads_up_enabled">Wyskakujące powiadomienia są włączone</string>
+    <string name="summary_heads_up_disabled">Wyskakujące powiadomienia są wyłączone</string>
+    <string name="show_headsup_button_title">Pokaż przycisk szybkiego dostępu</string>
+    <string name="show_headsup_button_summary">Pokaż przycisk szybkiego dostępu w nagłówku paska stanu</string>
+    <string name="add_heads_up_package">Dodaj aplikację</string>
+    <string name="add_heads_up_dnd_summary">Nie pokazuj wyskakujących powiadomień w tych aplikacjach</string>
+    <string name="add_heads_up_blacklist_summary">Nie pokazuj wyskakujących powiadomień od tych aplikacji</string>
+    <string name="heads_up_dnd_title">Nie przeszkadzać</string>
+    <string name="heads_up_blacklist_title">Czarna lista</string>
+    <string name="heads_up_disabled_notice">Włącz Wyskakujące Powiadomienia, aby umożliwić aplikacji na wyświetlanie interaktywnych powiadomień w wyskakującym okienku.</string>
+
+    <!-- Heads up timeout -->
+    <string name="heads_up_time_out_title">Czas wyświetlania</string>
+    <string name="heads_up_time_out_summary">Powiadomienie będzie pokazywane przez <xliff:g id="number">%d</xliff:g> sekund</string>
+    <string name="heads_up_time_out_never_summary">Powiadomienie będzie pokazywane, dopóki nie zostanie odwołane</string>
+    <string name="heads_up_time_out_2sec">2 sekundy</string>
+    <string name="heads_up_time_out_4sec">4 sekundy</string>
+    <string name="heads_up_time_out_6sec">6 sekund</string>
+    <string name="heads_up_time_out_8sec">8 sekund</string>
+    <string name="heads_up_time_out_10sec">10 sekund</string>
+    <string name="heads_up_time_out_never">Nigdy</string>
+    
+    <!-- Superuser indicator-->
+    <string name="su_indicator">Ikona superusera</string>
+    <string name="su_indicator_summary">Pokaż ikonę superusera podczas aktywnej sesji</string>
+
+    <!-- Screen recorder -->
+    <string name="screen_recorder_title">Nagrywanie ekranu</string>
+    <string name="screen_recorder_summary">Dostosuj ustawienia nagrywania ekranu</string>
+    <string name="screen_recorder_video_dimensions_title">Rozmiar wideo</string>
+    <string name="screen_recorder_video_bitrate_title">Bitrate</string>
+    <!-- video sizes -->
+    <string name="screen_recorder_size_240x400">240x400</string>
+    <string name="screen_recorder_size_360x640">360x640</string>
+    <string name="screen_recorder_size_480x800">480x800</string>
+    <string name="screen_recorder_size_480x854">480x854</string>
+    <string name="screen_recorder_size_540x960">540x960</string>
+    <string name="screen_recorder_size_600x1024">600x1024</string>
+    <string name="screen_recorder_size_720x1280">720x1280</string>
+    <!-- frame rates -->
+    <string name="screen_recorder_bitrate_title_100000">100 kB/s</string>
+    <string name="screen_recorder_bitrate_title_250000">250 kB/s</string>
+    <string name="screen_recorder_bitrate_title_500000">500 kB/s</string>
+    <string name="screen_recorder_bitrate_title_1000000">1 MB/s</string>
+    <string name="screen_recorder_bitrate_title_2000000">2 MB/s</string>
+    <string name="screen_recorder_bitrate_title_3000000">3 MB/s</string>
+    <string name="screen_recorder_bitrate_title_4000000">4 MB/s</string>
+    <string name="screen_recorder_bitrate_title_5000000">5 MB/s</string>
+    <string name="screen_recorder_bitrate_title_10000000">10 MB/s</string>
+    <string name="screen_recorder_bitrate_title_20000000">20 MB/s</string>
+    <string name="screen_recorder_bitrate_100000">100000</string>
+    <string name="screen_recorder_bitrate_250000">250000</string>
+    <string name="screen_recorder_bitrate_500000">500000</string>
+    <string name="screen_recorder_bitrate_1000000">1000000</string>
+    <string name="screen_recorder_bitrate_2000000">2000000</string>
+    <string name="screen_recorder_bitrate_3000000">3000000</string>
+    <string name="screen_recorder_bitrate_4000000">4000000</string>
+    <string name="screen_recorder_bitrate_5000000">5000000</string>
+    <string name="screen_recorder_bitrate_10000000">10000000</string>
+    <string name="screen_recorder_bitrate_20000000">20000000</string>
+
+    <string name="power_menu_screenrecord_title">Nagrywanie ekranu</string>
+    <string name="screen_recorder_record_audio_title">Dźwięk z zewnątrz</string>
+    <string name="screen_recorder_record_audio_summary">Nagrywaj dźwięk z mikrofonu</string>
+    <string name="screen_recorder_power_menu_summary">Dodaj opcję nagrywania ekranu w menu zasilania</string>
 </resources>

@@ -48,7 +48,7 @@
     <string name="profile_menu_delete">Skasuj</string>
     <string name="profile_settings_title">Profile</string>
     <string name="profile_empty_list_profiles_off">Włącz profile, aby je skonfigurować i używać.</string>
-    <string name="profile_trigger_configure">Konfiguruj przełączniki</string>
+    <string name="profile_trigger_configure">Skonfiguruj przełączniki</string>
     <string name="profile_triggers">Przełączniki</string>
     <string name="profile_trigger_filter_all">Wszystkie przełączniki</string>
     <string name="profile_trigger_filter_wifi">Wi-Fi</string>
@@ -92,7 +92,7 @@
 
     <!-- Profile Config screen PreferenceGroup titles -->
     <string name="profile_connectionoverrides_title">Ustawienia połączeń</string>
-    <string name="profile_volumeoverrides_title">Ustawienia dżwięków</string>
+    <string name="profile_volumeoverrides_title">Ustawienia dźwięków</string>
     <string name="connection_state_disabled">Wyłącz</string>
     <string name="connection_state_enabled">Włącz</string>
     <string name="volume_override_summary">Ustaw %1$s/%2$s</string>
@@ -173,13 +173,17 @@
     <string name="hardware_keys_action_launch_camera">Włącz aparat</string>
     <string name="hardware_keys_action_sleep">Wygaś ekran</string>
     <string name="hardware_keys_action_last_app">Ostatnia aplikacja</string>
+    <string name="volbtn_music_controls_title">Sterowanie odtwarzaczem</string>
+    <string name="volbtn_music_controls_summary">Kiedy ekran jest wyłączony, pozwala przełączać utwory muzyczne długim naciśnięciem przycisku głośności.</string>
     <string name="volbtn_cursor_control_title">Sterowanie kursorem za pomocą klawiszy</string>
     <string name="volbtn_cursor_control_off">Wyłączone</string>
     <string name="volbtn_cursor_control_on">Przyciski głośności w górę/dół poruszają kursorem w lewo/prawo</string>
     <string name="volbtn_cursor_control_on_reverse">Przyciski głośności w górę/dół poruszają kursorem w prawo/lewo</string>
     <string name="power_end_call_title">Kończenie rozmowy</string>
+    <string name="swap_volume_buttons_title">Zmień orientację</string>
+    <string name="swap_volume_buttons_summary">Zamień przyciski głośności, kiedy ekran jest odwrócony</string>
     <string name="power_end_call_summary">Naciśnięcie przycisku zasilania zakończy bieżące połączenie</string>
-    <string name="button_wake_title">Wybudż urządzenie</string>
+    <string name="button_wake_title">Wybudź urządzenie</string>
     <string name="home_wake_summary">Naciśnięcie przycisku Home wybudzi urządzenie</string>
     <string name="home_answer_call_title">Odbieranie połączeń</string>
     <string name="home_answer_call_summary">Naciśniecie przycisku Home odbierze bieżące połączenie przychodzące</string>
@@ -211,7 +215,7 @@
     <string name="blacklist_summary">Przychodzące wiadomości i połączenia od numerów na czarnej liście będą blokowane</string>
     <string name="blacklist_notify">Pokaż powiadomienia</string>
     <string name="blacklist_private_numbers_title">Numery prywatne</string>
-    <string name="blacklist_private_numbers_summary_disabled">Nie blokuj połączeń z prywatnych numerów</string>
+    <string name="blacklist_private_numbers_summary_disabled">Nie blokuj połączeń z numerów prywatnych</string>
     <string name="blacklist_private_numbers_summary">Blokuj przychodzące <xliff:g id="type">%s</xliff:g> z prywatnych numerów</string>
     <string name="blacklist_unknown_numbers_title">Nieznane numery</string>
     <string name="blacklist_unknown_numbers_summary_disabled">Nie blokuj połączeń lub wiadomości z numerów nie będących na liście kontaktów</string>
@@ -233,7 +237,7 @@
 
     <!-- Protected apps lockpattern reset button -->
     <string name="lockpattern_reset_button">Zresetuj wzór</string>
-    <string name="lockpattern_settings_reset_summary">Wprowadź podstawowe konto email i hasło, aby zresetować blokadę wzorem</string>
+    <string name="lockpattern_settings_reset_summary">Wprowadź nazwę podstawowego konta email i hasło, aby zresetować blokadę wzorem</string>
 
     <!-- Protected Apps -->
     <string name="menu_hidden_apps_delete">Zresetuj</string>
@@ -251,12 +255,12 @@
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">Obracanie ekranu</string>
     <string name="display_rotation_disabled">Wyłączone</string>
-    <string name="display_rotation_unit">stopnii</string>
+    <string name="display_rotation_unit">stopni</string>
     <string name="display_lockscreen_rotation_title">Obróc ekran blokady</string>
     <string name="display_rotation_category_title">Tryby obracania ekranu</string>
-    <string name="display_rotation_0_title">0 stopnii</string>
-    <string name="display_rotation_90_title">90 stopnii</string>
-    <string name="display_rotation_180_title">180 stopnii</string>
+    <string name="display_rotation_0_title">0 stopni</string>
+    <string name="display_rotation_90_title">90 stopni</string>
+    <string name="display_rotation_180_title">180 stopni</string>
     <string name="display_rotation_270_title">270 stopni</string>
 
     <!--- Sms security limit -->
@@ -267,7 +271,7 @@
 
     <string name="spam_added_title">Dodano %1$s</string>
     <string name="spam_last_blocked_title">Ostatnio zablokowano %1$s</string>
-    <string name="block_notifications_title">Filtrowanie powiadomieńs</string>
+    <string name="block_notifications_title">Filtrowanie powiadomień</string>
     <string name="block_notifications_summary">Zarządzaj ignorowanymi powiadomieniami i filtrami</string>
     <string name="no_filters_title">Brak ustawień filtórw</string>
 
@@ -285,6 +289,8 @@
     <!--- Advanced Settings -->
     <string name="advanced_settings">Ustawienia zaawansowane</string>
     <string name="advanced_settings_summary">Włącz więcej opcji ustawień</string>
+
+    <string name="contributor_cloud_title">Twórcy</string>
 
     <!--- Tap To Wake -->
     <string name="double_tap_to_wake_title">Wybudzanie podwójnym dotknięciem</string>
@@ -335,7 +341,7 @@
     <string name="adb_over_network">ADB przez sieć</string>
     <string name="adb_over_network_summary">Aktywuj debugowanie TCP/IP przez interfejs sieciowy (WiFi, sieci USB). Ustawienie zostanie zresetowane po ponownym uruchomieniu</string>
     <!-- Warning for Adb over Network -->
-    <string name="adb_over_network_warning">UWAGA: Kiedy ADB przez sieć jest aktywne, telefon jest podatny na ataki przez każdą połączoną sieci, w tym sieć GSM! \n\nKorzystaj z tej funkcji tylko wtedy, gdy jesteś połączony z zaufanymi sieciami. \n\nCzy na pewno chcesz włączyć tę funkcję?</string>
+    <string name="adb_over_network_warning">UWAGA: Kiedy ADB przez sieć jest aktywne, telefon jest podatny na ataki przez każdą połączoną sieć, w tym sieć GSM! \n\nKorzystaj z tej funkcji tylko wtedy, gdy jesteś połączony z zaufanymi sieciami. \n\nCzy na pewno chcesz włączyć tę funkcję?</string>
 
     <!-- Hostname setting -->
     <string name="device_hostname">Nazwa hosta</string>
@@ -349,7 +355,7 @@
     <string name="double_tap_to_sleep_summary">Dwukrotnie dotknij na pasku stanu, aby uśpić urządzenie</string>
 
     <!-- Turn on display when power connected; turn off display when power disconnected -->
-    <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączaniu</string>
+    <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączeniu</string>
     <string name="wake_when_plugged_or_unplugged_summary">Włącz ekran przy podłączeniu lub odłączeniu od źródła zasilania</string>
 
     <!-- Kill app long-press back -->
@@ -358,7 +364,7 @@
 
     <!-- Buttons - Enable navbar -->
     <string name="disable_navkeys_title">Włącz ekranowy pasek nawigacyjny</string>
-    <string name="disable_navkeys_summary">Włącz ekranowy pasek nawigacji i zablokuj przyciski sprzętowe</string>
+    <string name="disable_navkeys_summary">Włącz ekranowy pasek nawigacyjny i zablokuj przyciski sprzętowe</string>
 
     <string name="header_category_personalization">Personalizacja</string>
 
@@ -370,6 +376,14 @@
     <string name="status_bar_quick_qs_pulldown_summary">Prawa krawędź paska stanu rozwija Szybkie Ustawienia</string>
     <string name="status_bar_notif_count_title">Pokaż liczbę powiadomień</string>
     <string name="status_bar_notif_count_summary">Wyświetla liczbę oczekujących powiadomień</string>
+
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_title">Wygląd ikony baterii</string>
+    <string name="status_bar_battery_style_icon_portrait">Ikona pionowo</string>
+    <string name="status_bar_battery_style_icon_landscape">Ikona poziomo</string>
+    <string name="status_bar_battery_style_circle">Okrąg</string>
+    <string name="status_bar_battery_style_text">Tekst</string>
+    <string name="status_bar_battery_style_hidden">Ukryty</string>
 
     <!-- Battery percentage -->
     <string name="status_bar_battery_percentage_title">Pokaż procent naładowania baterii</string>
@@ -486,6 +500,7 @@
     <string name="app_ops_summaries_delete_call_log">usuwanie rejestru połączeń</string>
     <string name="app_ops_summaries_data_change">zmienianie danych</string>
     <string name="app_ops_summaries_wake_up">wybudzenie</string>
+    <string name="app_ops_summaries_su">Superuser</string>
 
     <string name="app_ops_labels_location">Lokalizacja</string>
     <string name="app_ops_labels_vibrate">Wibracje</string>
@@ -538,6 +553,7 @@
     <string name="app_ops_labels_delete_call_log">Usuwanie rejestru połączeń</string>
     <string name="app_ops_labels_data_change">Zmienianie danych</string>
     <string name="app_ops_labels_wake_up">Wybudzanie</string>
+    <string name="app_ops_labels_su">Dostęp do roota</string>
 
     <!-- App ops categories -->
     <string name="app_ops_categories_location">Lokalizacja</string>
@@ -546,6 +562,7 @@
     <string name="app_ops_categories_media">Media</string>
     <string name="app_ops_categories_device">Urządzenie</string>
     <string name="app_ops_categories_bootup">Rozruch</string>
+    <string name="app_ops_categories_su">Superuser</string>
 
     <!-- App ops permissions -->
     <string name="app_ops_permissions_allowed">Dozwolone</string>
@@ -583,8 +600,8 @@
 
     <!-- App ops detail -->
     <string name="app_ops_entry_summary"><xliff:g id="op">%1$s</xliff:g> (used <xliff:g id="count">%2$s</xliff:g>)</string>
-    <string name="app_ops_allowed_count">Zazwolono <xliff:g id="count" example="2 times">%s</xliff:g></string>
-    <string name="app_ops_ignored_count">Odrzucono <xliff:g id="count" example="2 times">%s</xliff:g></string>
+    <string name="app_ops_allowed_count">Zezwolono <xliff:g id="count" example="2 razy">%s</xliff:g></string>
+    <string name="app_ops_ignored_count">Odrzucono <xliff:g id="count" example="2 razy">%s</xliff:g></string>
     <string name="app_ops_both_count">Zezwolono <xliff:g id="count">%1$s</xliff:g>, odrzucono <xliff:g id="count">%2$s</xliff:g></string>
 
     <!-- App ops menu options -->
@@ -597,6 +614,9 @@
     <!-- Font size sample text. This needs to be a very short string, as it is shown in
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Przykład</string>
+
+    <!-- Volume settings - Volume adjustment sound -->
+    <string name="volume_adjust_sounds_title">Regulacja głośności dźwięków</string>
 
     <!-- Hardware tunables - Vibrator intensity -->
     <string name="vibrator_intensity_title">Siła wibracji</string>
@@ -616,7 +636,6 @@
     <string name="gamma_tuning_contrast">Kontrast</string>
     <string name="gamma_tuning_brightness">Jasność</string>
     <string name="gamma_tuning_saturation">Nasycenie</string>
-
     <string name="settings_reset_button">Resetuj</string>
 
     <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
@@ -775,4 +794,24 @@
     <string name="status_bar_show_weather_title">Pokaż pogodę</string>
     <string name="status_bar_show_weather_summary">Pokaż pogodę w nagłówku paska stanu</string>
 
+<!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
+    <string name="power_notifications_category_title">Dźwięki ładowania</string>
+
+    <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
+    <string name="power_notifications_enable_title">Włącz</string>
+    <string name="power_notifications_enable_summary">Odtwórz dźwięk podczas podłączania lub odłączania ładowarki</string>
+    <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
+    <string name="power_notifications_vibrate_title">Wibracje</string>
+    <!-- Sound settings, Charging sounds ringtone selection, preference label -->
+    <string name="power_notifications_ringtone_title">Dźwięk powiadomienia</string>
+    <!-- Sound settings, charging sounds label for ringtone == none -->
+    <string name="power_notifications_ringtone_silent">Cichy</string>
+
+    <!-- EdgeGesture service -->
+    <string name="edge_gesture_service_title">Zablokuj gest zdarzeń dotyku</string>
+    <string name="edge_gesture_service_summary">Nie wysyłaj zdarzeń dotyku dla paska nawigacyjnego i paska statusu do aplikacji</string>
+
+    <string name="unlock_scramble_pin_layout_title">Scramble layout</string>
+    <string name="unlock_scramble_pin_layout_summary">Scramble PIN layout when unlocking device</string>
 </resources>
