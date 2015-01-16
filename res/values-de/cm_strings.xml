@@ -62,6 +62,9 @@
     <string name="profile_unknown_nfc_tag">Unbekanntes Profil</string>
     <string name="profile_add_nfc_text">Der NFC-Tag verweist auf ein unbekanntes Profil. Das Verknüpfen des NFC-Tags mit einem existierenden Profil ermöglicht es, das entsprechende Profil in Zukunft durch eine Berührung zu aktivieren.</string>
     <string name="profile_select">Profil auswählen</string>
+    <string name="profile_remove_dialog_message">Profil %1$s löschen?</string>
+    <string name="profile_populate_profile_from_state">Profil bearbeiten und aktuelle Geräteeinstellungen übernehmen?</string>
+    <string name="profile_menu_fill_from_state">Aktuelle Geräteeinstellungen kopieren</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Neues Profil erstellen</string>
@@ -180,6 +183,8 @@
     <string name="volbtn_cursor_control_off">Deaktiviert</string>
     <string name="volbtn_cursor_control_on">Lauter-/Leiser-Taste bewegt den Cursor nach links/rechts</string>
     <string name="volbtn_cursor_control_on_reverse">Lauter-/Leiser-Taste bewegt den Cursor nach rechts/links</string>
+    <string name="swap_volume_buttons_title">Anordnung</string>
+    <string name="swap_volume_buttons_summary">Tauscht die Anordnung der Lautstärketasten wenn der Bildschirm gedreht ist</string>    
     <string name="power_end_call_title">Anruf beenden</string>
     <string name="power_end_call_summary">Drücken der Ein/Aus-Taste beendet den aktuellen Anruf</string>
     <string name="button_wake_title">Aufwecken</string>
@@ -188,6 +193,21 @@
     <string name="home_answer_call_summary">Drücken der Hometaste nimmt einkommende Anrufe an</string>
     <string name="volbtn_wake_device_title">Gerät aufwecken</string>
     <string name="volbtn_wake_device_summary">Die Lautstärke-Taste weckt das Gerät auf</string>
+    
+    <!-- Power menu -->
+    <string name="power_menu_title">Startmenü</string>
+    <string name="power_menu_power_title">Ausschalten</string>
+    <string name="power_menu_reboot_title">Neustartmenü</string>
+    <string name="power_menu_screenshot_title">Bildschirmfoto</string>
+    <string name="power_menu_profiles_title">Profile</string>
+    <string name="power_menu_airplane_title">Flugzeugmodus</string>
+    <string name="power_menu_users_title">Benutzer</string>
+    <string name="power_menu_settings_title">Einstellungsverknüpfung</string>
+    <string name="power_menu_lockdown_title">Gerätesperre</string>
+    <string name="power_menu_bug_report_title">Fehler melden</string>
+    <string name="power_menu_sound_title">Klingelmodus</string>
+    <string name="power_menu_bug_report_disabled">Fehler melden ist in den Entwickleroptionen deaktiviert</string>
+    <string name="power_menu_profiles_disabled">Systemprofile sind deaktiviert</string>
     
     <!-- Backlight brightness settings screen -->
     <string name="adaptive_backlight_title">Adaptive Hintergrundbeleuchtung</string>
@@ -289,6 +309,8 @@
     <!--- Advanced Settings -->
     <string name="advanced_settings">Erweiterte Einstellungens</string>
     <string name="advanced_settings_summary">Aktiviert mehr Optionen</string>
+    
+    <string name="contributor_cloud_title">Mitwirkende</string>
 
     <!--- Tap To Wake -->
     <string name="double_tap_to_wake_title">Doppeltes Tippen zum Einschalten</string>
@@ -498,7 +520,8 @@
     <string name="app_ops_summaries_delete_call_log">Anrufverlauf löschen</string>
     <string name="app_ops_summaries_data_change">Mobile Daten ändern</string>
     <string name="app_ops_summaries_wake_up">Aufwecken</string>
-
+    <string name="app_ops_summaries_su">Superuser</string>
+    
     <string name="app_ops_labels_location">Standort</string>
     <string name="app_ops_labels_vibrate">Vibration</string>
     <string name="app_ops_labels_read_contacts">Kontakte lesen</string>
@@ -550,6 +573,7 @@
     <string name="app_ops_labels_delete_call_log">Anrufverlauf löschen</string>
     <string name="app_ops_labels_data_change">Mobile Daten ändern</string>
     <string name="app_ops_labels_wake_up">Aufwecken</string>
+    <string name="app_ops_labels_su">Rootzugriff</string>
    
     <!-- App ops categories -->
     <string name="app_ops_categories_location">Standort</string>
@@ -558,6 +582,7 @@
     <string name="app_ops_categories_media">Medien</string>
     <string name="app_ops_categories_device">Gerät</string>
     <string name="app_ops_categories_bootup">Systemstart</string>
+    <string name="app_ops_categories_su">Superuser</string>
     
     <!-- App ops permissions -->
     <string name="app_ops_permissions_allowed">Erlaubt</string>
@@ -580,6 +605,8 @@
     <string name="profile_tabs_wifi">WLAN</string>
     <string name="profile_tabs_bluetooth">Bluetooth</string>
     <string name="profile_tabs_nfc">NFC</string>
+    
+    <string name="profile_triggers_header">Auslöser die dieses Profil aktivieren</string>
 
     <string name="profile_setup_setup_triggers_title">Schritt 1: Auslöser hinzufügen</string>
     <string name="profile_setup_setup_triggers_title_config">Auslöser bearbeiten: <xliff:g id="profile_name">%1$s</xliff:g></string>
@@ -589,7 +616,9 @@
 
     <string name="no_bluetooth_triggers">Keine Bluetooth-Auslöser verfügbar</string>
     <string name="no_wifi_triggers">Keine WLAN-Auslöser verfügbar</string>
-
+    <string name="no_triggers_configured">Keine Auslöser konfiguriert. Tippen um welche hinzuzufügen</string>
+    <string name="no_triggers_configured_nfc">Tippen um einen neuen NFC-Auslöser einzustellen.</string>
+    
     <string name="profile_setup_setup_triggers_description">Bitte Auslöser zum aktivieren dieses Profiles auswählen</string>
     <string name="profile_setup_actions_description">Nun wähle aus was beim aktiveren des Profiles geschehen soll</string>
 
@@ -631,7 +660,6 @@
     <string name="gamma_tuning_contrast">Kontrast</string>
     <string name="gamma_tuning_brightness">Helligkeit</string>
     <string name="gamma_tuning_saturation">Sättigung</string>
-
     <string name="settings_reset_button">Zurücksetzen</string>
 
     <!-- Message when bluetooth dialog for pin entry is showing  when HIGH security enabled-->
@@ -807,4 +835,10 @@
     <!-- EdgeGesture service -->
     <string name="edge_gesture_service_title">Berührungen bei Gestensteuerung blockieren</string>
     <string name="edge_gesture_service_summary">Berührungen der Navigations- und Statusleiste bei Gestensteuerung vor Apps verbergen</string>
+    
+    <!-- Screen security -->
+    <string name="unlock_quick_unlock_control_title">Schnelles Entsperren</string>
+    <string name="unlock_quick_unlock_control_summary">Entsperrt das Gerät automatisch wenn das/der richtige Passwort/PIN eingegeben wird</string>
+    <string name="unlock_scramble_pin_layout_title">Anordnung mischen</string>
+    <string name="unlock_scramble_pin_layout_summary">Mischt die PIN-Anordung wenn das Gerät entsperrt wird</string>
 </resources>
