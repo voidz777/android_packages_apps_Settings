@@ -32,9 +32,6 @@ import android.view.KeyEvent;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
-
-import com.android.internal.widget.LockPatternUtils;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -42,7 +39,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_POWER_END_CALL = "power_end_call";
-    private static final String KEY_POWER_MENU_LOCKSCREEN = "lockscreen_enable_power_menu";
+
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
@@ -52,7 +49,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String CATEGORY_VOLUME = "volume_keys";
 
     private SwitchPreference mPowerEndCall;
-    private SystemSettingSwitchPreference mPowerMenuLockscreen;
     private SwitchPreference mVolumeKeyWakeControl;
     private ListPreference mVolumeKeyCursorControl;
     private SwitchPreference mSwapVolumeButtons;
@@ -89,12 +85,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             }
         } else {
             prefScreen.removePreference(powerCategory);
-        }
-
-        final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
-        mPowerMenuLockscreen = (SystemSettingSwitchPreference) findPreference(KEY_POWER_MENU_LOCKSCREEN);
-        if (!lockPatternUtils.isSecure()) {
-            powerCategory.removePreference(mPowerMenuLockscreen);
         }
 
         if (Utils.hasVolumeRocker(getActivity())) {
