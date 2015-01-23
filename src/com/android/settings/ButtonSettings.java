@@ -25,11 +25,13 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
-import android.provider.SearchIndexableResource;
+import com.android.internal.util.cm.ScreenType;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -77,7 +79,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
 
-        if (!Utils.isPhone(getActivity())) {
+        if (!ScreenType.isPhone(getActivity())) {
             navbarCategory.removePreference(
                     findPreference(Settings.System.NAVBAR_LEFT_IN_LANDSCAPE));
         }
@@ -181,7 +183,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mSwapVolumeButtons) {
             int value = mSwapVolumeButtons.isChecked()
-                    ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
+                    ? (ScreenType.isTablet(getActivity()) ? 2 : 1) : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
             return true;

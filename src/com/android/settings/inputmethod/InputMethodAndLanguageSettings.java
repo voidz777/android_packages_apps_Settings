@@ -68,6 +68,8 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 
+import com.android.internal.util.cm.ScreenType;
+
 import com.android.settings.cyanogenmod.SystemSettingSwitchPreference;
 
 import java.text.Collator;
@@ -182,7 +184,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         mFullScreenKeyboard = (
                 SystemSettingSwitchPreference) findPreference(KEY_FULL_SCREEN_KEYBOARD);
-        if (mFullScreenKeyboard != null && !Utils.isPhone(getActivity())) {
+        if (mFullScreenKeyboard != null && !ScreenType.isPhone(getActivity())) {
             getPreferenceScreen().removePreference(mFullScreenKeyboard);
         }
 
