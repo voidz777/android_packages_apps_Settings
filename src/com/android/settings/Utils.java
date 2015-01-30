@@ -203,6 +203,11 @@ public final class Utils {
         return false;
     }
 
+    public static boolean doesIntentResolve(Context context, Intent intent) {
+        PackageManager packageManager = context.getPackageManager();
+        return packageManager.queryIntentActivities(intent, 0).size() > 0;
+    }
+
     public static boolean updateTileToSpecificActivityFromMetaDataOrRemove(Context context,
             DashboardTile tile) {
 

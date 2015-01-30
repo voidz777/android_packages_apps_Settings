@@ -29,12 +29,18 @@ import android.provider.Settings;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
+import android.provider.SearchIndexableResource;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ButtonSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "ButtonSettings";
 
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
@@ -190,4 +196,25 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                         ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP
                         : Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF));
     }
+
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                            boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.button_settings;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    return new ArrayList<String>();
+                }
+            };
 }
