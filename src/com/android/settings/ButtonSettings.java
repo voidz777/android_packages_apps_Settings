@@ -40,7 +40,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_POWER_END_CALL = "power_end_call";
 
-    private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
+    private static final String KEY_VOLUME_WAKE_DEVICE = "volume_wake_screen";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
