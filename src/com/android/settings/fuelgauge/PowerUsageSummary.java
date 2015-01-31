@@ -18,22 +18,26 @@ package com.android.settings.fuelgauge;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
+import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.BatteryStats;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PowerManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,10 +46,10 @@ import android.view.MenuItem;
 import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatteryStatsHelper;
 import com.android.internal.os.PowerProfile;
-import com.android.settings.DevelopmentSettings;
 import com.android.settings.HelpUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
+import com.android.settings.SettingsPreferenceFragment;
 
 import java.util.List;
 
@@ -53,13 +57,16 @@ import java.util.List;
  * Displays a list of apps and subsystems that consume power, ordered by how much power was
  * consumed since the last time it was unplugged.
  */
-public class PowerUsageSummary extends PreferenceFragment {
+public class PowerUsageSummary extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
 
     private static final boolean DEBUG = false;
 
     static final String TAG = "PowerUsageSummary";
 
     private static final String KEY_APP_LIST = "app_list";
+
+    private static final String KEY_PERF_PROFILE = "pref_perf_profile";
 
     private static final String BATTERY_HISTORY_FILE = "tmp_bat_history.bin";
 
@@ -84,6 +91,13 @@ public class PowerUsageSummary extends PreferenceFragment {
 
     private BatteryStatsHelper mStatsHelper;
 
+    private PowerManager mPowerManager;
+    private ListPreference mPerfProfilePref;
+    private String[] mPerfProfileEntries;
+    private String[] mPerfProfileValues;
+    private String mPerfProfileDefaultEntry;
+    private PerformanceProfileObserver mPerformanceProfileObserver = null;
+
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
 
         @Override
@@ -98,10 +112,22 @@ public class PowerUsageSummary extends PreferenceFragment {
         }
     };
 
+    private class PerformanceProfileObserver extends ContentObserver {
+        public PerformanceProfileObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            updatePerformanceValue();
+        }
+    }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mUm = (UserManager) activity.getSystemService(Context.USER_SERVICE);
+        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mStatsHelper = new BatteryStatsHelper(activity, true);
     }
 
@@ -110,9 +136,28 @@ public class PowerUsageSummary extends PreferenceFragment {
         super.onCreate(icicle);
         mStatsHelper.create(icicle);
 
+        mPerfProfileEntries = getResources().getStringArray(
+                com.android.internal.R.array.perf_profile_entries);
+        mPerfProfileValues = getResources().getStringArray(
+                com.android.internal.R.array.perf_profile_values);
+
         addPreferencesFromResource(R.xml.power_usage_summary);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
         setHasOptionsMenu(true);
+
+        mPerfProfilePref = (ListPreference) findPreference(KEY_PERF_PROFILE);
+        if (mPerfProfilePref != null && !mPowerManager.hasPowerProfiles()) {
+            removePreference(KEY_PERF_PROFILE);
+            mPerfProfilePref = null;
+        } else if (mPerfProfilePref != null) {
+            mPerfProfilePref.setOrder(-1);
+            mPerfProfilePref.setEntries(mPerfProfileEntries);
+            mPerfProfilePref.setEntryValues(mPerfProfileValues);
+            updatePerformanceValue();
+            mPerfProfilePref.setOnPreferenceChangeListener(this);
+        }
+
+        mPerformanceProfileObserver = new PerformanceProfileObserver(new Handler());
     }
 
     @Override
@@ -132,6 +177,13 @@ public class PowerUsageSummary extends PreferenceFragment {
             mStatsHelper.clearStats();
         }
         refreshStats();
+
+        if (mPerfProfilePref != null) {
+            updatePerformanceValue();
+            ContentResolver resolver = getActivity().getContentResolver();
+            resolver.registerContentObserver(Settings.Secure.getUriFor(
+                    Settings.Secure.PERFORMANCE_PROFILE), false, mPerformanceProfileObserver);
+        }
     }
 
     @Override
@@ -140,6 +192,11 @@ public class PowerUsageSummary extends PreferenceFragment {
         mHandler.removeMessages(BatteryEntry.MSG_UPDATE_NAME_ICON);
         getActivity().unregisterReceiver(mBatteryInfoReceiver);
         super.onPause();
+
+        if (mPerfProfilePref != null) {
+            ContentResolver resolver = getActivity().getContentResolver();
+            resolver.unregisterContentObserver(mPerformanceProfileObserver);
+        }
     }
 
     @Override
@@ -181,6 +238,18 @@ public class PowerUsageSummary extends PreferenceFragment {
     }
 
     @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (newValue != null) {
+            if (preference == mPerfProfilePref) {
+                mPowerManager.setPowerProfile(String.valueOf(newValue));
+                updatePerformanceSummary();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         if (DEBUG) {
             menu.add(0, MENU_STATS_TYPE, 0, R.string.menu_stats_total)
@@ -192,9 +261,6 @@ public class PowerUsageSummary extends PreferenceFragment {
                 .setAlphabeticShortcut('r');
         refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-
-        MenuItem batterySaver = menu.add(0, MENU_BATTERY_SAVER, 0, R.string.battery_saver);
-        batterySaver.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
         String helpUrl;
         if (!TextUtils.isEmpty(helpUrl = getResources().getString(R.string.help_url_battery))) {
@@ -250,6 +316,30 @@ public class PowerUsageSummary extends PreferenceFragment {
         return false;
     }
 
+    private void updatePerformanceSummary() {
+        String value = mPowerManager.getPowerProfile();
+        String summary = "";
+        int count = mPerfProfileValues.length;
+        for (int i = 0; i < count; i++) {
+            try {
+                if (mPerfProfileValues[i].equals(value)) {
+                    summary = mPerfProfileEntries[i];
+                }
+            } catch (IndexOutOfBoundsException ex) {
+                // Ignore
+            }
+        }
+        mPerfProfilePref.setSummary(String.format("%s", summary));
+    }
+
+    private void updatePerformanceValue() {
+        if (mPerfProfilePref == null) {
+            return;
+        }
+        mPerfProfilePref.setValue(mPowerManager.getPowerProfile());
+        updatePerformanceSummary();
+    }
+
     private void refreshStats() {
         mAppListGroup.removeAll();
         mAppListGroup.setOrderingAsAdded(false);
@@ -258,10 +348,6 @@ public class PowerUsageSummary extends PreferenceFragment {
         mHistPref.setOrder(-1);
         mAppListGroup.addPreference(mHistPref);
         boolean addedSome = false;
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        final boolean showUnacAndOvercounted = sp.getBoolean(
-                DevelopmentSettings.SHOW_UNAC_AND_OVERCOUNTED_STATS, false);
 
         final PowerProfile powerProfile = mStatsHelper.getPowerProfile();
         final BatteryStats stats = mStatsHelper.getStats();
@@ -294,12 +380,12 @@ public class PowerUsageSummary extends PreferenceFragment {
                     if (percentOfTotal < 10) {
                         continue;
                     }
-                    if (!showUnacAndOvercounted) {
+                    if ("user".equals(Build.TYPE)) {
                         continue;
                     }
                 }
                 if (sipper.drainType == BatterySipper.DrainType.UNACCOUNTED) {
-                    // Don't show unacccounted unless it is at least 1/2 the size of
+                    // Don't show over-counted unless it is at least 1/2 the size of
                     // the largest real entry, and its percent of total is more significant
                     if (sipper.value < (mStatsHelper.getMaxRealPower()/2)) {
                         continue;
@@ -307,7 +393,7 @@ public class PowerUsageSummary extends PreferenceFragment {
                     if (percentOfTotal < 5) {
                         continue;
                     }
-                    if (!showUnacAndOvercounted) {
+                    if ("user".equals(Build.TYPE)) {
                         continue;
                     }
                 }

@@ -77,6 +77,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
     private static final String KEY_SMS_APPLICATION = "sms_application";
     private static final String KEY_TOGGLE_NSD = "toggle_nsd"; //network service discovery
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
+    private static final String KEY_NFC_PAYMENT_SETTINGS = "nfc_payment_settings";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
@@ -324,6 +325,7 @@ public class WirelessSettings extends SettingsPreferenceFragment
         if (mNfcAdapter == null) {
             getPreferenceScreen().removePreference(nfc);
             getPreferenceScreen().removePreference(androidBeam);
+            removePreference(KEY_NFC_PAYMENT_SETTINGS);
             mNfcEnabler = null;
         }
 
@@ -333,12 +335,13 @@ public class WirelessSettings extends SettingsPreferenceFragment
                 || mUm.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS)) {
             removePreference(KEY_MOBILE_NETWORK_SETTINGS);
             removePreference(KEY_MANAGE_MOBILE_PLAN);
+            removePreference(KEY_NFC_PAYMENT_SETTINGS);
         }
         // Remove Mobile Network Settings and Manage Mobile Plan
         // if config_show_mobile_plan sets false.
         final boolean isMobilePlanEnabled = this.getResources().getBoolean(
                 R.bool.config_show_mobile_plan);
-        if (!isMobilePlanEnabled) {
+        if (!isMobilePlanEnabled || mCm.getMobileProvisioningUrl().isEmpty()) {
             Preference pref = findPreference(KEY_MANAGE_MOBILE_PLAN);
             if (pref != null) {
                 removePreference(KEY_MANAGE_MOBILE_PLAN);
@@ -514,11 +517,14 @@ public class WirelessSettings extends SettingsPreferenceFragment
                     result.add(KEY_MANAGE_MOBILE_PLAN);
                 }
 
+                final ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
+                        Context.CONNECTIVITY_SERVICE);
+
                 // Remove Mobile Network Settings and Manage Mobile Plan
                 // if config_show_mobile_plan sets false.
                 final boolean isMobilePlanEnabled = context.getResources().getBoolean(
                         R.bool.config_show_mobile_plan);
-                if (!isMobilePlanEnabled) {
+                if (!isMobilePlanEnabled || cm.getMobileProvisioningUrl().isEmpty()) {
                     result.add(KEY_MANAGE_MOBILE_PLAN);
                 }
 
@@ -540,8 +546,6 @@ public class WirelessSettings extends SettingsPreferenceFragment
                 result.add(KEY_PROXY_SETTINGS);
 
                 // Disable Tethering if it's not allowed or if it's a wifi-only device
-                ConnectivityManager cm =
-                        (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
                 if (isSecondaryUser || !cm.isTetheringSupported()) {
                     result.add(KEY_TETHER_SETTINGS);
                 }

@@ -18,8 +18,6 @@
 package com.android.settings;
 
 import com.android.internal.view.RotationPolicy;
-import com.android.settings.notification.DropDownPreference;
-import com.android.settings.notification.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -51,6 +49,7 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -58,6 +57,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.preference.TwoStatePreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -79,6 +79,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
 
+    private static final String KEY_CATEGORY_LIGHTS = "lights";
+    private static final String KEY_CATEGORY_DISPLAY = "display";
+    private static final String KEY_CATEGORY_INTERFACE = "interface";
+
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_LCD_DENSITY = "lcd_density";
     private static final String KEY_FONT_SIZE = "font_size";
@@ -87,9 +91,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
 
-    private static final String CATEGORY_GENERAL = "general_options";
-    private static final String CATEGORY_ADVANCED = "advanced_options";
-
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
 
@@ -97,6 +98,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_TOUCH_CONTROL_PACKAGE_NAME = "com.mahdi.touchcontrol";
 
     private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
+
+    private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -108,6 +112,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
+    private SwitchPreference mAccelerometer;
     private SwitchPreference mLiftToWakePreference;
     private PreferenceScreen mDozeFragement;
     private SwitchPreference mAutoBrightnessPreference;
@@ -115,11 +120,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mTouchControl;
     private SwitchPreference mTapToWake;
 
+    private TwoStatePreference mNotificationPulse;
+
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
         @Override
         public void onChange(boolean selfChange) {
             updateDisplayRotationPreferenceDescription();
+            updateAccelerometerRotationSwitch();
         }
     };
 
@@ -139,11 +147,16 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.display_settings);
 
+        PreferenceCategory displayPrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_DISPLAY);
+        PreferenceCategory interfacePrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_INTERFACE);
+
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
-
-        PreferenceCategory generalPrefs = (PreferenceCategory) findPreference(CATEGORY_GENERAL);
-        PreferenceCategory advancedPrefs = (PreferenceCategory) findPreference(CATEGORY_ADVANCED);
-
+        mAccelerometer = (SwitchPreference) findPreference(DisplayRotation.KEY_ACCELEROMETER);
+        if (mAccelerometer != null) {
+            mAccelerometer.setPersistent(false);
+        }
 
         if (isAutomaticBrightnessAvailable(getResources())) {
             mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
@@ -153,23 +166,32 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
-        if (!isDozeAvailable(activity)) {
-            generalPrefs.removePreference(mDozeFragement);
-            mDozeFragement = null;
+        if (mDozeFragement != null && isDozeAvailable(activity)) {
+            mDozeFragement.setOnPreferenceChangeListener(this);
+        } else {
+            if (displayPrefs != null && mDozeFragement != null) {
+                displayPrefs.removePreference(mDozeFragement);
+            }
         }
 
         if (isLiftToWakeAvailable(activity)) {
             mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
             mLiftToWakePreference.setOnPreferenceChangeListener(this);
         } else {
-            generalPrefs.removePreference(findPreference(KEY_LIFT_TO_WAKE));
+            displayPrefs.removePreference(findPreference(KEY_LIFT_TO_WAKE));
+        }
+
+        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+        if (displayPrefs != null && !isTapToWakeSupported()) {
+            displayPrefs.removePreference(mTapToWake);
+            mTapToWake = null;
         }
 
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
                 && getResources().getBoolean(
                         com.android.internal.R.bool.config_dreamsSupported) == false) {
-            generalPrefs.removePreference(mScreenSaverPreference);
+            interfacePrefs.removePreference(mScreenSaverPreference);
         }
 
         mScreenTimeoutPreference = (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
@@ -197,13 +219,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 currentIndex = idx;
             }
         }
-        mLcdDensityPreference.setEntries(densityEntries);
-        mLcdDensityPreference.setEntryValues(densityEntries);
-        if (currentIndex != -1) {
-            mLcdDensityPreference.setValueIndex(currentIndex);
+        if (mLcdDensityPreference != null) {
+            mLcdDensityPreference.setEntries(densityEntries);
+            mLcdDensityPreference.setEntryValues(densityEntries);
+            if (currentIndex != -1) {
+                mLcdDensityPreference.setValueIndex(currentIndex);
+            }
+            mLcdDensityPreference.setOnPreferenceChangeListener(this);
+            updateLcdDensityPreferenceDescription(currentDensity);
         }
-        mLcdDensityPreference.setOnPreferenceChangeListener(this);
-        updateLcdDensityPreferenceDescription(currentDensity);
 
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
@@ -212,23 +236,18 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mWakeWhenPluggedOrUnplugged =
                 (SwitchPreference) findPreference(KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED);
 
-        // Default value for wake-on-plug behavior from config.xml
-        boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
-                com.android.internal.R.bool.config_unplugTurnsOnScreen);
-
-        mWakeWhenPluggedOrUnplugged.setChecked(Settings.Global.getInt(resolver,
-                Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
-                (wakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1);
-
-        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
-        if (!isTapToWakeSupported()) {
-            advancedPrefs.removePreference(mTapToWake);
-            mTapToWake = null;
+        mTouchControl = (PreferenceScreen) findPreference(KEY_TOUCH_CONTROL_SETTINGS);
+        if (mTouchControl != null && !Utils.isPackageInstalled(getActivity(),
+                    KEY_TOUCH_CONTROL_PACKAGE_NAME, false)) {
+            displayPrefs.removePreference(mTouchControl);
         }
 
-        mTouchControl = (PreferenceScreen) findPreference(KEY_TOUCH_CONTROL_SETTINGS);
-        if (!Utils.isPackageInstalled(getActivity(), KEY_TOUCH_CONTROL_PACKAGE_NAME, false)) {
-            advancedPrefs.removePreference(mTouchControl);
+        initPulse((PreferenceCategory) findPreference(KEY_CATEGORY_LIGHTS));
+    }
+
+    private void updateAccelerometerRotationSwitch() {
+        if (mAccelerometer != null) {
+            mAccelerometer.setChecked(!RotationPolicy.isRotationLocked(getActivity()));
         }
     }
 
@@ -409,11 +428,22 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     ? R.string.summary_doze_enabled : R.string.summary_doze_disabled);
         }
 
+        // Default value for wake-on-plug behavior from config.xml
+        boolean wakeUpWhenPluggedOrUnpluggedConfig = getResources().getBoolean(
+                com.android.internal.R.bool.config_unplugTurnsOnScreen);
+
+        if (mWakeWhenPluggedOrUnplugged != null) {
+            mWakeWhenPluggedOrUnplugged.setChecked(Settings.Global.getInt(getContentResolver(),
+                    Settings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+                    (wakeUpWhenPluggedOrUnpluggedConfig ? 1 : 0)) == 1);
+        }
+
         // Display rotation observer
         resolver.registerContentObserver(
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
         updateState();
+        updateAccelerometerRotationSwitch();
     }
 
     @Override
@@ -508,6 +538,23 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
     }
 
+    // === Pulse notification light ===
+
+    private void initPulse(PreferenceCategory parent) {
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+            parent.removePreference(parent.findPreference(KEY_NOTIFICATION_LIGHT));
+        }
+        if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveBatteryLed)
+                || UserHandle.myUserId() != UserHandle.USER_OWNER) {
+            parent.removePreference(parent.findPreference(KEY_BATTERY_LIGHT));
+        }
+        if (parent.getPreferenceCount() == 0) {
+            getPreferenceScreen().removePreference(parent);
+        }
+    }
+
     /**
      * Reads the current font size and sets the value in the summary text
      */
@@ -542,6 +589,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mTapToWake) {
             return TapToWake.setEnabled(mTapToWake.isChecked());
+        } else if (preference == mAccelerometer) {
+            RotationPolicy.setRotationLockForAccessibility(getActivity(),
+                    !mAccelerometer.isChecked());
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -651,6 +701,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     if (!context.getResources().getBoolean(
                             com.android.internal.R.bool.config_dreamsSupported)) {
                         result.add(KEY_SCREEN_SAVER);
+                    }
+                    if (!context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+                        result.add(KEY_NOTIFICATION_LIGHT);
+                    }
+                    if (!context.getResources().getBoolean(
+                            com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+                        result.add(KEY_BATTERY_LIGHT);
+                    }
+                    if (!isTapToWakeSupported()) {
+                        result.add(KEY_TAP_TO_WAKE);
                     }
                     if (!isAutomaticBrightnessAvailable(context.getResources())) {
                         result.add(KEY_AUTO_BRIGHTNESS);

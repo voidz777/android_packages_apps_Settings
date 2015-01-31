@@ -109,5 +109,7 @@ public class Settings extends SettingsActivity {
     public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AmbientDisplaySettingsActivity extends SettingsActivity { /* empty */ }
     public static class LiveDisplayActivity extends SettingsActivity { /* empty */ }
+    public static class SoundSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class LockScreenSettingsActivity extends SettingsActivity { /* empty */ }
 }
 
