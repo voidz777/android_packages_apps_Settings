@@ -110,6 +110,10 @@
                 android:key="advanced_options"
                 android:title="@string/advanced_options_title" >
 
+                <SwitchPreference
+                    android:key="double_tap_wake_gesture"
+                    android:title="@string/double_tap_to_wake_title" />
+
                 <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
                     android:key="double_tap_sleep_gesture"
                     android:title="@string/double_tap_to_sleep_title"
