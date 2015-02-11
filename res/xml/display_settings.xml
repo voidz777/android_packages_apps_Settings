@@ -51,11 +51,10 @@
                 android:key="general_options"
                 android:title="@string/general_options_title" >
 
-                <SwitchPreference
-                    android:key="doze"
+                <PreferenceScreen
+                    android:key="doze_fragment"
                     android:title="@string/doze_title"
-                    android:summary="@string/doze_summary"
-                    android:persistent="false" />
+                    android:fragment="com.android.settings.euphoria.ambientdisplay.AmbientSettings" />
 
                 <SwitchPreference
                     android:key="lift_to_wake"
