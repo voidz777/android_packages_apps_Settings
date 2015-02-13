@@ -49,15 +49,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_END_CALL = "power_end_call";
 
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_wake_screen";
+    private static final String KEY_VOLUME_MEDIA_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
-    private static final String CATEGORY_NAVBAR = "power_key";
+    private static final String CATEGORY_NAVBAR = "navigation_bar";
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_VOLUME = "volume_keys";
 
+    private SwitchPreference mNavbarLeft;
     private SwitchPreference mPowerEndCall;
     private SwitchPreference mVolumeKeyWakeControl;
+    private SwitchPreference mVolumeKeyMediaControl;
     private ListPreference mVolumeKeyCursorControl;
     private SwitchPreference mSwapVolumeButtons;
 
@@ -79,9 +82,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
 
+        mNavbarLeft = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
         if (!ScreenType.isPhone(getActivity())) {
-            navbarCategory.removePreference(
-                    findPreference(Settings.System.NAVBAR_LEFT_IN_LANDSCAPE));
+            navbarCategory.removePreference(mNavbarLeft);
+            mNavbarLeft = null;
         }
 
         // Power button ends calls.
@@ -96,14 +100,21 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         if (Utils.hasVolumeRocker(getActivity())) {
+            mVolumeKeyWakeControl = (SwitchPreference) findPreference(KEY_VOLUME_WAKE_DEVICE);
+            mVolumeKeyMediaControl = (SwitchPreference) findPreference(KEY_VOLUME_MEDIA_CONTROLS);
+            if (!res.getBoolean(R.bool.config_supports_volumeKeyScreenOffOptions)) {
+                volumeCategory.removePreference(mVolumeKeyWakeControl);
+                volumeCategory.removePreference(mVolumeKeyMediaControl);
+            } else {
+                int wakeControlAction = Settings.System.getInt(resolver,
+                        Settings.System.VOLUME_WAKE_SCREEN, 0);
+                mVolumeKeyWakeControl = initSwitch(KEY_VOLUME_WAKE_DEVICE, (wakeControlAction == 1));
+            }
+
             int cursorControlAction = Settings.System.getInt(resolver,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0);
             mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
                     cursorControlAction);
-
-            int wakeControlAction = Settings.System.getInt(resolver,
-                    Settings.System.VOLUME_WAKE_SCREEN, 0);
-            mVolumeKeyWakeControl = initSwitch(KEY_VOLUME_WAKE_DEVICE, (wakeControlAction == 1));
 
             int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
