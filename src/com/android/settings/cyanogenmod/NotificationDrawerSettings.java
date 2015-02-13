@@ -21,9 +21,10 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.provider.Settings;
-
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
+import android.os.Vibrator;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.cyanogenmod.qs.QSTiles;
@@ -38,9 +39,11 @@ import java.util.List;
 public class NotificationDrawerSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener  {
 
+    private static final String QS_VIBRATE = "quick_settings_vibrate";
     private static final String QS_BLOCK_ON_SECURE_KEYGUARD = "qs_block_on_secure_keyguard";
 
     private Preference mQSTiles;
+    private SwitchPreference mQsVibrate;
     private SwitchPreference mBlockOnSecureKeyguard;
 
     @Override
@@ -48,8 +51,14 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.notification_drawer_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         mQSTiles = findPreference("qs_order");
+
+        mQsVibrate = (SwitchPreference) findPreference(QS_VIBRATE);
+        if (vibrator == null || !vibrator.hasVibrator()) {
+            prefSet.removePreference(mQsVibrate);
+        }
 
         final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
         mBlockOnSecureKeyguard = (SwitchPreference) findPreference(QS_BLOCK_ON_SECURE_KEYGUARD);
