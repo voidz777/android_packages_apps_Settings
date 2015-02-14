@@ -250,4 +250,8 @@
     <string name="screen_recorder_record_audio_title">Dźwięk z zewnątrz</string>
     <string name="screen_recorder_record_audio_summary">Nagrywaj dźwięk z mikrofonu</string>
     <string name="screen_recorder_power_menu_summary">Dodaj opcję nagrywania ekranu w menu zasilania</string>
+
+    <!-- Privacy guard notification -->
+    <string name="privacy_guard_notification_title">Powiadomienie</string>
+    <string name="privacy_guard_notifiation_summary">Pokaż powiadomienie, gdy ochrona prywatności jest aktywna</string>
 </resources>
