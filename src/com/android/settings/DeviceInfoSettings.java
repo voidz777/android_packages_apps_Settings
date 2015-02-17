@@ -41,6 +41,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
@@ -91,10 +92,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
-    public static final String PREFS_FILE = "device";
     public static final String KEY_ADVANCED_MODE = "advanced_mode";
 
-    SwitchPreference mAdvancedSettings;
+    SecureSettingSwitchPreference mAdvancedSettings;
 
     long[] mHits = new long[3];
     int mDevHitCountdown;
@@ -193,7 +193,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             getPreferenceScreen().removePreference(mUpdateSettings);
         }
 
-        mAdvancedSettings = (SwitchPreference) findPreference(KEY_ADVANCED_MODE);
+        mAdvancedSettings = (SecureSettingSwitchPreference) findPreference(KEY_ADVANCED_MODE);
     }
 
     @Override
@@ -265,12 +265,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             }
         } else if (preference.getKey().equals(KEY_DEVICE_FEEDBACK)) {
             sendFeedback();
-        } else if (preference.getKey().equals(KEY_ADVANCED_MODE)) {
-            final boolean isEnabled = mAdvancedSettings.isChecked();
-            getActivity().getSharedPreferences(PREFS_FILE, 0)
-                    .edit()
-                    .putBoolean(KEY_ADVANCED_MODE, isEnabled)
-                    .apply();
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
