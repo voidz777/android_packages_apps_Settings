@@ -76,7 +76,7 @@
         <SwitchPreference
             android:key="silent"
             android:title="@string/power_menu_sound_title"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
