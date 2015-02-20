@@ -158,35 +158,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             mAccelerometer.setPersistent(false);
         }
 
-        if (isAutomaticBrightnessAvailable(getResources())) {
-            mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
-            mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
-        } else {
-            removePreference(KEY_AUTO_BRIGHTNESS);
-        }
-
-        mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
-        if (mDozeFragement != null && isDozeAvailable(activity)) {
-            mDozeFragement.setOnPreferenceChangeListener(this);
-        } else {
-            if (displayPrefs != null && mDozeFragement != null) {
-                displayPrefs.removePreference(mDozeFragement);
-            }
-        }
-
-        if (isLiftToWakeAvailable(activity)) {
-            mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
-            mLiftToWakePreference.setOnPreferenceChangeListener(this);
-        } else {
-            displayPrefs.removePreference(findPreference(KEY_LIFT_TO_WAKE));
-        }
-
-        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
-        if (displayPrefs != null && !isTapToWakeSupported()) {
-            displayPrefs.removePreference(mTapToWake);
-            mTapToWake = null;
-        }
-
         mScreenSaverPreference = findPreference(KEY_SCREEN_SAVER);
         if (mScreenSaverPreference != null
                 && getResources().getBoolean(
@@ -202,6 +173,45 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         disableUnusableTimeouts(mScreenTimeoutPreference);
         updateTimeoutPreferenceDescription(currentTimeout);
         updateDisplayRotationPreferenceDescription();
+
+        mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
+        mFontSizePref.setOnPreferenceChangeListener(this);
+        mFontSizePref.setOnPreferenceClickListener(this);
+
+        mAutoBrightnessPreference = (SwitchPreference) findPreference(KEY_AUTO_BRIGHTNESS);
+        if (mAutoBrightnessPreference != null && isAutomaticBrightnessAvailable(getResources())) {
+            mAutoBrightnessPreference.setOnPreferenceChangeListener(this);
+        } else {
+            if (displayPrefs != null && mAutoBrightnessPreference != null) {
+                displayPrefs.removePreference(mAutoBrightnessPreference);
+                mAutoBrightnessPreference = null;
+            }
+        }
+
+        mDozeFragement = (PreferenceScreen) findPreference(KEY_DOZE_FRAGMENT);
+        if (mDozeFragement != null && isDozeAvailable(activity)) {
+            mDozeFragement.setOnPreferenceChangeListener(this);
+        } else {
+            if (displayPrefs != null && mDozeFragement != null) {
+                displayPrefs.removePreference(mDozeFragement);
+            }
+        }
+
+        mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
+        if (mLiftToWakePreference != null && isLiftToWakeAvailable(activity)) {
+            mLiftToWakePreference.setOnPreferenceChangeListener(this);
+        } else {
+            if (displayPrefs != null && mLiftToWakePreference != null) {
+                displayPrefs.removePreference(mLiftToWakePreference);
+                mLiftToWakePreference = null;
+            }
+        }
+
+        mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
+        if (displayPrefs != null && !isTapToWakeSupported()) {
+            displayPrefs.removePreference(mTapToWake);
+            mTapToWake = null;
+        }
 
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
         int defaultDensity = DisplayMetrics.DENSITY_DEVICE;
