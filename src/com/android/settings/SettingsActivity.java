@@ -1189,7 +1189,9 @@ public class SettingsActivity extends Activity
                         removeTile = true;
                     }
                 } else if (id == R.id.mobile_networks) {
-                    if (TelephonyManager.getDefault().getPhoneCount() > 1) {
+                    if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY)) {
+                        removeTile = true;
+                    } else if (TelephonyManager.getDefault().getPhoneCount() > 1) {
                         removeTile = true;
                     }
                 } else if (id == R.id.data_usage_settings) {
