@@ -80,6 +80,13 @@
     <string name="status_bar_date_small">Малый размер шрифта</string>
     <string name="status_bar_date_normal">Обычный размер шрифта</string>
     <string name="status_bar_date_format_title">Формат даты</string>
+    <string name="status_bar_date_style">Стиль даты</string>
+    <string name="status_bar_date_style_normal">Обычный</string>
+    <string name="status_bar_date_style_lowercase">Строчные</string>
+    <string name="status_bar_date_style_uppercase">ПРОПИСНЫЕ</string>
+    <string name="status_bar_date_format_custom">Свой Java-формат</string>
+    <string name="status_bar_date_string_edittext_title">Формат даты: ММ/дд/гг</string>
+    <string name="status_bar_date_string_edittext_summary">Введите строку</string>
 
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">Показ уведомлений</string>

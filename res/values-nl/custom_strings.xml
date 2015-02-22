@@ -73,6 +73,13 @@
     <string name="status_bar_date_small">Kleine lettergrootte</string>
     <string name="status_bar_date_normal">Normale lettergrootte</string>
     <string name="status_bar_date_format_title">Date formatering</string>
+    <string name="status_bar_date_style">Datum stijl</string>
+    <string name="status_bar_date_style_normal">Normaal</string>
+    <string name="status_bar_date_style_lowercase">Kleine letters</string>
+    <string name="status_bar_date_style_uppercase">Hoofdletters</string>
+    <string name="status_bar_date_format_custom">Aangepast java-formaat</string>
+    <string name="status_bar_date_string_edittext_title">Moet in DateFormat bv. dd/MM/yy</string>
+    <string name="status_bar_date_string_edittext_summary">Voer tekst in</string>
 
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">Melding Ticker</string>

@@ -81,6 +81,13 @@
     <string name="status_bar_date_small">Dimensione del carattere piccola</string>
     <string name="status_bar_date_normal">Dimensione del carattere normale</string>
     <string name="status_bar_date_format_title">Formato della data</string>
+    <string name="status_bar_date_style">Stile della data</string>
+    <string name="status_bar_date_style_normal">Normale</string>
+    <string name="status_bar_date_style_lowercase">Allineato in basso</string>
+    <string name="status_bar_date_style_uppercase">Allineato in alto</string>
+    <string name="status_bar_date_format_custom">Formato java personalizzato</string>
+    <string name="status_bar_date_string_edittext_title">Deve essere nel formato della data es. MM/dd/yy</string>
+    <string name="status_bar_date_string_edittext_summary">Inserisci stringa</string>
 
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">Ticker delle notifiche</string>

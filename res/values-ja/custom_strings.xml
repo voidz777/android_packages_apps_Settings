@@ -70,6 +70,13 @@
     <string name="status_bar_date_small">小さい文字サイズ</string>
     <string name="status_bar_date_normal">標準文字サイズ</string>
     <string name="status_bar_date_format_title">日付フォーマット</string>
+    <string name="status_bar_date_style">日付の表示スタイル</string>
+    <string name="status_bar_date_style_normal">標準</string>
+    <string name="status_bar_date_style_lowercase">小文字</string>
+    <string name="status_bar_date_style_uppercase">大文字</string>
+    <string name="status_bar_date_format_custom">カスタムjavaフォーマット</string>
+    <string name="status_bar_date_string_edittext_title">MM/dd/yyの形式でないといけません</string>
+    <string name="status_bar_date_string_edittext_summary">文字列を入力してください</string>
 
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">通知ティッカー</string>
