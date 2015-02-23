@@ -15,12 +15,17 @@
  */
 package com.android.settings.cyanogenmod;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.Settings;
+
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.os.Vibrator;
@@ -36,19 +41,21 @@ import com.android.internal.widget.LockPatternUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationDrawerSettings extends SettingsPreferenceFragment
-            implements OnPreferenceChangeListener  {
+public class NotificationDrawerSettings extends SettingsPreferenceFragment implements Indexable,
+        Preference.OnPreferenceChangeListener {
 
+    private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String QS_VIBRATE = "quick_settings_vibrate";
     private static final String QS_BLOCK_ON_SECURE_KEYGUARD = "qs_block_on_secure_keyguard";
 
+    private ListPreference mQuickPulldown;
     private Preference mQSTiles;
     private SwitchPreference mQsVibrate;
     private SwitchPreference mBlockOnSecureKeyguard;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.notification_drawer_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -72,6 +79,21 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
+        mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
+
+        mQuickPulldown.setOnPreferenceChangeListener(this);
+        int quickPulldownValue = Settings.System.getIntForUser(resolver,
+                Settings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
+        mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
+        updatePulldownSummary(quickPulldownValue);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
@@ -82,13 +104,34 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mBlockOnSecureKeyguard) {
+        ContentResolver resolver = getContentResolver();
+        if (preference == mQuickPulldown) {
+            int quickPulldownValue = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(resolver, Settings.System.QS_QUICK_PULLDOWN,
+                    quickPulldownValue, UserHandle.USER_CURRENT);
+            updatePulldownSummary(quickPulldownValue);
+            return true;
+        } else if (preference == mBlockOnSecureKeyguard) {
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                     (Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;
+    }
+
+    private void updatePulldownSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // quick pulldown deactivated
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_off));
+        } else {
+            String direction = res.getString(value == 2
+                    ? R.string.quick_pulldown_summary_left
+                    : R.string.quick_pulldown_summary_right);
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
+        }
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
