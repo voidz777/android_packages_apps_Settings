@@ -133,6 +133,7 @@
 
     <!-- Quick Settings tiles -->
     <string name="quick_settings_category">Quick settings</string>
+    <string name="qs_ambient_display_tile">Ambient display</string>
     <string name="qs_battery_saver_tile">Battery saver</string>
     <string name="qs_brightness_tile">Brightness</string>
     <string name="qs_expanded_desktop_tile">Expanded desktop</string>
