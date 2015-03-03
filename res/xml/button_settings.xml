@@ -114,6 +114,14 @@
             android:entryValues="@array/volbtn_cursor_control_values"
             android:persistent="false" />
 
+        <ListPreference
+            android:key="volume_default_screen"
+            android:title="@string/volume_default_title"
+            android:summary="@string/volume_default_summary"
+            android:entries="@array/volume_default_entries"
+            android:entryValues="@array/volume_default_values"
+            android:defaultValue="0" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

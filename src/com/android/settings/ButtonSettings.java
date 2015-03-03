@@ -18,6 +18,7 @@ package com.android.settings;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
+import android.media.AudioSystem;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -52,6 +53,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_VOLUME_MEDIA_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+    private static final String KEY_VOLUME_DEFAULT = "volume_default_screen";
 
     private static final String CATEGORY_NAVBAR = "navigation_bar";
     private static final String CATEGORY_POWER = "power_key";
@@ -63,6 +65,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mVolumeKeyMediaControl;
     private ListPreference mVolumeKeyCursorControl;
     private SwitchPreference mSwapVolumeButtons;
+    private ListPreference mVolumeDefault;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -121,6 +124,19 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mSwapVolumeButtons = (SwitchPreference)
                     prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
             mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+
+            mVolumeDefault = (ListPreference) findPreference(KEY_VOLUME_DEFAULT);
+            String currentDefault = Settings.System.getString(resolver, Settings.System.VOLUME_KEYS_DEFAULT);
+            if (!Utils.isVoiceCapable(getActivity())) {
+                removeListEntry(mVolumeDefault, String.valueOf(AudioSystem.STREAM_RING));
+            }
+            if (currentDefault == null) {
+                currentDefault = mVolumeDefault.getEntryValues()[mVolumeDefault.getEntryValues().length - 1].toString();
+                mVolumeDefault.setSummary(getString(R.string.volume_default_summary));
+            }
+            mVolumeDefault.setValue(currentDefault);
+            mVolumeDefault.setSummary(mVolumeDefault.getEntry());
+            mVolumeDefault.setOnPreferenceChangeListener(this);
         } else {
             prefScreen.removePreference(volumeCategory);
         }
@@ -171,7 +187,32 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Boolean value = (Boolean) newValue;
         int intValue = (value) ? 1 : 0;
         Settings.System.putInt(getContentResolver(), setting, intValue);
-     }
+    }
+
+    private void updateVolumeDefault(Object newValue) {
+        int index = mVolumeDefault.findIndexOfValue((String) newValue);
+        int value = Integer.valueOf((String) newValue);
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.System.VOLUME_KEYS_DEFAULT, value);
+        mVolumeDefault.setSummary(mVolumeDefault.getEntries()[index]);
+    }
+
+    public void removeListEntry(ListPreference list, String valuetoRemove) {
+        ArrayList<CharSequence> entries = new ArrayList<CharSequence>();
+        ArrayList<CharSequence> values = new ArrayList<CharSequence>();
+
+        for (int i = 0; i < list.getEntryValues().length; i++) {
+            if (list.getEntryValues()[i].toString().equals(valuetoRemove)) {
+                continue;
+            } else {
+                entries.add(list.getEntries()[i]);
+                values.add(list.getEntryValues()[i]);
+            }
+        }
+
+        list.setEntries(entries.toArray(new CharSequence[entries.size()]));
+        list.setEntryValues(values.toArray(new CharSequence[values.size()]));
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -182,6 +223,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         } else if (preference == mVolumeKeyWakeControl) {
             handleSwitchChange(mVolumeKeyWakeControl, newValue,
                     Settings.System.VOLUME_WAKE_SCREEN);
+            return true;
+        } else if (preference == mVolumeDefault) {
+            String value = (String) newValue;
+            Settings.System.putString(getActivity().getContentResolver(),
+                Settings.System.VOLUME_KEYS_DEFAULT, value);
+            updateVolumeDefault(newValue);
             return true;
         }
         return false;
