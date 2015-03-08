@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2014-2015 The Euphoria-OS Project
+     Copyright 2013, The ChameleonOS Open Source Project
+     Copyright (C) 2012-2014 SlimRoms Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Custom settings  -->
+    <string name="custom_settings_title">个性化</string>
+
+    <!-- Updater -->
+    <string name="updater_title">更新</string>
+    <string name="updater_summary">检索更新</string>
+
+    <!-- Button settings  -->
+    <string name="button_settings_title">按键</string>
+
+    <!-- About phone screen,  Mod Version -->
+    <string name="mod_version">Euphoria 版本</string>
+    <string name="mod_version_default">未知</string>
+    <!-- About phone screen, Build date of ROM -->
+    <string name="build_date">编译日期</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+    <!-- About device screen, Cpu info. -->
+    <string name="cpu_info">CPU</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">运存</string>
+    <!-- About phone screen, status item label -->
+
+    <!-- Advanced category -->
+    <string name="advanced_options_title">高级选项</string>
+
+    <!-- General category -->
+    <string name="general_options_title">常规</string>
+
+    <!--Wakeup when plugged/unplugged -->
+    <string name="wakeup_when_plugged_unplugged_title">充电时唤醒</string>
+    <string name="wakeup_when_plugged_unplugged_summary">当接入或断开电源时点亮屏幕</string>
+
+    <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
+    <string name="font_size_sample">示例</string>
+
+    <!--Back to kill timeout -->
+    <string name="long_press_kill_delay">程序强制关闭延时</string>
+
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">显示CPU信息</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">覆盖屏幕显示CPU当前信息</string>
+
+    <!--Status bar -->
+    <string name="status_bar_category">状态栏</string>
+
+    <!--Status bar carrier -->
+    <string name="show_carrier_title">运营商标签</string>
+    <string name="show_carrier_disabled">关闭</string>
+    <string name="show_carrier_keyguard">仅在锁屏时显示</string>
+    <string name="show_carrier_statusbar">仅在桌面状态栏显示</string>
+    <string name="show_carrier_enabled">两者均显示</string>
+
+    <!--Status bar data and wifi activity -->
+    <string name="show_activity_indicators_title">网络活动状态指示器</string>
+    <string name="show_activity_indicators_summary">在信号条显示指示器</string>
+
+    <!--Status bar date -->
+    <string name="status_bar_clock_category">时钟</string>
+    <string name="status_bar_date_title">日期</string>
+    <string name="status_bar_date_none">隐藏（默认）</string>
+    <string name="status_bar_date_small">小</string>
+    <string name="status_bar_date_normal">正常</string>
+    <string name="status_bar_date_format_title">日期格式</string>
+    <string name="status_bar_date_style">日期样式</string>
+    <string name="status_bar_date_style_normal">正常</string>
+    <string name="status_bar_date_style_lowercase">小写</string>
+    <string name="status_bar_date_style_uppercase">大写</string>
+    <string name="status_bar_date_format_custom">自定义格式</string>
+    <string name="status_bar_date_string_edittext_title">日期格式必须如 MM/dd/yy</string>
+    <string name="status_bar_date_string_edittext_summary">输入字符</string>
+
+    <!-- Weather in status bar header -->
+    <string name="status_bar_show_weather_title_eos">天气</string>
+
+    <!-- Notification count -->
+    <string name="status_bar_notif_count_title_eos">未读通知计数</string>
+
+    <!-- Notification ticker -->
+    <string name="status_bar_ticker_title">通知内容</string>
+    <string name="status_bar_ticker_summary">在状态栏动态显示通知内容</string>
+
+    <!-- Network traffic -->
+    <string name="network_traffic_title">网速指示器</string>
+    <string name="show_network_traffic_state">状态栏网速指示器</string>
+    <string name="show_network_traffic_unit">显示单位</string>
+    <string name="show_network_traffic_frequency">更新间隔</string>
+    <string name="show_network_traffic_disable">关闭</string>
+    <string name="show_network_traffic_up">发送</string>
+    <string name="show_network_traffic_down">接收</string>
+    <string name="show_network_traffic_all">发送和接收</string>
+    <string name="show_network_traffic_bit">Bit/s</string>
+    <string name="show_network_traffic_byte">Byte/s</string>
+    <string name="show_network_traffic_500">500毫秒</string>
+    <string name="show_network_traffic_1000">1000毫秒</string>
+    <string name="show_network_traffic_1500">1500毫秒</string>
+    <string name="show_network_traffic_2000">2000毫秒</string>
+    <string name="network_traffic_autohide">自动隐藏</string>
+    <string name="network_traffic_autohide_summary">当没有活动连接时自动隐藏指示器</string>
+    <string name="network_traffic_autohide_threshold">静态阀值</string>
+
+    <!--Power menu -->
+    <string name="power_category">电源键</string>
+    <string name="lockscreen_enable_power_menu_title">在锁屏时显示菜单</string>
+    <string name="actions_category">行为</string>
+
+    <!-- Touch control -->
+    <string name="touch_control_settings_title">触摸控制</string>
+    <string name="touch_control_settings_summary">管理双击唤醒等更多的高级唤醒选项</string>
+
+    <!-- Quick Settings tiles -->
+    <string name="quick_settings_category">快速设置</string>
+    <string name="qs_battery_saver_tile">电池节能</string>
+    <string name="qs_brightness_tile">亮度</string>
+    <string name="qs_expanded_desktop_tile">扩展桌面</string>
+    <string name="qs_notifications_tile">未读通知</string>
+    <string name="qs_screen_off_tile">关闭屏幕</string>
+    <string name="qs_screenshot_tile">屏幕截图</string>
+    <string name="qs_sync_tile">同步</string>
+
+    <string name="qs_main_tiles_summary_off_eos">每行三到四个瓷块</string>
+
+    <!-- Quick Settings block on keyguard -->
+    <string name="block_on_secure_keyguard_title">锁屏时禁用</string>
+    <string name="block_on_secure_keyguard_summary">密码锁屏开启时禁用快速设置</string>
+
+    <!-- Quick Settings haptic feedback -->
+    <string name="quick_settings_vibrate_title">触摸振动反馈</string>
+    <string name="quick_settings_vibrate_summary">当触摸瓷块时给予振动反馈</string>
+
+    <!-- Quick Settings collapse panel -->
+    <string name="quick_settings_collapse_title">自动关闭面板</string>
+    <string name="quick_settings_collapse_summary">状态切换后关闭设置面板</string>
+
+    <!-- Quick Settings brightness slider -->
+    <string name="qs_brightness_slider_title_eos">亮度控制滑块</string>
+    <string name="qs_brightness_slider_summary">在快速设置面板显示亮度控制滑块</string>
+
+    <!-- Quick Settings 4 columns -->
+    <string name="qs_four_columns_title">每行显示四个瓷块</string>
+
+    <!-- SuperSU header name -->
+    <string name="supersu_title">SuperSU</string>
+
+    <!-- Unaccounted and overcounted battery stats -->
+    <string name="show_unac_and_overcounted_stats_title">未知/未计算状态</string>
+    <string name="show_unac_and_overcounted_stats_summary">显示未知或未计算的电池使用状态</string>
+
+    <!-- Keyguard notifications -->
+    <string name="app_notification_show_on_keyguard_title">锁屏时显示通知</string>
+    <string name="app_notification_show_on_keyguard_summary">在锁屏显示来自该程序的通知</string>
+    <string name="app_notification_no_ongoing_on_keyguard_title">锁屏禁止持续显示通知</string>
+    <string name="app_notification_no_ongoing_on_keyguard_summary">在锁屏永远禁止来自该程序的持续显示通知</string>
+
+    <!-- Less Notification sounds -->
+    <string name="notifications_category_title">通知</string>
+    <string name="less_notification_sounds_title">降低通知响声频率</string>
+    <string name="less_notification_sounds_summary">限制每个程序的通知声音在某时段内在仅响一次</string>
+    <string name="less_notification_sounds_default">默认行为</string>
+    <string name="less_notification_sounds_3s">3秒</string>
+    <string name="less_notification_sounds_5s">5秒</string>
+    <string name="less_notification_sounds_10s">10秒</string>
+    <string name="less_notification_sounds_15s">15秒</string>
+    <string name="less_notification_sounds_30s">30秒</string>
+    <string name="less_notification_sounds_45s">45秒</string>
+    <string name="less_notification_sounds_1m">1分钟</string>
+    <string name="less_notification_sounds_2m">2分钟</string>
+    <string name="less_notification_sounds_5m">5分钟</string>
+
+    <!-- Battery saver color -->
+    <string name="battery_saver_color_title">警告颜色</string>
+    <string name="battery_saver_color_summary">当电池节能模式激活时使状态栏和导航栏变成橙色</string>
+
+    <!--- Lock clock -->
+    <string name="lock_clock_title">时间插件</string>
+    <string name="lock_clock_summary">查看或改变 \'cLock\' 插件样式</string>
+
+    <!-- Recents panel -->
+    <string name="recents_panel_category">最近使用程序界面</string>
+    <string name="show_clear_all_recents_button_title">清除所有程序按键</string>
+    <string name="show_clear_all_recents_button_summary">显示清除所有程序的按键</string>
+    <string name="recents_clear_all_location_title">清除所有位置</string>
+    <string name="recents_clear_all_location_top_right">右上角</string>
+    <string name="recents_clear_all_location_top_left">左上角</string>
+    <string name="recents_clear_all_location_top_center">顶部居中</string>
+    <string name="recents_clear_all_location_bottom_right">右下角</string>
+    <string name="recents_clear_all_location_bottom_left">左上角</string>
+    <string name="recents_clear_all_location_bottom_center">底部居中</string>
+    <string name="recents_clear_all_dismiss_all_title">清除所有任务</string>
+    <string name="recents_clear_all_dismiss_all_summary">清除包括前台的所有任务</string>
+    <string name="recents_searchbar_title">搜索栏</string>
+    <string name="recents_searchbar_summary">在最近使用程序界面显示谷歌搜索栏</string>
+
+    <!-- Full screen keyboard -->
+    <string name="fullscreen_keyboard_title">全屏键盘</string>
+    <string name="fullscreen_keyboard_summary">在横屏时显示全屏键盘</string>
+
+    <!-- Navigation bar -->
+    <string name="navigation_bar_category">导航栏</string>
+    <string name="navbar_enable_bar">开启</string>
+    <string name="navigation_bar_left_title">左利手模式</string>
+    <string name="navigation_bar_left_summary">横屏时在屏幕左侧显示虚拟键</string>
+    <string name="navbar_dimen_title">导航栏尺寸</string>
+    <string name="navbar_dimensions_reset_message">是否要恢复所有尺寸至默认设置？</string>
+    <string name="navigation_bar_height_title">导航栏高度</string>
+    <string name="navigation_bar_height_landscape_title">横屏时导航栏高度</string>
+    <string name="navigation_bar_width_title">导航栏宽度</string>
+    <string name="navigation_bar_size_42_dp_default">42 dp（默认）</string>
+    <string name="navigation_bar_size_36_dp">36 dp</string>
+    <string name="navigation_bar_size_30_dp">30 dp</string>
+    <string name="navigation_bar_size_24_dp">24 dp</string>
+    <string name="navigation_bar_size_48_dp_default">48 dp（默认）</string>
+    <string name="navigation_bar_size_44_dp">44 dp</string>
+    <string name="navigation_bar_size_40_dp">40 dp</string>
+    <string name="navigation_bar_size_42_dp">42 dp</string>
+    <string name="navigation_bar_size_0_dp">0 dp（关闭）</string>
+
+    <!-- Wifi connection notifications -->
+    <string name="wifi_notify_changed_networks">Wi\u2011Fi 连接通知提示</string>
+    <string name="notify_changed_networks_default">关闭（默认）</string>
+    <string name="notify_changed_networks_toast">信息框提示</string>
+    <string name="notify_changed_networks_notification">状态栏提示</string>
+    <string name="notify_changed_networks_notification_sound">带声音的状态栏提示</string>
+
+    <!-- Heads Up -->
+    <string name="category_heads_up">浮动通知</string>
+    <string name="summary_heads_up_enabled">浮动通知已开启</string>
+    <string name="summary_heads_up_disabled">浮动通知已关闭</string>
+    <string name="show_headsup_button_title">快速进入按钮</string>
+    <string name="show_headsup_button_summary">在状态栏显示快速进入的按钮</string>
+    <string name="add_heads_up_package">增加程序</string>
+    <string name="add_heads_up_dnd_summary">不要显示这些程序的浮动通知</string>
+    <string name="add_heads_up_blacklist_summary">不要显示来自这些程序的浮动通知</string>
+    <string name="heads_up_dnd_title">请勿打扰</string>
+    <string name="heads_up_blacklist_title">黑名单</string>
+    <string name="heads_up_disabled_notice">若要允许程序以浮动的通知进行交互，请开启浮动通知。</string>
+
+    <!-- Heads up timeout -->
+    <string name="heads_up_time_out_title">超时</string>
+    <string name="heads_up_time_out_summary">通知将在 <xliff:g id="number">%d</xliff:g> 秒后过期</string>
+    <string name="heads_up_time_out_never_summary">通知将会持续显示直至被移除</string>
+    <string name="heads_up_time_out_2sec">2 秒</string>
+    <string name="heads_up_time_out_4sec">4 秒</string>
+    <string name="heads_up_time_out_6sec">6 秒</string>
+    <string name="heads_up_time_out_8sec">8 秒</string>
+    <string name="heads_up_time_out_10sec">10 秒</string>
+    <string name="heads_up_time_out_never">从不</string>
+
+    <!-- Superuser indicator-->
+    <string name="su_indicator">超级用户指示器</string>
+    <string name="su_indicator_summary">当会话使用root权限时显示超级用户指示器</string>
+
+    <!-- Screen recorder -->
+    <string name="screen_recorder_title">屏幕录制</string>
+    <string name="screen_recorder_summary">调整屏幕录制设置</string>
+    <string name="screen_recorder_video_dimensions_title">视频大小</string>
+    <string name="screen_recorder_video_bitrate_title">比特率</string>
+    <!-- video sizes -->
+    <string name="screen_recorder_size_240x400">240x400</string>
+    <string name="screen_recorder_size_360x640">360x640</string>
+    <string name="screen_recorder_size_480x800">480x800</string>
+    <string name="screen_recorder_size_480x854">480x854</string>
+    <string name="screen_recorder_size_540x960">540x960</string>
+    <string name="screen_recorder_size_600x1024">600x1024</string>
+    <string name="screen_recorder_size_720x1280">720x1280</string>
+    <!-- frame rates -->
+    <string name="screen_recorder_bitrate_title_100000">100 kB/s</string>
+    <string name="screen_recorder_bitrate_title_250000">250 kB/s</string>
+    <string name="screen_recorder_bitrate_title_500000">500 kB/s</string>
+    <string name="screen_recorder_bitrate_title_1000000">1 MB/s</string>
+    <string name="screen_recorder_bitrate_title_2000000">2 MB/s</string>
+    <string name="screen_recorder_bitrate_title_3000000">3 MB/s</string>
+    <string name="screen_recorder_bitrate_title_4000000">4 MB/s</string>
+    <string name="screen_recorder_bitrate_title_5000000">5 MB/s</string>
+    <string name="screen_recorder_bitrate_title_10000000">10 MB/s</string>
+    <string name="screen_recorder_bitrate_title_20000000">20 MB/s</string>
+    <string name="screen_recorder_bitrate_100000">100000</string>
+    <string name="screen_recorder_bitrate_250000">250000</string>
+    <string name="screen_recorder_bitrate_500000">500000</string>
+    <string name="screen_recorder_bitrate_1000000">1000000</string>
+    <string name="screen_recorder_bitrate_2000000">2000000</string>
+    <string name="screen_recorder_bitrate_3000000">3000000</string>
+    <string name="screen_recorder_bitrate_4000000">4000000</string>
+    <string name="screen_recorder_bitrate_5000000">5000000</string>
+    <string name="screen_recorder_bitrate_10000000">10000000</string>
+    <string name="screen_recorder_bitrate_20000000">20000000</string>
+
+    <string name="power_menu_screenrecord_title">屏幕录制</string>
+    <string name="screen_recorder_record_audio_title">额外音频</string>
+    <string name="screen_recorder_record_audio_summary">录制来自麦克风的声音</string>
+    <string name="screen_recorder_power_menu_summary">在电源菜单显示屏幕录制的入口</string>
+
+    <!-- Privacy guard notification -->
+    <string name="privacy_guard_notification_title">通知</string>
+    <string name="privacy_guard_notifiation_summary">当隐私守护激活时显示通知</string>
+
+    <!-- Display settings screen, setting options for LCD density -->
+    <string name="lcd_density">LCD 密度</string>
+    <string name="lcd_density_summary">%d DPI</string>
+    <string name="lcd_density_default">设备默认</string>
+    <string name="lcd_density_unsupported">不支持</string>
+    <string name="restarting_ui">重启中</string>
+
+    <!-- Navring targets (enable/disable) -->
+    <string name="navigation_ring_enable_title">开启导航环</string>
+
+    <!-- AOKP custom system animations -->
+    <string name="animation_title">动画</string>  
+    <string name="system_animation_title">系统</string>
+    <string name="activity_open_title">打开活动</string>
+    <string name="activity_close_title">关闭活动</string>
+    <string name="task_open_title">开启任务</string>
+    <string name="task_close_title">关闭任务</string>
+    <string name="task_move_to_front_title">移到前面</string>
+    <string name="task_move_to_back_title">移到后面</string>
+    <string name="wallpaper_open_title">打开壁纸</string>
+    <string name="wallpaper_close_title">关闭壁纸</string>
+    <string name="wallpaper_intra_open_title">壁纸内部开启</string>
+    <string name="wallpaper_intra_close_title">壁纸内部关闭</string>
+    <string name="task_open_behind_title">后台开启任务</string>
+    <string name="animation_duration_title">持续动画</string>
+    <string name="title_animation_no_override">阻止程序覆盖</string>
+    <string name="summary_animation_no_override">阻止程序覆盖过渡动画</string>
+    <string name="animation_duration_default">默认</string>
+
+    <!-- Toast Animation -->
+    <string name="toast_animation_title">消息提示框</string>
+    <string name="toast_none_animation">无</string>
+    <string name="toast_default_animation">默认</string>
+    <string name="toast_fade_animation">渐隐</string>
+    <string name="toast_SlideRight_animation">右滑</string>
+    <string name="toast_SlideLeft_animation">左滑</string>
+    <string name="toast_Xylon_animation">Xylon</string>
+    <string name="toast_Toko_animation">Toko</string>
+    <string name="toast_Tn_animation">Tn</string>
+    <string name="toast_Honami_animation">Honami</string>
+    <string name="toast_FastFade_animation">快速消失</string>
+    <string name="toast_GrowFade_animation">伸展消失</string>
+    <string name="toast_GrowFadeCenter_animation">中部伸展消失</string>
+    <string name="toast_GrowFadeBottom_animation">底部伸展消失</string>
+    <string name="toast_Translucent_animation">透明</string>
+    <string name="toast_SlideLeftRight_animation">从左滑到右</string>
+    <string name="toast_SlideRightLeft_animation">从右滑到左</string>
+
+    <!-- ListView animation -->
+    <string name="listview_animation_title">列表动画</string>
+    <string name="listview_off">默认</string>
+    <string name="listview_wave_left">波浪（左）</string>
+    <string name="listview_wave_right">波浪（右）</string>
+    <string name="listview_alpha">透明渐变</string>
+    <string name="listview_scale">尺寸渐变</string>
+    <string name="listview_stack_top">堆叠（顶部）</string>
+    <string name="listview_stack_bottom">堆叠（底部）</string>
+    <string name="listview_unfold">不折叠</string>
+    <string name="listview_fold">折叠</string>
+    <string name="listview_translate_left">移动（左）</string>
+    <string name="listview_translate_right">移动（右）</string>
+
+    <!-- ListView interpolator -->
+    <string name="listview_interpolator_title">列表动画修饰</string>
+    <string name="listview_accelerate_interpolator">加速</string>
+    <string name="listview_decelerate_interpolator">减速</string>
+    <string name="listview_accelerate_decelerate_interpolator">急停</string>
+    <string name="listview_anticipate_interpolator">回荡</string>
+    <string name="listview_overshoot_interpolator">翻滚</string>
+    <string name="listview_anticipate_overshoot_interpolator">回荡翻滚</string>
+    <string name="listview_bounce_interpolator">弹跳</string>
+
+    <!-- Doze pulse (ambient display) options -->
+    <string name="doze_overwrite_value_title">覆盖参数</string>
+    <string name="doze_overwrite_value_summary">允许用户设置覆盖默认参数</string>
+
+    <string name="doze_list_mode_title">主动显示</string>
+    <string name="doze_list_mode_summary">配置主动显示模式</string>
+
+    <string name="doze_pulse_title">时间设置</string>
+    <string name="doze_pulse_duration_in_title">渐强</string>
+    <string name="doze_pulse_duration_in_summary"></string>
+
+    <string name="doze_pulse_duration_visible_title">可视持续时间</string>
+    <string name="doze_pulse_duration_visible_summary"></string>
+
+    <string name="doze_pulse_duration_out_title">渐隐</string>
+    <string name="doze_pulse_duration_out_summary"></string>
+
+    <string name="doze_pulse_on_notifications_title">屏幕背光通知</string>
+    <string name="doze_pulse_on_notifications_summary">仅在有未读通知时激活</string>
+
+    <string name="doze_shake_title">晃动设置</string>
+    <string name="doze_shake_mode_title">晃动模式</string>
+    <string name="doze_shake_mode_summary">使用陀螺仪参数触发</string>
+    <string name="doze_shake_mode_test_summary">你想要测试陀螺仪吗？</string>
+    <string name="doze_shake_mode_test_result">是否应用当前参数？</string>
+    <string name="doze_shake_test">现在晃动你的设备</string>
+    <string name="doze_shake_it">晃动已被检测到！</string>
+
+    <string name="doze_shake_acc_threshold_title">晃动阀值</string>
+    <string name="doze_shake_acc_threshold_summary">配置触发所需的晃动强度</string>
+
+    <string name="doze_time_mode_title">显示时间和日期</string>
+    <string name="doze_time_mode_summary">没有未读通知时强制显示时间</string>
+
+    <string name="twohundred_ms">200 毫秒</string>
+    <string name="fivehundred_ms">500 毫秒</string>
+    <string name="one_second">1 秒</string>
+    <string name="one_second_default">1 秒（默认）</string>
+    <string name="onehalf_second">1.5 秒</string>
+    <string name="two_second">2 秒</string>
+    <string name="twohalf_second">2.5 秒</string>
+    <string name="three_second">3 秒</string>
+    <string name="three_second_default">3 秒（默认）</string>
+    <string name="threehalf_second">3.5 秒</string>
+    <string name="four_second">4 秒</string>
+    <string name="fourhalf_second">4.5 秒</string>
+    <string name="five_second">5 秒</string>
+
+    <string name="veryeasy_shake">很轻</string>
+    <string name="easy_shake">轻</string>
+    <string name="medium_shake">Default</string>
+    <string name="hard_shake">重</string>
+    <string name="veryhard_shake">很重</string>
+    <string name="strong_shake">极重</string>
+
+    <string name="fully_mode">完整模式</string>
+    <string name="pocket_shake_mode">口袋模式和晃动模式</string>
+    <string name="pocket_pulse_mode">口袋模式和主动模式</string>
+    <string name="pocket_only_mode">口袋模式</string>
+    <string name="shake_pulse_mode">晃动模式和主动模式</string>
+    <string name="pulse_only_mode">主动模式（默认）</string>
+</resources>

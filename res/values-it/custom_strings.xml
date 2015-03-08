@@ -89,8 +89,14 @@
     <string name="status_bar_date_string_edittext_title">Deve essere nel formato della data es. MM/dd/yy</string>
     <string name="status_bar_date_string_edittext_summary">Inserisci stringa</string>
 
+    <!-- Weather in status bar header -->
+    <string name="status_bar_show_weather_title_eos">Meteo</string>
+
+    <!-- Notification count -->
+    <string name="status_bar_notif_count_title_eos">Contatore di notifiche</string>
+
     <!-- Notification ticker -->
-    <string name="status_bar_ticker_title">Ticker delle notifiche</string>
+    <string name="status_bar_ticker_title">Testo delle notifiche</string>
     <string name="status_bar_ticker_summary">Animazione del testo di notifica nella barra di stato</string>
 
     <!-- Network traffic -->
@@ -112,6 +118,10 @@
     <string name="network_traffic_autohide_summary">Nascondi il monitor quando non c\'è attvità</string>
     <string name="network_traffic_autohide_threshold">Limita inattività</string>
 
+    <!-- Notification ticker -->
+    <string name="status_bar_ticker_title">Testo delle notifiche</string>
+    <string name="status_bar_ticker_summary">Animazione che mostra il testo delle notifiche nella status bar</string>
+
     <!--Power menu -->
     <string name="power_category">Pulsante di spegnimento</string>
     <string name="lockscreen_enable_power_menu_title">Mostra il menu di spegnimento nel blocco schermo</string>
@@ -125,20 +135,34 @@
     <string name="quick_settings_category">Quick settings</string>
     <string name="block_on_secure_keyguard_title">Disabilita nel blocco schermo</string>
     <string name="block_on_secure_keyguard_summary">Disabilita i quick settings nel blocco schermo protetto</string>
+    <string name="qs_expanded_desktop_tile">Desktop esteso</string>
+    <string name="qs_notifications_tile">Notifiche</string>
+    <string name="qs_screen_off_tile">Spegni schermo</string>
+    <string name="qs_screenshot_tile">Schermata</string>
+    <string name="qs_sync_tile">Sincronizzazione</string>
 
-    <!-- QuickSettings haptic feedback -->
+    <string name="qs_main_tiles_summary_off_eos">Thr</string>
+
+    <!-- Quick Settings block on keyguard -->
+    <string name="block_on_secure_keyguard_title">Disabilita nella schermata di blocco</string>
+    <string name="block_on_secure_keyguard_summary">Disabilita i quick settings nella schermata di blocco sicura</string>
+
+    <!-- Quick Settings haptic feedback -->
     <string name="quick_settings_vibrate_title">Vibra al tocco</string>
     <string name="quick_settings_vibrate_summary">Vibra quando si toccano i quick settings</string>
 
-    <!-- QuickSettings collapse panel -->
+    <!-- Quick Settings collapse panel -->
     <string name="quick_settings_collapse_title">Chiudi in automatico il pannello</string>
     <string name="quick_settings_collapse_summary">Chiudi il pannello dei quick settings dopo averne toccato uno</string>
 
-    <!-- QuickSettings brightness slider -->
-    <string name="qs_brightness_slider_title">Mostra regolatore luminosità</string>
-    <string name="qs_brightness_slider_summary">Mostra un regolatore della luminosità nel pannello dei quick settings</string>
-    
-    <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
+    <!-- Quick Settings brightness slider -->
+    <string name="qs_brightness_slider_title_eos">Regolatore luminosità</string>
+    <string name="qs_brightness_slider_summary">Mostra un regolatore per la luminosità nel pannello deiquick settings</string>
+
+    <!-- Quick Settings 4 columns -->
+    <string name="qs_four_columns_title">Mostra quattro quick settings per fila</string>
+
+    <!-- SuperSU header name -->
     <string name="supersu_title">SuperSU</string>
 
     <!-- Unaccounted and overcounted battery stats -->
@@ -155,7 +179,7 @@
     <string name="notifications_category_title">Notifiche</string>
     <string name="less_notification_sounds_title">Avvisi di notifica meno frequenti</string>
     <string name="less_notification_sounds_summary">Limita gli avvisi di notifica di ciascuna app a solo uno per il periodo di tempo selezionato</string>
-    <string name="less_notification_sounds_default">Comportamento di default</string>
+    <string name="less_notification_sounds_default">Comportamento predefinito</string>
     <string name="less_notification_sounds_3s">3 secondi</string>
     <string name="less_notification_sounds_5s">5 secondi</string>
     <string name="less_notification_sounds_10s">10 secondi</string>
@@ -181,8 +205,10 @@
     <string name="recents_clear_all_location_title">Posizione chiudi tutte</string>
     <string name="recents_clear_all_location_top_right">In alto a destra</string>
     <string name="recents_clear_all_location_top_left">In alto a sinistra</string>
+    <string name="recents_clear_all_location_top_center">In alto al centro</string>
     <string name="recents_clear_all_location_bottom_right">In basso a destra</string>
     <string name="recents_clear_all_location_bottom_left">In basso a sinistra</string>
+    <string name="recents_clear_all_location_bottom_center">In basso al centro</string>
     <string name="recents_clear_all_dismiss_all_title">Chiudi tutte le app</string>
     <string name="recents_clear_all_dismiss_all_summary">Scegli se chiudere tutte le app o ignorare l\'ultima aperta</string>
     <string name="recents_searchbar_title">Barra di ricerca</string>
@@ -198,15 +224,15 @@
     <string name="navigation_bar_left_title">Modalità mancino</string>
     <string name="navigation_bar_left_summary">Posiziona la barra di navigazione a sinistra quando il dispositivo è in orizzontale</string>
     <string name="navbar_dimen_title">Dimensioni</string>
-    <string name="navbar_dimensions_reset_message">Ripristinare tutti i valori delle dimensioni al default?</string>
+    <string name="navbar_dimensions_reset_message">Ripristinare tutti i valori delle dimensioni a quelli predefiniti?</string>
     <string name="navigation_bar_height_title">Altezza barra di navigazione</string>
     <string name="navigation_bar_height_landscape_title">Altezza barra di navigazione in orizzontale</string>
     <string name="navigation_bar_width_title">Larghezza barra di navigazione</string>
-    <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>
+    <string name="navigation_bar_size_42_dp_default">42 dp (predefinito)</string>
     <string name="navigation_bar_size_36_dp">36 dp</string>
     <string name="navigation_bar_size_30_dp">30 dp</string>
     <string name="navigation_bar_size_24_dp">24 dp</string>
-    <string name="navigation_bar_size_48_dp_default">48 dp (default)</string>
+    <string name="navigation_bar_size_48_dp_default">48 dp (predefinito)</string>
     <string name="navigation_bar_size_44_dp">44 dp</string>
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
@@ -214,7 +240,7 @@
 
     <!-- Wifi connection notifications -->
     <string name="wifi_notify_changed_networks">Wi\u2011Fi notifica di connessione</string>
-    <string name="notify_changed_networks_default">Spenta (default)</string>
+    <string name="notify_changed_networks_default">Spenta (predefinito)</string>
     <string name="notify_changed_networks_toast">Notifica toast</string>
     <string name="notify_changed_networks_notification">Notifica</string>
     <string name="notify_changed_networks_notification_sound">Notifica e suono</string>
@@ -248,8 +274,8 @@
     <string name="su_indicator_summary">Mostra segnale superuser mentre un\'app utilizza i permessi di root</string>
 
     <!-- Screen recorder -->
-    <string name="screen_recorder_title">Screen recorder</string>
-    <string name="screen_recorder_summary">Configura Screen Recorder</string>
+    <string name="screen_recorder_title">Registrazione schermo</string>
+    <string name="screen_recorder_summary">Configura registrazione schermo</string>
     <string name="screen_recorder_video_dimensions_title">Dimensioni Video</string>
     <string name="screen_recorder_video_bitrate_title">Bitrate</string>
     <!-- video sizes -->
@@ -289,6 +315,139 @@
     
     <!-- Privacy guard notification -->
     <string name="privacy_guard_notification_title">Notifica</string>
-    <string name="privacy_guard_notifiation_summary">Mostra una notifica se privacy guard è attivo</string>
-</resources>
+    <string name="privacy_guard_notifiation_summary">Mostra una notifica se Privacy Guard è attivo</string>
 
+    <!-- Display settings screen, setting options for LCD density -->
+    <string name="lcd_density">Densità schermo</string>
+    <string name="lcd_density_summary">%d DPI</string>
+    <string name="lcd_density_default">Predefinito del dispositivo</string>
+    <string name="lcd_density_unsupported">Non supportato</string>
+    <string name="restarting_ui">Riavviando</string>
+
+    <!-- Navring targets (enable/disable) -->
+    <string name="navigation_ring_enable_title">Abilita anelli barra di navigazione</string>
+
+    <!-- AOKP custom system animations -->
+    <string name="animation_title">Animazioni</string>  
+    <string name="system_animation_title">Sistema</string>
+    <string name="activity_open_title">Apertura attività</string>
+    <string name="activity_close_title">Chiusura attività</string>
+    <string name="task_open_title">Apertura task</string>
+    <string name="task_close_title">Chiusura task</string>
+    <string name="task_move_to_front_title">Spostamento in primo piano</string>
+    <string name="task_move_to_back_title">Spostamento in secondo piano</string>
+    <string name="wallpaper_open_title">Ritorno alla home</string>
+    <string name="wallpaper_close_title">Chiusura della home</string>
+    <string name="wallpaper_intra_open_title">Aperura selezione sfondo</string>
+    <string name="wallpaper_intra_close_title">Chiusura selezione sfondo</string>
+    <string name="task_open_behind_title">Apertura task dietro</string>
+    <string name="animation_duration_title">Durata animazioni</string>
+    <string name="title_animation_no_override">Previeni sovrascrizione da altre app</string>
+    <string name="summary_animation_no_override">Impedisce ad altre app di sovrascrivere le animazioni</string>
+    <string name="animation_duration_default">Predefinita</string>
+
+    <!-- Toast Animation -->
+    <string name="toast_animation_title">Toast</string>
+    <string name="toast_none_animation">Nessuna</string>
+    <string name="toast_default_animation">Predefinita</string>
+    <string name="toast_fade_animation">Dissolvenza</string>
+    <string name="toast_SlideRight_animation">Scorrimento a destra</string>
+    <string name="toast_SlideLeft_animation">Scorrimento a sinistra</string>
+    <string name="toast_Xylon_animation">Xylon</string>
+    <string name="toast_Toko_animation">Toko</string>
+    <string name="toast_Tn_animation">Tn</string>
+    <string name="toast_Honami_animation">Honami</string>
+    <string name="toast_FastFade_animation">Dissolvenza veloce</string>
+    <string name="toast_GrowFade_animation">Dissolvenza con crescita</string>
+    <string name="toast_GrowFadeCenter_animation">Dissolvenza con crescita dal centro</string>
+    <string name="toast_GrowFadeBottom_animation">Dissolvenza con crescita dal basso</string>
+    <string name="toast_Translucent_animation">Translucenza</string>
+    <string name="toast_SlideLeftRight_animation">Scorrimento da sinistra a destra</string>
+    <string name="toast_SlideRightLeft_animation">Scorrimento da destra a sinistra</string>
+
+    <!-- ListView animation -->
+    <string name="listview_animation_title">Animazione lista</string>
+    <string name="listview_off">Predefinita</string>
+    <string name="listview_wave_left">Onda (a sinistra)</string>
+    <string name="listview_wave_right">Onda (a destra</string>
+    <string name="listview_alpha">Alpha</string>
+    <string name="listview_scale">Scala</string>
+    <string name="listview_stack_top">Pila (alto)</string>
+    <string name="listview_stack_bottom">Pila (basso)</string>
+    <string name="listview_unfold">Spiegamento</string>
+    <string name="listview_fold">Piegamento</string>
+    <string name="listview_translate_left">Traduzione (sinistra)</string>
+    <string name="listview_translate_right">Traduzione (destra)</string>
+
+    <!-- ListView interpolator -->
+    <string name="listview_interpolator_title">Regolatore animazione lista</string>
+    <string name="listview_accelerate_interpolator">Accelera</string>
+    <string name="listview_decelerate_interpolator">Rallenta</string>
+    <string name="listview_accelerate_decelerate_interpolator">Accelera e rallenta</string>
+    <string name="listview_anticipate_interpolator">Anticipa</string>
+    <string name="listview_overshoot_interpolator">Vai oltre</string>
+    <string name="listview_anticipate_overshoot_interpolator">Anticipa e vai oltre</string>
+    <string name="listview_bounce_interpolator">Rimbalza</string>
+
+    <!-- Doze pulse (ambient display) options -->
+    <string name="doze_overwrite_value_title">Sovrascrivi valori</string>
+    <string name="doze_overwrite_value_summary">Pemette di sovrascrivere i valori predefiniti con quelli configurati dall\'utente</string>
+
+    <string name="doze_list_mode_title">Modalità</string>
+    <string name="doze_list_mode_summary">Opzione per configurare le modalità in standby</string>
+
+    <string name="doze_pulse_title">Impostazioni durata</string>
+    <string name="doze_pulse_duration_in_title">Animazione di accensione</string>
+    <string name="doze_pulse_duration_in_summary"></string>
+
+    <string name="doze_pulse_duration_visible_title">Durata visibilità</string>
+    <string name="doze_pulse_duration_visible_summary"></string>
+
+    <string name="doze_pulse_duration_out_title">Animazione di spegnimento</string>
+    <string name="doze_pulse_duration_out_summary"></string>
+
+    <string name="doze_pulse_on_notifications_title">Pulsa per notifiche</string>
+    <string name="doze_pulse_on_notifications_summary">Attiva solo per le notifiche in arrivo</string>
+
+    <string name="doze_shake_title">Impostazioni scuotimento</string>
+    <string name="doze_shake_mode_title">Modalità movimento</string>
+    <string name="doze_shake_mode_summary">Utilizza i dati del sensore di movimento per attivare</string>
+    <string name="doze_shake_mode_test_summary">Vuoi testare il sensore di movimento?</string>
+    <string name="doze_shake_mode_test_result">Applicare il valore corrente?</string>
+    <string name="doze_shake_test">Muovi il tuo dispositivo ora</string>
+    <string name="doze_shake_it">Movimento individuato!</string>
+
+    <string name="doze_shake_acc_threshold_title">Sensibilità sensore</string>
+    <string name="doze_shake_acc_threshold_summary">Configura l\'intensità del movimento necessaria per attivare</string>
+
+    <string name="doze_time_mode_title">Mostra ora &amp; data</string>
+    <string name="doze_time_mode_summary">Forza a mostrare l\'ora quando non ci sono notifiche</string>
+
+    <string name="twohundred_ms">200 ms</string>
+    <string name="fivehundred_ms">500 ms</string>
+    <string name="one_second">1 s</string>
+    <string name="one_second_default">1 s (default)</string>
+    <string name="onehalf_second">1.5 s</string>
+    <string name="two_second">2 s</string>
+    <string name="twohalf_second">2.5 s</string>
+    <string name="three_second">3 s</string>
+    <string name="three_second_default">3 s (default)</string>
+    <string name="threehalf_second">3.5 s</string>
+    <string name="four_second">4 s</string>
+    <string name="fourhalf_second">4.5 s</string>
+    <string name="five_second">5 s</string>
+
+    <string name="veryeasy_shake">Molto alta</string>
+    <string name="easy_shake">Alta</string>
+    <string name="medium_shake">Predefinita</string>
+    <string name="hard_shake">Bassa</string>
+    <string name="veryhard_shake">Molto bassa</string>
+    <string name="strong_shake">Bassissima</string>
+
+    <string name="fully_mode">Modalità completa</string>
+    <string name="pocket_shake_mode">Tasca e movimento</string>
+    <string name="pocket_pulse_mode">Tasca e pulsamento</string>
+    <string name="pocket_only_mode">Tasca</string>
+    <string name="shake_pulse_mode">Movimento e pulsamento</string>
+    <string name="pulse_only_mode">Pulsamento (predefinito)</string>
+</resources>
