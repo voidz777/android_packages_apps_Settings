@@ -125,22 +125,24 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
             mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
 
+            
+            mVolumeDefault = (ListPreference) findPreference(KEY_VOLUME_DEFAULT);
+            String currentDefault = Settings.System.getString(resolver,
+                Settings.System.VOLUME_KEYS_DEFAULT);
+            boolean linkNotificationWithVolume = Settings.Secure.getInt(resolver,
+                Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
+            if (mVolumeDefault != null && !Utils.isVoiceCapable(getActivity())) {
+                removeListEntry(mVolumeDefault, String.valueOf(AudioSystem.STREAM_RING));
+            } else if (mVolumeDefault != null && linkNotificationWithVolume
+                    && Utils.isVoiceCapable(getActivity())) {
+                removeListEntry(mVolumeDefault, String.valueOf(AudioSystem.STREAM_NOTIFICATION));
+            }
+            if (currentDefault == null) {
+                currentDefault = mVolumeDefault.getEntryValues()
+                    [mVolumeDefault.getEntryValues().length - 1].toString();
+                mVolumeDefault.setSummary(getString(R.string.volume_default_summary));
+            }
             if (mVolumeDefault != null) {
-                mVolumeDefault = (ListPreference) findPreference(KEY_VOLUME_DEFAULT);
-                String currentDefault = Settings.System.getString(resolver,
-                    Settings.System.VOLUME_KEYS_DEFAULT);
-                boolean linkNotificationWithVolume = Settings.Secure.getInt(resolver,
-                    Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
-                if (!Utils.isVoiceCapable(getActivity())) {
-                    removeListEntry(mVolumeDefault, String.valueOf(AudioSystem.STREAM_RING));
-                } else if (linkNotificationWithVolume && Utils.isVoiceCapable(getActivity())) {
-                    removeListEntry(mVolumeDefault, String.valueOf(AudioSystem.STREAM_NOTIFICATION));
-                }
-                if (currentDefault == null) {
-                    currentDefault = mVolumeDefault.getEntryValues()
-                        [mVolumeDefault.getEntryValues().length - 1].toString();
-                    mVolumeDefault.setSummary(getString(R.string.volume_default_summary));
-                }
                 mVolumeDefault.setValue(currentDefault);
                 mVolumeDefault.setSummary(mVolumeDefault.getEntry());
                 mVolumeDefault.setOnPreferenceChangeListener(this);
