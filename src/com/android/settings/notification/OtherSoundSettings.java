@@ -34,6 +34,7 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
@@ -77,6 +78,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
     private static final String KEY_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
+    private static final String KEY_CATEGORY_POWER_NOTIFICATIONS = "power_notifications_category";
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
@@ -201,6 +203,9 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
 
         mContext = getActivity();
 
+        final PreferenceCategory powerNotifPrefs = (PreferenceCategory)
+                findPreference(KEY_CATEGORY_POWER_NOTIFICATIONS);
+
         mAnnoyingNotifications = (ListPreference) findPreference(KEY_LESS_NOTIFICATION_SOUNDS);
         int notificationThreshold = Settings.System.getInt(getContentResolver(),
                 Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, 0);
@@ -215,7 +220,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
                 Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator == null || !vibrator.hasVibrator()) {
-            removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
+            powerNotifPrefs.removePreference(mPowerSoundsVibrate);
         }
 
         mPowerSoundsRingtone = findPreference(KEY_POWER_NOTIFICATIONS_RINGTONE);
