@@ -21,7 +21,7 @@
         android:key="navigation_bar"
         android:title="@string/navigation_bar_category">
 
-        <SwitchPreference
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
             android:key="navigation_bar_show"
             android:title="@string/navbar_enable_bar"
             android:defaultValue="true"/>

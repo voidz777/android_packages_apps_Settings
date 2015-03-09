@@ -46,21 +46,23 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "ButtonSettings";
 
+    private static final String CATEGORY_NAVBAR = "navigation_bar";
+    private static final String CATEGORY_POWER = "power_key";
+    private static final String CATEGORY_VOLUME = "volume_keys";
+
+    private static final String KEY_NAVIGATION_BAR_ENABLED = "navigation_bar_show";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_POWER_END_CALL = "power_end_call";
-
+    private static final String KEY_POWER_MENU = "power_menu";
     private static final String KEY_VOLUME_WAKE_DEVICE = "volume_wake_screen";
     private static final String KEY_VOLUME_MEDIA_CONTROLS = "volbtn_music_controls";
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
     private static final String KEY_VOLUME_DEFAULT = "volume_default_screen";
 
-    private static final String CATEGORY_NAVBAR = "navigation_bar";
-    private static final String CATEGORY_POWER = "power_key";
-    private static final String CATEGORY_VOLUME = "volume_keys";
-
     private SwitchPreference mNavbarLeft;
     private SwitchPreference mPowerEndCall;
+    private Preference mPowerMenu;
     private SwitchPreference mVolumeKeyWakeControl;
     private SwitchPreference mVolumeKeyMediaControl;
     private ListPreference mVolumeKeyCursorControl;
@@ -93,12 +95,17 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         // Power button ends calls.
         mPowerEndCall = (SwitchPreference) findPreference(KEY_POWER_END_CALL);
+        mPowerMenu = (Preference) findPreference(KEY_POWER_MENU);
         if (hasPowerKey) {
             if (!Utils.isVoiceCapable(getActivity())) {
                 powerCategory.removePreference(mPowerEndCall);
                 mPowerEndCall = null;
             }
         } else {
+            prefScreen.removePreference(powerCategory);
+        }
+
+        if (mPowerEndCall == null && mPowerMenu == null) {
             prefScreen.removePreference(powerCategory);
         }
 
@@ -137,12 +144,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     && Utils.isVoiceCapable(getActivity())) {
                 removeListEntry(mVolumeDefault, String.valueOf(AudioSystem.STREAM_NOTIFICATION));
             }
-            if (currentDefault == null) {
-                currentDefault = mVolumeDefault.getEntryValues()
-                    [mVolumeDefault.getEntryValues().length - 1].toString();
-                mVolumeDefault.setSummary(getString(R.string.volume_default_summary));
-            }
             if (mVolumeDefault != null) {
+                if (currentDefault == null) {
+                    currentDefault = mVolumeDefault.getEntryValues()
+                        [mVolumeDefault.getEntryValues().length - 1].toString();
+                    mVolumeDefault.setSummary(getString(R.string.volume_default_summary));
+                }
                 mVolumeDefault.setValue(currentDefault);
                 mVolumeDefault.setSummary(mVolumeDefault.getEntry());
                 mVolumeDefault.setOnPreferenceChangeListener(this);
