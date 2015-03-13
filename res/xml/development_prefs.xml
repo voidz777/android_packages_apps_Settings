@@ -165,7 +165,7 @@
             android:title="@string/wifi_aggressive_handover"
             android:summary="@string/wifi_aggressive_handover_summary"/>
 
-        <SwitchPreference
+       <SwitchPreference
             android:key="wifi_allow_scan_with_traffic"
             android:title="@string/wifi_allow_scan_with_traffic"
             android:summary="@string/wifi_allow_scan_with_traffic_summary"/>
@@ -310,9 +310,9 @@
             android:title="@string/media_category">
 
         <SwitchPreference
-                android:key="use_nuplayer"
-                android:title="@string/use_nuplayer"
-                android:summary="@string/use_nuplayer_summary"/>
+                android:key="use_awesomeplayer"
+                android:title="@string/use_awesomeplayer"
+                android:summary="@string/use_awesomeplayer_summary"/>
 
         <SwitchPreference
                 android:key="usb_audio"

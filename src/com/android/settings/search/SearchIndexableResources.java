@@ -34,6 +34,7 @@ import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.cyanogenmod.NotificationDrawerSettings;
 import com.android.settings.deviceinfo.Memory;
+import com.android.settings.deviceinfo.UsbSettings;
 import com.android.settings.euphoria.ambientdisplay.AmbientSettings;
 import com.android.settings.euphoria.CustomSettings;
 import com.android.settings.euphoria.StatusBarSettings;
@@ -176,6 +177,13 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(Memory.class.getName()),
                         NO_DATA_RES_ID,
                         Memory.class.getName(),
+                        R.drawable.ic_settings_storage));
+
+        sResMap.put(UsbSettings.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(UsbSettings.class.getName()),
+                        R.xml.usb_settings,
+                        UsbSettings.class.getName(),
                         R.drawable.ic_settings_storage));
 
         sResMap.put(PowerUsageSummary.class.getName(),
