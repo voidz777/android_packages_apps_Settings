@@ -153,6 +153,7 @@
   <string name="sunlight_enhancement_summary">Verbeter helderheid van die skerm en leesbaarheid onder helder sonlig</string>
   <string name="color_enhancement_title">Kleur verbetering</string>
   <string name="color_enhancement_summary">Dinamiese verbeter die kleur van die skerm</string>
+  <string name="app_security_title">Program sekuriteit</string>
   <string name="blacklist_title">Blokkeerlys</string>
   <string name="blacklist_edit_dialog_title">Wysig blokkeerlys inskrywing</string>
   <string name="blacklist_prefs">Instellings</string>
@@ -622,6 +623,10 @@
   <string name="usb_sdcard_summary">Laat jou toe om lêers oor te dra tussen jou rekenaar en SD kaart deur dit te oor te laai as \'n USB massa stoorplek</string>
   <string name="external_storage_turn_on">Eksterne stoor is aangeskakel</string>
   <string name="external_storage_turn_off">Eksterne stoor is afgeskakel</string>
+  <string name="menu_hidden_apps_delete">Stel terug</string>
+  <string name="menu_hidden_apps_reset_lock">Herstel patroon slot</string>
+  <string name="protected_apps">Beskermde programme</string>
+  <string name="saving_protected_components">Stoor komponent toestand\u2026</string>
   <string name="stats_collection_title">Statistieke versameling</string>
   <string name="stats_collection_summary">As dit aangeskakel is, laat statistieke versameling toe</string>
   <string name="power_notifications_category_title">Laaier-klank</string>
@@ -733,7 +738,6 @@
   <string name="lockscreen_none_target">Geen</string>
   <string name="lockscreen_message">Tik \'n ikoon op die linker of regter kant om \'n slot skerm kortpad toe te wys.</string>
   <string name="lockscreen_choose_action_title">Kies aksie</string>
-  <string name="lockscreen_visualizer_title">Vertoon musiek visualiseerder</string>
   <string name="whisperpush_title">WhisperPush</string>
   <string name="whisperpush_summary">Bestuur veilige SMS-instellings.</string>
   <string name="navigation_ring_title">Navigasie ring teikens</string>
@@ -761,7 +765,6 @@
   <string name="stylus_app_not_installed">%s is nie geïnstalleer nie</string>
   <string name="advanced">Gevorderd</string>
   <string name="advanced_mode_title">Gevorderde modus</string>
-  <string name="advanced_mode_summary">Wys addisionele opsies vir die opstel van jou toestel in verskeie instellings kieslyste</string>
   <string name="category_misc">Diverse</string>
   <string name="category_vibrate">Vibreer</string>
   <string name="category_volume">Volume</string>
@@ -791,7 +794,4 @@
   <string name="live_display_low_power_summary">Verstel skerm vir laagste kragverbruik sonder verswakking</string>
   <string name="live_display_enhance_color_title">Verbeter kleure</string>
   <string name="live_display_enhance_color_summary">Verbeter kleur impak van vlees toon, natuurskoon en ander beelde</string>
-  <string name="battery_saver_threshold">Battery spaarder grens</string>
-  <string name="battery_saver_summary">Verminder werkverrigting en beperk agtergrond data</string>
-  <string name="battery_saver_summary_unavailable">Nie beskikbaar tydens laai</string>
 </resources>
