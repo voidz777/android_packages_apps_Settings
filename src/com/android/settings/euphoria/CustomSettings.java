@@ -44,13 +44,9 @@ import java.util.List;
 public class CustomSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener, Indexable  {
 
-    private static final String KEY_LOCK_CLOCK = "lock_clock";
-    private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
-
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 
-    private PreferenceScreen mLockClock;
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
 
@@ -60,11 +56,6 @@ public class CustomSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.custom_settings);
         ContentResolver resolver = getActivity().getContentResolver();
         PreferenceScreen prefSet = getPreferenceScreen();
-
-        mLockClock = (PreferenceScreen) findPreference(KEY_LOCK_CLOCK);
-        if (!Utils.isPackageInstalled(getActivity(), KEY_LOCK_CLOCK_PACKAGE_NAME)) {
-            prefSet.removePreference(mLockClock);
-        }
 
         mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
         mRecentsClearAll.setChecked(Settings.System.getIntForUser(resolver,

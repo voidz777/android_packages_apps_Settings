@@ -192,8 +192,9 @@
     <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
 
     <!--- Lock clock -->
-    <string name="lock_clock_title">Clock widget</string>
-    <string name="lock_clock_summary">View or change how the \'cLock\' widget will display</string>
+    <string name="weather_options_title">Weather</string>
+    <string name="lock_clock_title">Clock and weather widget</string>
+    <string name="lock_clock_summary">View or change how the clock and weather widget will display</string>
 
     <!-- Recents panel -->
     <string name="recents_panel_category">Recents panel</string>

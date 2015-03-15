@@ -55,6 +55,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener, Indexable {
 
     private static final String GENERAL_CATEGORY = "general_category";
+    private static final String WEATHER_CATEGORY = "weather_category";
 
     private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
@@ -66,6 +67,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
+
+    private static final String KEY_LOCK_CLOCK = "lock_clock";
+    private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -79,6 +83,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarBattery;
     private ListPreference mShowCarrierLabel;
+    private PreferenceScreen mLockClock;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -89,6 +94,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         final PreferenceCategory generalCategory =
                 (PreferenceCategory) prefSet.findPreference(GENERAL_CATEGORY);
+        final PreferenceCategory weatherCategory =
+                (PreferenceCategory) prefSet.findPreference(WEATHER_CATEGORY);
 
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
@@ -157,6 +164,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         if (!Utils.isVoiceCapable(getActivity())) {
             generalCategory.removePreference(mShowCarrierLabel);
+        }
+
+        mLockClock = (PreferenceScreen) findPreference(KEY_LOCK_CLOCK);
+        if (!Utils.isPackageInstalled(getActivity(), KEY_LOCK_CLOCK_PACKAGE_NAME)) {
+            weatherCategory.removePreference(mLockClock);
         }
 
         enableStatusBarClockDependents();

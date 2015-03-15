@@ -59,6 +59,26 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="weather_category"
+        android:title="@string/weather_options_title" >
+
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="status_bar_show_weather"
+            android:title="@string/status_bar_show_weather_title_eos"
+            android:summary="@string/status_bar_show_weather_summary"
+            android:defaultValue="false" />
+
+        <PreferenceScreen
+            android:key="lock_clock"
+            android:title="@string/lock_clock_title">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.cyanogenmod.lockclock"
+                android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="general_category"
         android:title="@string/general_options_title" >
 
