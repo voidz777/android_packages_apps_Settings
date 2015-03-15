@@ -70,10 +70,6 @@
     <string name="show_carrier_statusbar">仅在桌面状态栏显示</string>
     <string name="show_carrier_enabled">两者均显示</string>
 
-    <!--Status bar data and wifi activity -->
-    <string name="show_activity_indicators_title">网络活动状态指示器</string>
-    <string name="show_activity_indicators_summary">在信号条显示指示器</string>
-
     <!--Status bar date -->
     <string name="status_bar_clock_category">时钟</string>
     <string name="status_bar_date_title">日期</string>
@@ -161,10 +157,6 @@
     <!-- SuperSU header name -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">未知/未计算状态</string>
-    <string name="show_unac_and_overcounted_stats_summary">显示未知或未计算的电池使用状态</string>
-
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">锁屏时显示通知</string>
     <string name="app_notification_show_on_keyguard_summary">在锁屏显示来自该程序的通知</string>
@@ -233,13 +225,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp（关闭）</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Wi\u2011Fi 连接通知提示</string>
-    <string name="notify_changed_networks_default">关闭（默认）</string>
-    <string name="notify_changed_networks_toast">信息框提示</string>
-    <string name="notify_changed_networks_notification">状态栏提示</string>
-    <string name="notify_changed_networks_notification_sound">带声音的状态栏提示</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">浮动通知</string>

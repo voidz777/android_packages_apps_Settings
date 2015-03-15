@@ -69,10 +69,6 @@
     <string name="show_carrier_statusbar">Opérateur sur la barre de statut</string>
     <string name="show_carrier_enabled">Activé</string>
 
-    <!-- Status Bar Activity Indicators -->
-    <string name="show_activity_indicators_title">Indicateurs d\'activités</string>
-    <string name="show_activity_indicators_summary">Afficher les indicateurs dans les barres de signal</string>
-
     <!--Status bar date -->
     <string name="status_bar_clock_category">Clock</string>
     <string name="status_bar_date_title">Style de la date</string>
@@ -138,10 +134,6 @@
 
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
-
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">Montrer les statistiques ignorées et surpassées</string>
-    <string name="show_unac_and_overcounted_stats_summary">Afficher les statistiques de la batterie ignorées et l\'utilisation surpassée</string>
 
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Afficher sur l\'écran de verrouillage</string>
@@ -209,13 +201,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (Cacher)</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Wi\u2011Fi notification connectée</string>
-    <string name="notify_changed_networks_default">Arrêt (Par défaut)</string>
-    <string name="notify_changed_networks_toast">Toast</string>
-    <string name="notify_changed_networks_notification">Notification</string>
-    <string name="notify_changed_networks_notification_sound">Notification avec son</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">Notifications flottantes</string>

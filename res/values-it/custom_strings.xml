@@ -70,10 +70,6 @@
     <string name="show_carrier_statusbar">A schermo sbloccato</string>
     <string name="show_carrier_enabled">Sempre</string>
 
-    <!-- Status Bar Activity Indicators -->
-    <string name="show_activity_indicators_title">Indicatori attività </string>
-    <string name="show_activity_indicators_summary">Mostra indicatori nella barra del segnale </string>
-
     <!--Status bar date -->
     <string name="status_bar_clock_category">Clock</string>
     <string name="status_bar_date_title">Stile della data</string>
@@ -165,10 +161,6 @@
     <!-- SuperSU header name -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">Mostra statistiche non considerate/sovrastimate</string>
-    <string name="show_unac_and_overcounted_stats_summary">Mostra le statistiche della batteria per l\'utilizzo non considerato/sovrastimato</string>
-
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Mostra nella schermata di blocco</string>
     <string name="app_notification_show_on_keyguard_summary">Mostra le notifiche da questa app nella schermata di blocco</string>
@@ -237,13 +229,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (spenta)</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Wi\u2011Fi notifica di connessione</string>
-    <string name="notify_changed_networks_default">Spenta (predefinito)</string>
-    <string name="notify_changed_networks_toast">Notifica toast</string>
-    <string name="notify_changed_networks_notification">Notifica</string>
-    <string name="notify_changed_networks_notification_sound">Notifica e suono</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">Notifiche Heads up</string>

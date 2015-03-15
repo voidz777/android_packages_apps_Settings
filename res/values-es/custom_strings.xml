@@ -68,10 +68,6 @@
     <string name="show_carrier_statusbar">Operadora en barra de estado</string>
     <string name="show_carrier_enabled">Habilitado</string>
 
-    <!-- Status Bar Activity Indicators -->
-    <string name="show_activity_indicators_title">Indicadores de actividad</string>
-    <string name="show_activity_indicators_summary">Ver indicadores en barra de señal</string>
-
     <!--Status bar date -->
     <string name="status_bar_clock_category">Clock</string>
     <string name="status_bar_date_title">Estilo de fecha</string>
@@ -139,17 +135,13 @@
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">Estadísticas desconocidas/conocidas</string>
-    <string name="show_unac_and_overcounted_stats_summary">Mostrar estadísticas de batería para uso desconocido y conocido</string>
-
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Mostrar en pantalla de bloqueo</string>
     <string name="app_notification_show_on_keyguard_summary">Mostrar notificaciones de esta aplicación en la pantalla de bloqueo</string>
     <string name="app_notification_no_ongoing_on_keyguard_title">Desactivar en curso sobre pantalla de bloqueo</string>
     <string name="app_notification_no_ongoing_on_keyguard_summary">Nunca mostrar notificaciones en curso de esta aplicación en la pantalla de bloqueo</string>
 
-	<!-- Less Notification sounds -->
+    <!-- Less Notification sounds -->
     <string name="notifications_category_title">Notificaciones</string>
     <string name="less_notification_sounds_title">Frecuencia de sonidos de notificación</string>
     <string name="less_notification_sounds_summary">Limite los sonidos de notificación de cada aplicación para sonar sólo una vez por cada período de tiempo establecido</string>
@@ -209,13 +201,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (off)</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Notificación conexión Wi\u2011Fi</string>
-    <string name="notify_changed_networks_default">Off (por defecto)</string>
-    <string name="notify_changed_networks_toast">Toast</string>
-    <string name="notify_changed_networks_notification">Notificación</string>
-    <string name="notify_changed_networks_notification_sound">Notificación con sonido</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">Notificaciones Heads up</string>

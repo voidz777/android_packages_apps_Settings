@@ -103,10 +103,6 @@
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">Неврахована/перерахована статистика</string>
-    <string name="show_unac_and_overcounted_stats_summary">Показати статистику батареї для неврахованого та перерахованого використання</string>
-
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Показувати на екрані блокування</string>
     <string name="app_notification_show_on_keyguard_summary">Показати повідомлення з цього додатка на екрані блокування</string>
@@ -170,13 +166,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (вимкнена)</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Повідомлення про підключення Wi\u2011Fi</string>
-    <string name="notify_changed_networks_default">Вимкнено (за умовчанням)</string>
-    <string name="notify_changed_networks_toast">Тост повідомлення</string>
-    <string name="notify_changed_networks_notification">Повідомлення</string>
-    <string name="notify_changed_networks_notification_sound">Повідомлення зі звуком</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">Спливаючі повідомлення</string>

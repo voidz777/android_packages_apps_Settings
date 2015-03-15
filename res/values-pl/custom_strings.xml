@@ -70,10 +70,6 @@
     <string name="show_carrier_statusbar">Na pasku statusu</string>
     <string name="show_carrier_enabled">Włączone</string>
 
-    <!--Status bar data and wifi activity -->
-    <string name="show_activity_indicators_title">Wskaźniki aktywności</string>
-    <string name="show_activity_indicators_summary">Pokaż wskaźniki aktywności sieci</string>
-
     <!--Status bar date -->
     <string name="status_bar_clock_category">Zegar</string>
     <string name="status_bar_date_title">Data</string>
@@ -165,10 +161,6 @@
     <!-- SuperSU header name -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">Pokaż rzeczywiste/szacowane zużycie baterii</string>
-    <string name="show_unac_and_overcounted_stats_summary">Wyświetla statystki dotyczące rzeczywistego i szacowanego zużycia baterii</string>
-
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Pokaż na ekranie blokady</string>
     <string name="app_notification_show_on_keyguard_summary">Pokaż powiadomienia z tej aplikacji na ekranie blokady</string>
@@ -237,13 +229,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (wyłącz)</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Powiadomienie o połączeniu z siecią Wi\u2011Fi</string>
-    <string name="notify_changed_networks_default">Wyłączone (domyślne)</string>
-    <string name="notify_changed_networks_toast">Toast</string>
-    <string name="notify_changed_networks_notification">Powiadomienie</string>
-    <string name="notify_changed_networks_notification_sound">Powiadomienie z dźwiękiem</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">Wyskakujące powiadomienia</string>

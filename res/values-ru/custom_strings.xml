@@ -69,10 +69,6 @@
     <string name="show_carrier_statusbar">Значок оператора в строке состояния</string>
     <string name="show_carrier_enabled">Включен</string>
 
-    <!-- Status Bar Activity Indicators -->
-    <string name="show_activity_indicators_title">Индикатор сетевой активности</string>
-    <string name="show_activity_indicators_summary">Показывать индикатор сетевой активности в строке состояния на значках сети или WiFi</string>
-
     <!--Status bar date -->
     <string name="status_bar_clock_category">Время и дата</string>
     <string name="status_bar_date_title">Стиль даты</string>
@@ -158,10 +154,6 @@
     <!-- SuperSU header name -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Unaccounted and overcounted battery stats -->
-    <string name="show_unac_and_overcounted_stats_title">Показывать неучтенные (прочие) данные статистики батареи</string>
-    <string name="show_unac_and_overcounted_stats_summary">Показывать данные статистики батареи, которые не относятся ни к чему конкретному и обычно попадают в прочее</string>
-
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">Отобразить на экране блокировки</string>
     <string name="app_notification_show_on_keyguard_summary">Отображать уведомления от этого приложения на экране блокировки</string>
@@ -230,13 +222,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (выкл)</string>
-
-    <!-- Wifi connection notifications -->
-    <string name="wifi_notify_changed_networks">Уведомление о Wi\u2011Fi\u2011соединении</string>
-    <string name="notify_changed_networks_default">Выкл (по умолчанию)</string>
-    <string name="notify_changed_networks_toast">Всплывающее уведомление</string>
-    <string name="notify_changed_networks_notification">Уведомление</string>
-    <string name="notify_changed_networks_notification_sound">Уведомление и звук</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">Всплывающие уведомления</string>
