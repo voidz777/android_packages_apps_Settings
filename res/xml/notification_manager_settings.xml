@@ -22,6 +22,12 @@
             android:title="@string/lock_screen_notifications_title"
             android:persistent="false" />
 
+    <!-- Interruptions -->
+    <PreferenceScreen
+            android:key="zen_mode"
+            android:title="@string/zen_mode_settings_title"
+            android:fragment="com.android.settings.notification.ZenModeSettings" />
+
     <!-- App notifications -->
     <PreferenceScreen
             android:key="app_notifications"
@@ -34,6 +40,12 @@
             android:title="@string/manage_notification_access_title"
             android:persistent="false"
             android:fragment="com.android.settings.notification.NotificationAccessSettings" />
+
+    <!-- Heads up notifications -->
+        <Preference
+            android:key="heads_up_enabled"
+            android:fragment="com.android.settings.headsup.HeadsUpSettings"
+            android:title="@string/category_heads_up" />
 
     <!-- Filter notifications -->
     <PreferenceScreen

@@ -89,13 +89,6 @@
                 android:dependency="increasing_ring"
                 settings:advanced="true"/>
 
-        <!-- Interruptions -->
-        <PreferenceScreen
-                android:key="zen_mode"
-                android:title="@string/zen_mode_settings_title"
-                settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
-                android:fragment="com.android.settings.notification.ZenModeSettings" />
-
         <!-- Other sounds -->
         <Preference
                 android:key="other_sounds"
