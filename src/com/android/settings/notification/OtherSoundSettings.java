@@ -34,6 +34,7 @@ import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
@@ -77,6 +78,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_EMERGENCY_TONE = "emergency_tone";
     private static final String KEY_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
+    private static final String KEY_CATEGORY_POWER_NOTIFICATIONS = "power_notifications_category";
     private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
     private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
@@ -213,10 +215,6 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
         mPowerSoundsVibrate = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
         mPowerSoundsVibrate.setChecked(Global.getInt(getContentResolver(),
                 Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
-        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        if (vibrator == null || !vibrator.hasVibrator()) {
-            removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
-        }
 
         mPowerSoundsRingtone = findPreference(KEY_POWER_NOTIFICATIONS_RINGTONE);
         String currentPowerRingtonePath =
@@ -238,6 +236,14 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             if (ringtone != null) {
                 mPowerSoundsRingtone.setSummary(ringtone.getTitle(getActivity()));
             }
+        }
+
+        // remove power notifications vibrate if not supported
+        final PreferenceCategory powerNotifPrefs = (PreferenceCategory)
+                    findPreference(KEY_CATEGORY_POWER_NOTIFICATIONS);
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator == null || !vibrator.hasVibrator()) {
+            powerNotifPrefs.removePreference(mPowerSoundsVibrate);
         }
 
         for (SettingPref pref : PREFS) {
