@@ -218,11 +218,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     }
 
     private void updateRingOrNotificationPreference() {
-        mRingPreference.showIcon(mSuppressor != null
-                ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
-                : mRingerMode == AudioManager.RINGER_MODE_VIBRATE
-                ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
-                : R.drawable.ic_audio_ring_24dp);
+        if (mRingPreference != null && mNotificationPreference != null) {
+            mRingPreference.showIcon(mSuppressor != null
+                    ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
+                    : mRingerMode == AudioManager.RINGER_MODE_VIBRATE
+                    ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
+                    : R.drawable.ic_audio_ring_24dp);
+        }
     }
 
     private void updateRingerMode() {
