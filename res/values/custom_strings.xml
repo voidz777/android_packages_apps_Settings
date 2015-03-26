@@ -46,6 +46,13 @@
     <!-- Status bar settings  -->
     <string name="status_bar_title">Status bar</string>
 
+    <!--Status bar carrier -->
+    <string name="show_carrier_title">Carrier label</string>
+    <string name="show_carrier_disabled">Disabled</string>
+    <string name="show_carrier_keyguard">Keyguard carrier</string>
+    <string name="show_carrier_statusbar">Status bar carrier</string>
+    <string name="show_carrier_enabled">Enabled</string>
+
     <!--Power category -->
     <string name="power_category">Power button</string>
 
