@@ -116,7 +116,7 @@
 
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">Notification ticker</string>
-    <string name="status_bar_ticker_summary">Notification text animation in the statusbar</string>
+    <string name="status_bar_ticker_summary">Show notification text animation in the statusbar, using this option can cause occasional SystemUI crashes when changing themes so use at your own risk</string>
 
     <!--Power menu -->
     <string name="power_category">Power button</string>

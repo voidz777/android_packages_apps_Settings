@@ -246,6 +246,12 @@
             android:entries="@array/overlay_display_devices_entries"
             android:entryValues="@array/overlay_display_devices_values" />
 
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="status_bar_ticker_enabled"
+            android:title="@string/status_bar_ticker_title"
+            android:summary="@string/status_bar_ticker_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="debug_hw_drawing_category"
