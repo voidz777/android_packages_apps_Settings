@@ -82,7 +82,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
-    private static final String KEY_DEVICE_CPU = "device_cpu";
+    private static final String KEY_DEVICE_PROCESSOR = "device_cpu";
     private static final String KEY_DEVICE_MEMORY = "device_memory";
 
     private static final String KEY_UPDATE_SETTINGS = "update_settings";
@@ -106,6 +106,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_FIRMWARE_VERSION).setEnabled(true);
         setValueSummary(KEY_BASEBAND_VERSION, "gsm.version.baseband");
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL + getMsvSuffix());
+        setStringSummary(KEY_DEVICE_PROCESSOR, getDeviceProcessorInfo());
         setValueSummary(KEY_EQUIPMENT_ID, PROPERTY_EQUIPMENT_ID);
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
@@ -126,14 +127,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
                 PROPERTY_SELINUX_STATUS);
 
-        String cpuInfo = getCPUInfo();
         String memInfo = getMemInfo();
-
-        if (cpuInfo != null) {
-            setStringSummary(KEY_DEVICE_CPU, cpuInfo);
-        } else {
-            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_CPU));
-        }
 
         if (memInfo != null) {
             setStringSummary(KEY_DEVICE_MEMORY, memInfo);
@@ -450,51 +444,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         return result;
     }
 
-    private String getCPUInfo() {
-        String result = null;
-
-        try {
-            /* The expected /proc/cpuinfo output is as follows:
-             * Processor  : ARMv7 Processor rev 2 (v7l)
-             * BogoMIPS  : 272.62
-             *
-             * This needs updating, since
-             *
-             * Hammerhead output :
-             * Processor   : ARMv7 Processor rev 0 (v7l)
-             * processor   : 0
-             * BogoMIPS    : xxx
-             *
-             * Shamu output :
-             * processor   : 0
-             * model name  : ARMv7 Processor rev 1 (v7l)
-             * BogoMIPS    : xxx
-             *
-             * Continue reading the file until running into a line starting
-             * with either "model name" or "Processor" to meet both
-             */
-
-            BufferedReader reader = new BufferedReader(new FileReader(FILENAME_PROC_CPUINFO), 256);
-
-            String Line = reader.readLine();
-
-            while (Line != null) {
-                if (Line.indexOf("model name") == -1 &&
-                    Line.indexOf("Processor" ) == -1    ) {
-                    Line = reader.readLine();
-                } else {
-                    result = Line.split(":")[1].trim();
-                    break;
-                }
-            }
-
-            reader.close();
-
-        } catch (IOException e) {}
-
-        return result;
-    }
-
     /**
      * For Search.
      */
@@ -568,5 +517,38 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             }
         };
 
+    /**
+     * Returns the Hardware value in /proc/cpuinfo, else returns "Unknown".
+     * @return a string that describes the processor
+     */
+    private static String getDeviceProcessorInfo() {
+        // Hardware : XYZ
+        final String PROC_HARDWARE_REGEX = "Hardware\\s*:\\s*(.*)$"; /* hardware string */
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(FILENAME_PROC_CPUINFO));
+            String cpuinfo;
+
+            try {
+                while (null != (cpuinfo = reader.readLine())) {
+                    if (cpuinfo.startsWith("Hardware")) {
+                        Matcher m = Pattern.compile(PROC_HARDWARE_REGEX).matcher(cpuinfo);
+                        if (m.matches()) {
+                            return m.group(1);
+                        }
+                    }
+                }
+                return "Unknown";
+            } finally {
+                reader.close();
+            }
+        } catch (IOException e) {
+            Log.e(LOG_TAG,
+                "IO Exception when getting cpuinfo for Device Info screen",
+                e);
+
+            return "Unknown";
+        }
+    }
 }
 
