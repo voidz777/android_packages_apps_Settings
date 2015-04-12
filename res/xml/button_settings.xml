@@ -98,7 +98,8 @@
 
     <PreferenceCategory
         android:key="volume_keys"
-        android:title="@string/hardware_keys_volume_keys_title">
+        android:title="@string/hardware_keys_volume_keys_title"
+        settings:advanced="true">
 
         <SwitchPreference
             android:key="volume_wake_screen"
@@ -133,8 +134,7 @@
             android:summary="@string/volume_default_summary"
             android:entries="@array/volume_default_entries"
             android:entryValues="@array/volume_default_values"
-            android:defaultValue="0"
-            settings:advanced="true"/>
+            android:defaultValue="0" />
 
     </PreferenceCategory>
 

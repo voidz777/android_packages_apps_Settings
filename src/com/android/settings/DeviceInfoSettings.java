@@ -82,7 +82,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
-    private static final String KEY_DEVICE_PROCESSOR = "device_cpu";
+    private static final String KEY_DEVICE_PROCESSOR = "device_processor";
     private static final String KEY_DEVICE_MEMORY = "device_memory";
 
     private static final String KEY_UPDATE_SETTINGS = "update_settings";

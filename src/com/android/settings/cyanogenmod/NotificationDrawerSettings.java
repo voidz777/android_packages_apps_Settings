@@ -24,8 +24,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.provider.Settings;
-
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.os.Vibrator;
@@ -36,48 +34,30 @@ import com.android.settings.cyanogenmod.qs.QSTiles;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
-import com.android.internal.widget.LockPatternUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.internal.widget.LockPatternUtils;
+
 public class NotificationDrawerSettings extends SettingsPreferenceFragment implements Indexable,
         Preference.OnPreferenceChangeListener {
-
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String SMART_PULLDOWN = "smart_pulldown";
+    private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "status_bar_locked_on_secure_keyguard";
     private static final String QS_VIBRATE = "quick_settings_vibrate";
-    private static final String QS_BLOCK_ON_SECURE_KEYGUARD = "qs_block_on_secure_keyguard";
 
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
-    private Preference mQSTiles;
-    private SwitchPreference mQsVibrate;
     private SwitchPreference mBlockOnSecureKeyguard;
+    private SwitchPreference mQsVibrate;
+    private Preference mQSTiles;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.notification_drawer_settings);
-        PreferenceScreen prefSet = getPreferenceScreen();
-        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         mQSTiles = findPreference("qs_order");
-
-        mQsVibrate = (SwitchPreference) findPreference(QS_VIBRATE);
-        if (vibrator == null || !vibrator.hasVibrator()) {
-            prefSet.removePreference(mQsVibrate);
-        }
-
-        final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
-        mBlockOnSecureKeyguard = (SwitchPreference) findPreference(QS_BLOCK_ON_SECURE_KEYGUARD);
-        if (lockPatternUtils.isSecure()) {
-            mBlockOnSecureKeyguard.setChecked(Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 0) == 1);
-            mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
-        } else {
-            prefSet.removePreference(mBlockOnSecureKeyguard);
-        }
     }
 
     @Override
@@ -86,6 +66,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
         mQuickPulldown.setOnPreferenceChangeListener(this);
@@ -100,6 +81,17 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
                 Settings.System.QS_SMART_PULLDOWN, 0, UserHandle.USER_CURRENT);
         mSmartPulldown.setValue(String.valueOf(smartPulldownValue));
         mSmartPulldown.setSummary(mSmartPulldown.getEntry());
+
+        mQsVibrate = (SwitchPreference) findPreference(QS_VIBRATE);
+        if (vibrator == null || !vibrator.hasVibrator()) {
+            prefSet.removePreference(mQsVibrate);
+        }
+
+        final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
+        mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
+        if (!lockPatternUtils.isSecure()) {
+            prefSet.removePreference(mBlockOnSecureKeyguard);
+        }
     }
 
     @Override
@@ -127,11 +119,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
             Settings.System.putIntForUser(resolver, Settings.System.QS_SMART_PULLDOWN,
                     smartPulldownValue, UserHandle.USER_CURRENT);
             mSmartPulldown.setSummary(mSmartPulldown.getEntries()[index]);
-            return true;
-        } else if (preference == mBlockOnSecureKeyguard) {
-            Settings.Secure.putInt(getContentResolver(),
-                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
-                    (Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;

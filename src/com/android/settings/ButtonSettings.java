@@ -109,7 +109,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(powerCategory);
         }
 
-        if (Utils.hasVolumeRocker(getActivity())) {
+        if (Utils.hasVolumeRocker(getActivity()) && volumeCategory != null) {
             mVolumeKeyWakeControl = (SwitchPreference) findPreference(KEY_VOLUME_WAKE_DEVICE);
             mVolumeKeyMediaControl = (SwitchPreference) findPreference(KEY_VOLUME_MEDIA_CONTROLS);
             if (!res.getBoolean(R.bool.config_supports_volumeKeyScreenOffOptions)) {
@@ -155,7 +155,9 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 mVolumeDefault.setOnPreferenceChangeListener(this);
             }
         } else {
-            prefScreen.removePreference(volumeCategory);
+            if (volumeCategory != null) {
+                prefScreen.removePreference(volumeCategory);
+            }
         }
     }
 

@@ -73,7 +73,7 @@ public class QSTileHolder {
                 stringId = R.string.qs_tile_bluetooth;
                 break;
             case QSConstants.TILE_INVERSION:
-                resourceName = "ic_qs_inversion_on";
+                resourceName = "ic_invert_colors_disable";
                 stringId = R.string.qs_tile_display_inversion;
                 break;
             case QSConstants.TILE_CELLULAR:
@@ -81,15 +81,15 @@ public class QSTileHolder {
                 stringId = R.string.qs_tile_cellular_data;
                 break;
             case QSConstants.TILE_AIRPLANE:
-                resourceName = "ic_qs_airplane_on";
+                resourceName = "ic_signal_airplane_disable";
                 stringId = R.string.qs_tile_airplane_mode;
                 break;
             case QSConstants.TILE_ROTATION:
-                resourceName = "ic_qs_rotation_locked";
+                resourceName = "ic_portrait_to_auto_rotate";
                 stringId = R.string.qs_tile_display_rotation;
                 break;
             case QSConstants.TILE_FLASHLIGHT:
-                resourceName = "ic_qs_flashlight_on";
+                resourceName = "ic_signal_flashlight_disable";
                 stringId = R.string.qs_tile_flashlight;
                 break;
             case QSConstants.TILE_LOCATION:
@@ -101,7 +101,7 @@ public class QSTileHolder {
                 stringId = R.string.qs_tile_cast_screen;
                 break;
             case QSConstants.TILE_HOTSPOT:
-                resourceName = "ic_qs_hotspot_on";
+                resourceName = "ic_hotspot_disable";
                 stringId = R.string.qs_tile_hotspot;
                 break;
             case QSConstants.TILE_ADB_NETWORK:
@@ -140,6 +140,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_screen_timeout_vector";
                 stringId = R.string.qs_tile_screen_timeout;
                 break;
+            case QSConstants.TILE_LIVE_DISPLAY:
+                resourceName ="ic_livedisplay_day";
+                stringId = R.string.live_display_title;
+                break;
             case QSConstants.TILE_SCREENSHOT:
                 resourceName = "ic_qs_screenshot";
                 stringId = R.string.qs_screenshot_tile;
@@ -171,10 +175,6 @@ public class QSTileHolder {
             case QSConstants.TILE_AMBIENT_DISPLAY:
                 resourceName = "ic_qs_doze";
                 stringId = R.string.qs_ambient_display_tile;
-                break;
-            case QSConstants.TILE_LIVE_DISPLAY:
-                resourceName ="ic_livedisplay_day";
-                stringId = R.string.live_display_title;
                 break;
             default:
                 return null;

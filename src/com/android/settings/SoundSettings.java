@@ -37,7 +37,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.UserHandle;
 import android.os.Vibrator;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -52,8 +51,6 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.notification.DropDownPreference;
 import com.android.settings.notification.IncreasingRingVolumePreference;
 import com.android.settings.notification.NotificationAccessSettings;
 import com.android.settings.notification.VolumeSeekBarPreference;
@@ -106,9 +103,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private PackageManager mPM;
     private boolean mVoiceCapable;
     private Vibrator mVibrator;
+    private AudioManager mAudioManager;
     private VolumeSeekBarPreference mRingPreference;
     private VolumeSeekBarPreference mNotificationPreference;
-    private AudioManager mAudioManager;
 
     private TwoStatePreference mIncreasingRing;
     private IncreasingRingVolumePreference mIncreasingRingVolume;
@@ -116,10 +113,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     private Preference mNotificationRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
     private Preference mNotificationAccess;
-    private SwitchPreference mVolumeLinkNotificationSwitch;
-
     private ComponentName mSuppressor;
     private int mRingerMode = -1;
+    private SwitchPreference mVolumeLinkNotificationSwitch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -217,7 +213,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
     }
 
     private void updateRingOrNotificationPreference() {
-        if (mRingPreference != null && mNotificationPreference != null) {
+        if (mRingPreference != null) {
             mRingPreference.showIcon(mSuppressor != null
                     ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                     : mRingerMode == AudioManager.RINGER_MODE_VIBRATE
@@ -237,12 +233,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
         final ComponentName suppressor = NotificationManager.from(mContext).getEffectsSuppressor();
         if (Objects.equals(suppressor, mSuppressor)) return;
         mSuppressor = suppressor;
-        if (mRingPreference != null && mNotificationPreference != null) {
+        if (mRingPreference != null) {
             final String text = suppressor != null ?
                     mContext.getString(com.android.internal.R.string.muted_by,
                             getSuppressorCaption(suppressor)) : null;
             mRingPreference.setSuppressionText(text);
-            mNotificationPreference.setSuppressionText(text);
         }
         updateRingOrNotificationPreference();
     }
