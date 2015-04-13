@@ -469,4 +469,7 @@
     <string name="volume_default_title">Volume default</string>
     <string name="volume_default_summary">Choose which volume gets changed by default</string>
 
+    <!-- Vibrate options -->
+    <string name="vibrate_when_ringing_title_eos">For calls</string>
+    <string name="vibrate_on_touch_title_eos">On touch</string>
 </resources>
