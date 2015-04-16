@@ -218,8 +218,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
                     ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
                     : mRingerMode == AudioManager.RINGER_MODE_VIBRATE
                     ? com.android.internal.R.drawable.ic_audio_ring_notif_vibrate
-                    : R.drawable.ic_audio_ring_24dp);
-        }
+                    : com.android.internal.R.drawable.ic_audio_ring_notif);
+         }
     }
 
     private void updateRingerMode() {
@@ -432,9 +432,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements Indexab
 
             if (mNotificationPreference != null) {
                 mNotificationPreference.setEnabled(!enabled);
-                if (enabled) {
-                    updateEffectsSuppressor();
-                }
             }
             if (mVolumeLinkNotificationSwitch != null){
                 mVolumeLinkNotificationSwitch.setChecked(enabled);
