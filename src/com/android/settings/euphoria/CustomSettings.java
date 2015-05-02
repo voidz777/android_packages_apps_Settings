@@ -15,6 +15,7 @@
 */
 package com.android.settings.euphoria;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.ContentResolver;
 import android.content.res.Resources;
@@ -31,6 +32,8 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
+import com.android.internal.util.cm.QSUtils;
+
 import android.provider.SearchIndexableResource;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -46,15 +49,20 @@ public class CustomSettings extends SettingsPreferenceFragment
 
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+    private static final String DISABLE_TORCH_ON_SCREEN_OFF = "disable_torch_on_screen_off";
+    private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
 
     private SwitchPreference mRecentsClearAll;
     private ListPreference mRecentsClearAllLocation;
+    private SwitchPreference mTorchOff;
+    private ListPreference mTorchOffDelay;
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.custom_settings);
         ContentResolver resolver = getActivity().getContentResolver();
+        Activity activity = getActivity();
         PreferenceScreen prefSet = getPreferenceScreen();
 
         mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
@@ -68,6 +76,19 @@ public class CustomSettings extends SettingsPreferenceFragment
         mRecentsClearAllLocation.setValue(String.valueOf(location));
         mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntry());
         mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
+
+        mTorchOff = (SwitchPreference) prefSet.findPreference(DISABLE_TORCH_ON_SCREEN_OFF);
+        mTorchOffDelay = (ListPreference) prefSet.findPreference(DISABLE_TORCH_ON_SCREEN_OFF_DELAY);
+        int torchOffDelay = Settings.System.getInt(resolver,
+                Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, 10);
+        mTorchOffDelay.setValue(String.valueOf(torchOffDelay));
+        mTorchOffDelay.setSummary(mTorchOffDelay.getEntry());
+        mTorchOffDelay.setOnPreferenceChangeListener(this);
+
+        if (!QSUtils.deviceSupportsFlashLight(activity)) {
+            prefSet.removePreference(mTorchOff);
+            prefSet.removePreference(mTorchOffDelay);
+        }
     }
 
     @Override
@@ -89,6 +110,13 @@ public class CustomSettings extends SettingsPreferenceFragment
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             mRecentsClearAllLocation.setSummary(mRecentsClearAllLocation.getEntries()[index]);
+            return true;
+        } else if (preference == mTorchOffDelay) {
+            int torchOffDelay = Integer.valueOf((String) newValue);
+            int index = mTorchOffDelay.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DISABLE_TORCH_ON_SCREEN_OFF_DELAY, torchOffDelay);
+            mTorchOffDelay.setSummary(mTorchOffDelay.getEntries()[index]);
             return true;
         }
         return false;
