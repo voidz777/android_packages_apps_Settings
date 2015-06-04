@@ -477,4 +477,8 @@
     <string name="torch_screen_off_one_minute">1 minute</string>
     <string name="torch_screen_off_five_minutes">5 minutes</string>
     <string name="torch_screen_off_ten_minutes">10 minutes</string>
+
+    <!-- Task Manager -->
+    <string name="enable_task_manager_title">Task Manager</string>
+    <string name="enable_task_manager_summary">Show task manager button in the expanded statusbar area</string>
 </resources>
