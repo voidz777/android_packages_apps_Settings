@@ -1159,4 +1159,9 @@
     <string name="wifi_countrycode_entries_sg">Israel, Singapore</string>
     <string name="wifi_countrycode_entries_br">Brazil</string>
     <string name="wifi_countrycode_entries_in">India</string>
+
+    <!-- Keep screen on strings -->
+    <string name="keep_screen_on_never">Never</string>
+    <string name="keep_screen_on_debugging">While USB debugging</string>
+    <string name="keep_screen_on_charging">While charging</string>
 </resources>
