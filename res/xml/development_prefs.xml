@@ -252,6 +252,11 @@
             android:summary="@string/status_bar_ticker_summary"
             android:defaultValue="false" />
 
+        <SwitchPreference
+            android:key="pref_force_highend_gfx"
+            android:title="@string/pref_force_highend_gfx_title"
+            android:summary="@string/pref_force_highend_gfx_summary" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:key="debug_hw_drawing_category"
