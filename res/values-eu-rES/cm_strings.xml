@@ -210,7 +210,7 @@
   <string name="display_rotation_270_title">270 gradu</string>
   <string name="app_security_title">Aplikazioetako segurtasuna</string>
   <string name="sms_security_check_limit_title">SMS mezu muga</string>
-  <string name="sms_security_check_limit_summary">Aplikazioek %d mezu bidali ditzakete 30 minututan berrespena eskatu aurretik</string>
+  <string name="sms_security_check_limit_summary">Aplikazioek %d mezu bidali ditzakete minutu batean berrespena eskatu aurretik</string>
   <string name="sms_security_check_limit_summary_none">Aplikazioek ezin dute SMS mezurik bidali berrespenik gabe</string>
   <string name="sms_security_check_limit_none">Bat ere ez</string>
   <string name="spam_added_title">%1$s gehitu da</string>
@@ -307,9 +307,6 @@
   <string name="status_bar_battery_percentage_default">Ezkutua</string>
   <string name="status_bar_battery_percentage_text_inside">Ikonoaren barruan</string>
   <string name="status_bar_battery_percentage_text_next">Ikonoaren ondoan</string>
-  <string name="status_bar_show_unused_sims_title">Erakutsi SIM hutsen ikonoak</string>
-  <string name="status_bar_show_unused_sims_title_summary_off">Ezkutatu erabili gabeko SIM erretenak</string>
-  <string name="status_bar_show_unused_sims_title_summary_on">Seinalatu erabili gabeko SIM erretenak</string>
   <string name="edit_light_settings">Jakinarazpena editatu</string>
   <string name="pulse_speed_title">Dirdiraren iraupena eta abiadura</string>
   <string name="default_time">Arrunta</string>
@@ -344,7 +341,7 @@
   <string name="notification_ringtone_title_cm">Jakinarazpen doinua</string>
   <string name="headset_connect_player_title">Abiatu musika erreproduzigailua</string>
   <string name="headset_connect_player_summary">Abiatu musika erreproduzigailu lehenetsia aurikularrak konektatzean</string>
-  <string name="ime_switcher_notify">Hautatzaile ikonoa</string>
+  <string name="ime_switcher_notify">Hautaketa ikonoa</string>
   <string name="ime_switcher_notify_summary">Bistaratu sarrera metodoa hautatzeko ikonoa</string>
   <string name="app_notification_show_on_keyguard_title">Bistaratu blokeo-pantailan</string>
   <string name="app_notification_show_on_keyguard_summary">Bistaratu aplikazio honen jakinarazpenak blokeo-pantailan</string>
@@ -424,7 +421,7 @@
   <string name="app_ops_labels_modify_call_log">Dei erregistroa editatu</string>
   <string name="app_ops_labels_read_calendar">Egutegia irakurri</string>
   <string name="app_ops_labels_modify_calendar">Egutegia aldatu</string>
-  <string name="app_ops_labels_notification_toast">jakinarazpena/Mezua</string>
+  <string name="app_ops_labels_notification_toast">Jakinarazpena/Laster-leihoa</string>
   <string name="app_ops_labels_call_phone">Deitu</string>
   <string name="app_ops_labels_read_sms_db">SMSak irakurri</string>
   <string name="app_ops_labels_write_sms_db">SMSak idatzi</string>
@@ -686,7 +683,7 @@
   <string name="cpu_min_freq_title">CPU-aren maiztasun minimoa</string>
   <string name="cpu_max_freq_title">CPU-aren maiztasun maximoa</string>
   <string name="autoperf_title">Gaitu aplikazioen araberako profilak</string>
-  <string name="autoperf_summary">Automatikoki hautatu hainbat aplikazioentzako errendimendu profil egokida</string>
+  <string name="autoperf_summary">Automatikoki hautatu hainbat aplikazioentzako errendimendu profil egokia</string>
   <string name="graphics_title">Grafikoak eta errendatzea</string>
   <string name="edge_gesture_service_title">Blokeatu ukipen keinu gertaerak</string>
   <string name="edge_gesture_service_summary">Ez bidali nabigazio eta egoera barren keinuetarako ukipen gertakaririk aplikazioei</string>
@@ -731,7 +728,7 @@
   <string name="qs_tile_profiles">Sistema profilak</string>
   <string name="qs_tile_performance">Bateria modua</string>
   <string name="qs_tile_nfc">NFC</string>
-  <string name="qs_tile_compass">Iparorratza</string>
+  <string name="qs_tile_compass">Iparrorratza</string>
   <string name="qs_tile_lockscreen">Blokeo-pantaila</string>
   <string name="qs_tile_lte">LTE</string>
   <string name="qs_tile_screen_timeout">Pantailaren denbora-muga</string>
@@ -739,6 +736,9 @@
   <string name="qs_tile_heads_up">Jakinarazpen flotatzaileak</string>
   <string name="qs_tile_ambient_display">Ambient display</string>
   <string name="qs_tile_sync">Sinkronizazioa</string>
+  <string name="qs_dynamic_tile_next_alarm">Hurrengo alarma</string>
+  <string name="qs_dynamic_tile_ime_selector">IME hautatzailea</string>
+  <string name="qs_dynamic_tile_su">Root sarbidea</string>
   <string name="qs_main_tiles_title">Handitu lehen lerroa</string>
   <string name="qs_main_tiles_summary_on">Bi lauza nagusiak lehen lerroan</string>
   <string name="qs_main_tiles_summary_off">Hiru lauza lerroko</string>
@@ -869,4 +869,16 @@
   <string name="sim_card_status_title">%d. SIM txartelaren egoera</string>
   <string name="sim_card_lock_settings_title">%d. SIM txartelaren blokeo ezarpenak</string>
   <string name="sim_card_summary_empty">Ez da SIM txartelik sartu</string>
+  <string name="sim_mobile_network_settings_category_title">Sare mugikorraren ezarpenak</string>
+  <string name="sim_mobile_network_settings_title">%d. SIM txartelaren ezarpenak</string>
+  <string name="factory_reset_instructions_title">Datu eta aplikazio pertsonalak</string>
+  <string name="factory_reset_instructions_summary">Honek zure kontuak, aplikazioak, aplikazioetako datuak eta sistemaren ezarpenak ezabatuko ditu gailu honetatik</string>
+  <string name="factory_reset_personal_content">Eduki pertsonala</string>
+  <string name="factory_reset_erase_stored_content">Ezabatu gordetako edukia</string>
+  <string name="factory_reset_erase_stored_content_summary">Ezabatu musika, argazkiak, bideoak, eta gailu honetan gordetako bestelako erabiltzaile datuak</string>
+  <string name="factory_reset_erase_stored_content_summary_forced">Ezabatu musika, argazkiak, bideoak, eta gailu honetan gordetako bestelako erabiltzaile datuak. \n\n<b>Edukia ezin da gorde gailua zifratuta dagoelako.</b></string>
+  <string name="factory_reset_erase_sd_card">Formateatu SD txartela</string>
+  <string name="factory_reset_erase_sd_card_summary">Ezabatu barne SD txarteleko datu guztiak, musika eta argazkiak barne</string>
+  <string name="factory_reset_warning_text_reset_now">LEHENERATU ORAIN</string>
+  <string name="factory_reset_warning_text_message">Zure kontu, aplikazio, aplikazioetako datuak eta sistema ezarpen guztiak gailu honetatik ezabatuko dira. Ez dago hau desegiterik.</string>
 </resources>
