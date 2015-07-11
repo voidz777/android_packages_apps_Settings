@@ -87,6 +87,10 @@
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">Показ уведомлений</string>
     <string name="status_bar_ticker_summary">Анимация текста уведомления в строке состояния</string>
+    
+    <!--Status bar data and wifi activity -->
+    <string name="show_activity_indicators_title">Индикаторы активности</string>
+    <string name="show_activity_indicators_summary">Показывать индикаторы сетевой активности</string>
 
     <!-- Weather in status bar header -->
     <string name="status_bar_show_weather_title_eos">Погода</string>
@@ -161,7 +165,7 @@
     <string name="smart_pulldown_all">Без удаляемых и постоянных</string>
 
     <!-- Force expand notifications -->
-    <string name="notification_force_expand_title">Раширенные вид уведомлений(Всегда)</string>
+    <string name="notification_force_expand_title">Расширенный вид уведомлений(Всегда)</string>
     <string name="notification_force_expand_summary">Всегда использовать расширенный вид уведомлений для всех приложений, поддерживающих это</string>
 
     <!-- SuperSU header name -->
@@ -196,6 +200,27 @@
     <string name="weather_options_title">Погода</string>
     <string name="lock_clock_title">Виджет часов и погоды</string>
     <string name="lock_clock_summary">Посмотреть или изменить настройки отображения виджета \'cLock\'</string>
+    
+    <!-- Lockscreen shortcuts -->
+    <string name="lockscreen_targets_message_eos">Ярлыки</string>
+
+    <!-- Lockscreen weather -->
+    <string name="lock_screen_weather_settings_title">Погода</string>
+    <string name="weather_show_weather_title">Показывать погоду</string>
+    <string name="weather_show_weather_summary">Включить показ погоды</string>
+    <string name="weather_show_location_title">Показывать местоположение</string>
+    <string name="weather_show_location_summary">Включить показ местоположения</string>
+    <string name="weather_show_timestamp_title">Показывать время обновления</string>
+    <string name="weather_show_timestamp_summary">Включить показ времени обновления</string>
+    <string name="weather_condition_icon_title">Иконка погоды</string>
+    <string name="weather_condition_icon_dlg_title">Выбрать иконпак для показа состояния погоды</string>
+    <string name="weather_condition_icon_monochrome_title">Монохромные</string>
+    <string name="weather_condition_icon_colored_title">Цветные</string>
+    <string name="weather_condition_icon_vclouds_title">VClouds</string>
+    <string name="icons_title">Иконки</string>
+    <string name="position_right_title">Справа</string>
+    <string name="position_centered_title">По центру</string>
+    <string name="hidden_title">Скрыты</string>
 
     <!-- Recents panel -->
     <string name="recents_panel_category">Недавние приложения</string>
@@ -212,6 +237,25 @@
     <string name="recents_clear_all_dismiss_all_summary">При очистке всех завершать текущую задачу</string>
     <string name="recents_searchbar_title">Строка поиска</string>
     <string name="recents_searchbar_summary">Показывать строку поиска Google в панели \"Недавних приложений\"</string>
+    <string name="recent_panel_title">Многозадачность</string>
+    <string name="aosp_recents_panel">Панель недавних AOSP</string>
+
+    <!-- Slim recents panel -->
+    <string name="slim_recents_panel">Панель недавних Slim</string>
+    <string name="use_slim_recents_title">Включить</string>
+    <string name="show_running_tasks_title">Показывать только работающие</string>
+    <string name="recents_max_apps_title">Максимум приложений</string>
+    <string name="recent_panel_scale_title">Размер панели</string>
+    <string name="recent_panel_expanded_mode_title">Развернутый режим</string>
+    <string name="recent_panel_expanded_mode_summary">Развернутый режим предпросмотра</string>
+    <string name="recent_panel_expanded_mode_auto">Авто (стандартно)</string>
+    <string name="recent_panel_expanded_mode_always">Всегда</string>
+    <string name="recent_panel_expanded_mode_never">Никогда</string>
+    <string name="recent_panel_show_topmost_title">Показывать текущую задачу</string>
+    <string name="recent_panel_show_topmost_summary">Не исключать открытое приложение</string>
+    <!-- ATTENTION: RTL languages need to replace left with right -->
+    <string name="recent_panel_lefty_mode_title">Показывать на левой стороне</string>
+    <string name="recent_panel_lefty_mode_summary">Показывать панель слева</string>
 
     <!-- Full screen keyboard -->
     <string name="fullscreen_keyboard_title">Полноэкранная клавиатура</string>
@@ -319,6 +363,8 @@
 
     <!-- Navring targets (enable/disable) -->
     <string name="navigation_ring_enable_title">Включить ярлыки кольца панели навигации</string>
+    <string name="navigation_ring_category">Кольца навигации</string>
+    <string name="navigation_ring_title_eos">Цели и расположение</string>
     
     <!-- AOKP custom system animations -->
     <string name="animation_title">Анимация</string>  
@@ -457,5 +503,39 @@
     <string name="volume_default_media">Мультимедиа</string>
     <string name="volume_default_title">По умолчанию</string>
     <string name="volume_default_summary">Выберите, громкость чего изменяется по умолчанию</string>
-
+  
+    <!-- Privacy guard notification -->
+    <string name="privacy_guard_notification_title">Уведомление</string>
+    <string name="privacy_guard_notifiation_summary">Показывать уведомление если защита конфиденциальности активна</string>
+    
+    <!-- Breathing Notifications -->
+    <string name="breathing_notifications_title">Дышащие уведомления</string>
+    <string name="sms_breath_title">Дышащие SMS</string>
+    <string name="sms_breath_summary">Придаст уведомлению о СМС дышащий эффект</string>
+    <string name="missed_call_breath_title">Дышащие пропущенные звонки</string>
+    <string name="missed_call_breath_summary">Придаст уведомлению о пропущенном звонке дышащий эффект</string>
+    <string name="voicemail_breath_title">Дышащая голосовая почта</string>
+    <string name="voicemail_breath_summary">Придаст уведомлению о голосовой почте дышащий эффект</string>
+    
+    <!-- Mixed -->
+    <string name="vibrate_when_ringing_title_eos">При звонке</string>
+    <string name="vibrate_on_touch_title_eos">При касании</string>
+    <string name="doze_brightness_category_title">Яркость</string>
+    <string name="doze_brightness_title">Уровень яркости</string>
+    <string name="doze_auto_brightness_title">Автояркость</string>
+    <string name="doze_auto_brightness_summary">Регулировать яркость Ambient Display в зависимости от окружения</string>
+    <string name="double_tap_sleep_anywhere_title">Двойной тап для сна</string>
+    <string name="double_tap_sleep_anywhere_summary">Дважды нажмите на экран в любом месте чтобы заблокировать устройство</string>
+    <string name="enable_task_manager_title">Диспетчер задач</string>
+    <string name="enable_task_manager_summary">Показывать диспетчер задач в открытой панели уведомлений</string>
+    <string name="disable_torch_screen_off_title">Отключать фонарик при выключенном экране</string>
+    <string name="disable_torch_screen_off_delay_title">Задержка</string>
+    <string name="torch_screen_off_one_second">1 секунда</string>
+    <string name="torch_screen_off_ten_second">10 секунд (стандартно)</string>
+    <string name="torch_screen_off_thirty_second">30 секунд</string>
+    <string name="torch_screen_off_one_minute">1 минута</string>
+    <string name="torch_screen_off_five_minutes">5 минут</string>
+    <string name="torch_screen_off_ten_minutes">10 минут</string>
+    <string name="mod_version_eos">Версия Euphoria</string>
+    <string name="processor_info">Процессор</string>
 </resources>

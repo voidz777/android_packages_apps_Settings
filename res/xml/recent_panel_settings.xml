@@ -29,7 +29,7 @@
         android:title="@string/aosp_recents_panel" >
 
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-            android:key="recents_show_search_bar"
+            android:key="recents_search_bar"
             android:title="@string/recents_searchbar_title"
             android:summary="@string/recents_searchbar_summary"
             android:defaultValue="true" />

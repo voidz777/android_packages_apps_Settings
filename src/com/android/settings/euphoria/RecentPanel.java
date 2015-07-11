@@ -49,7 +49,7 @@ import java.util.List;
 public class RecentPanel extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener, Indexable  {
 
-    private static final String SHOW_RECENTS_SEARCHBAR = "recents_show_search_bar";
+    private static final String SHOW_RECENTS_SEARCHBAR = "recents_search_bar";
     private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
     private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
     private static final String RECENTS_DISMISS_ALL = "recents_clear_all_dismiss_all";
