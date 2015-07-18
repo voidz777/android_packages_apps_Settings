@@ -44,6 +44,9 @@
     <!-- General category -->
     <string name="general_options_title">常规</string>
 
+    <!--Status bar -->
+    <string name="status_bar_category">状态栏</string>
+
     <!--Wakeup when plugged/unplugged -->
     <string name="wakeup_when_plugged_unplugged_title">充电时唤醒</string>
     <string name="wakeup_when_plugged_unplugged_summary">当接入或断开电源时点亮屏幕</string>
@@ -53,22 +56,18 @@
     <string name="font_size_sample">示例</string>
 
     <!--Back to kill timeout -->
-    <string name="long_press_kill_delay">程序强制关闭延时</string>
+    <string name="long_press_kill_delay">应用强制关闭延时</string>
 
-    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
-    <string name="show_cpu_info">显示CPU信息</string>
-    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
-    <string name="show_cpu_info_summary">覆盖屏幕显示CPU当前信息</string>
-
-    <!--Status bar -->
-    <string name="status_bar_category">状态栏</string>
+    <!--Status bar data and wifi activity -->
+    <string name="show_activity_indicators_title">网络活动状态指示器</string>
+    <string name="show_activity_indicators_summary">在信号条显示网络活动状态</string>
 
     <!--Status bar carrier -->
     <string name="show_carrier_title">运营商标签</string>
     <string name="show_carrier_disabled">关闭</string>
-    <string name="show_carrier_keyguard">仅在锁屏时显示</string>
+    <string name="show_carrier_keyguard">仅在锁屏时状态栏显示</string>
     <string name="show_carrier_statusbar">仅在桌面状态栏显示</string>
-    <string name="show_carrier_enabled">两者均显示</string>
+    <string name="show_carrier_enabled">一直显示</string>
 
     <!--Status bar date -->
     <string name="status_bar_clock_category">时钟</string>
@@ -114,10 +113,17 @@
     <string name="network_traffic_autohide_summary">当没有活动连接时自动隐藏指示器</string>
     <string name="network_traffic_autohide_threshold">静态阀值</string>
 
+    <!-- Notification ticker -->
+    <string name="status_bar_ticker_title">通知文字提醒</string>
+    <string name="status_bar_ticker_summary">在状态栏动态显示文字提醒，使用该选项可能会在更换主题时导致SystemUI意外崩溃，请谨慎使用</string>
+
     <!--Power menu -->
     <string name="power_category">电源键</string>
     <string name="lockscreen_enable_power_menu_title">在锁屏时显示菜单</string>
-    <string name="actions_category">行为</string>
+    <string name="actions_category">电源键行为</string>
+
+    <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
+    <string name="supersu_title">SuperSU</string>
 
     <!-- Touch control -->
     <string name="touch_control_settings_title">触摸控制</string>
@@ -125,6 +131,7 @@
 
     <!-- Quick Settings tiles -->
     <string name="quick_settings_category">快速设置</string>
+    <string name="qs_ambient_display_tile">主动显示</string>
     <string name="qs_battery_saver_tile">电池节能</string>
     <string name="qs_brightness_tile">亮度</string>
     <string name="qs_expanded_desktop_tile">扩展桌面</string>
@@ -154,19 +161,33 @@
     <!-- Quick Settings 4 columns -->
     <string name="qs_four_columns_title">每行显示四个瓷块</string>
 
-    <!-- SuperSU header name -->
-    <string name="supersu_title">SuperSU</string>
+    <!-- QuickSettings: Smart Pulldown -->
+    <string name="smart_pulldown_title">智能下拉</string>
+    <string name="smart_pulldown_summary">当有 %1$s 条通知时启用快速设置</string>
+    <string name="smart_pulldown_off">关闭</string>
+    <string name="smart_pulldown_dismissable">当没有可清除的通知时启用</string>
+    <string name="smart_pulldown_persistent">当没有持续显示的通知时启用</string>
+    <string name="smart_pulldown_all">一直启用</string>
+
+    <!-- Force expand notifications -->
+    <string name="notification_force_expand_title">强制展开通知</string>
+    <string name="notification_force_expand_summary">强制展开所有兼容的应用的通知</string>
+
+    <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
+    <string name="show_cpu_info">显示CPU信息</string>
+    <!-- UI debug setting: show cpu usage summary [CHAR LIMIT=50] -->
+    <string name="show_cpu_info_summary">覆盖屏幕显示CPU当前信息</string>
 
     <!-- Keyguard notifications -->
     <string name="app_notification_show_on_keyguard_title">锁屏时显示通知</string>
-    <string name="app_notification_show_on_keyguard_summary">在锁屏显示来自该程序的通知</string>
+    <string name="app_notification_show_on_keyguard_summary">在锁屏显示来自该应用的通知</string>
     <string name="app_notification_no_ongoing_on_keyguard_title">锁屏禁止持续显示通知</string>
-    <string name="app_notification_no_ongoing_on_keyguard_summary">在锁屏永远禁止来自该程序的持续显示通知</string>
+    <string name="app_notification_no_ongoing_on_keyguard_summary">在锁屏永远禁止来自该应用的持续显示通知</string>
 
     <!-- Less Notification sounds -->
     <string name="notifications_category_title">通知</string>
     <string name="less_notification_sounds_title">降低通知响声频率</string>
-    <string name="less_notification_sounds_summary">限制每个程序的通知声音在某时段内在仅响一次</string>
+    <string name="less_notification_sounds_summary">限制每个应用的通知声音在某时段内在仅响一次</string>
     <string name="less_notification_sounds_default">默认行为</string>
     <string name="less_notification_sounds_3s">3秒</string>
     <string name="less_notification_sounds_5s">5秒</string>
@@ -183,24 +204,64 @@
     <string name="battery_saver_color_summary">当电池节能模式激活时使状态栏和导航栏变成橙色</string>
 
     <!--- Lock clock -->
+    <string name="weather_options_title">天气</string>
     <string name="lock_clock_title">时间插件</string>
     <string name="lock_clock_summary">查看或改变 \'cLock\' 插件样式</string>
 
+    <!-- Lockscreen shortcuts -->
+    <string name="lockscreen_targets_message_eos">快捷方式</string>
+
+    <!-- Lockscreen weather -->
+    <string name="lock_screen_weather_settings_title">天气</string>
+    <string name="weather_show_weather_title">显示天气</string>
+    <string name="weather_show_weather_summary">在锁屏界面显示天气信息</string>
+    <string name="weather_show_location_title">显示位置</string>
+    <string name="weather_show_location_summary">在天气插件显示位置</string>
+    <string name="weather_show_timestamp_title">显示时间戳</string>
+    <string name="weather_show_timestamp_summary">在天气插件显示时间戳</string>
+    <string name="weather_condition_icon_title">图标集</string>
+    <string name="weather_condition_icon_dlg_title">选择要用来显示天气的图标集</string>
+    <string name="weather_condition_icon_monochrome_title">单色</string>
+    <string name="weather_condition_icon_colored_title">彩色</string>
+    <string name="weather_condition_icon_vclouds_title">VClouds</string>
+    <string name="icons_title">图标</string>
+    <string name="position_right_title">右边</string>
+    <string name="position_centered_title">居中</string>
+    <string name="hidden_title">隐藏</string>
+
     <!-- Recents panel -->
-    <string name="recents_panel_category">最近使用程序界面</string>
-    <string name="show_clear_all_recents_button_title">清除所有程序按键</string>
-    <string name="show_clear_all_recents_button_summary">显示清除所有程序的按键</string>
-    <string name="recents_clear_all_location_title">清除所有位置</string>
+    <string name="recent_panel_title">多任务</string>
+    <string name="aosp_recents_panel">AOSP最近打开应用面板</string>
+    <string name="show_clear_all_recents_button_title">所有应用清除键</string>
+    <string name="show_clear_all_recents_button_summary">显示清除所有应用的按键</string>
+    <string name="recents_clear_all_location_title">清除键所在位置</string>
     <string name="recents_clear_all_location_top_right">右上角</string>
     <string name="recents_clear_all_location_top_left">左上角</string>
     <string name="recents_clear_all_location_top_center">顶部居中</string>
     <string name="recents_clear_all_location_bottom_right">右下角</string>
     <string name="recents_clear_all_location_bottom_left">左下角</string>
     <string name="recents_clear_all_location_bottom_center">底部居中</string>
-    <string name="recents_clear_all_dismiss_all_title">清除所有任务</string>
-    <string name="recents_clear_all_dismiss_all_summary">清除包括前台的所有任务</string>
+    <string name="recents_clear_all_dismiss_all_title">清除所有活动</string>
+    <string name="recents_clear_all_dismiss_all_summary">清除包括前台的所有活动</string>
     <string name="recents_searchbar_title">搜索栏</string>
-    <string name="recents_searchbar_summary">在最近使用程序界面显示谷歌搜索栏</string>
+    <string name="recents_searchbar_summary">在最近使用应用界面里显示谷歌搜索栏</string>
+
+    <!-- Slim recents panel -->
+    <string name="slim_recents_panel">Slim最近打开应用面板</string>
+    <string name="use_slim_recents_title">开启</string>
+    <string name="show_running_tasks_title">仅显示正在运行的应用</string>
+    <string name="recents_max_apps_title">最多能允许显示的应用数量</string>
+    <string name="recent_panel_scale_title">面板大小</string>
+    <string name="recent_panel_expanded_mode_title">扩展模式</string>
+    <string name="recent_panel_expanded_mode_summary">最近运行的活动扩展预览模式</string>
+    <string name="recent_panel_expanded_mode_auto">自动（默认）</string>
+    <string name="recent_panel_expanded_mode_always">一直启用</string>
+    <string name="recent_panel_expanded_mode_never">从不启用</string>
+    <string name="recent_panel_show_topmost_title">显示当前应用</string>
+    <string name="recent_panel_show_topmost_summary">在最近运行的视图中排除当前运行的应用</string>
+    <!-- ATTENTION: RTL languages need to replace left with right -->
+    <string name="recent_panel_lefty_mode_title">在屏幕左边缘显示</string>
+    <string name="recent_panel_lefty_mode_summary">在屏幕左边缘显示最近运行的应用</string>
 
     <!-- Full screen keyboard -->
     <string name="fullscreen_keyboard_title">全屏键盘</string>
@@ -220,11 +281,16 @@
     <string name="navigation_bar_size_36_dp">36 dp</string>
     <string name="navigation_bar_size_30_dp">30 dp</string>
     <string name="navigation_bar_size_24_dp">24 dp</string>
+    <string name="navigation_bar_size_52_dp">52 dp</string>
     <string name="navigation_bar_size_48_dp_default">48 dp（默认）</string>
     <string name="navigation_bar_size_44_dp">44 dp</string>
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp（关闭）</string>
+
+    <!-- Double Tap Navbar to Sleep -->
+    <string name="double_tap_sleep_nav_bar_title">双击以睡眠</string>
+    <string name="double_tap_sleep_nav_bar_summary">双击导航栏使设备休眠</string>
 
     <!-- Heads Up -->
     <string name="category_heads_up">浮动通知</string>
@@ -232,27 +298,38 @@
     <string name="summary_heads_up_disabled">浮动通知已关闭</string>
     <string name="show_headsup_button_title">快速进入按钮</string>
     <string name="show_headsup_button_summary">在状态栏显示快速进入的按钮</string>
-    <string name="add_heads_up_package">增加程序</string>
-    <string name="add_heads_up_dnd_summary">不要显示这些程序的浮动通知</string>
-    <string name="add_heads_up_blacklist_summary">不要显示来自这些程序的浮动通知</string>
+    <string name="add_heads_up_package">增加应用</string>
+    <string name="add_heads_up_dnd_summary">不要显示这些应用的浮动通知</string>
+    <string name="add_heads_up_blacklist_summary">不要显示来自这些应用的浮动通知</string>
     <string name="heads_up_dnd_title">请勿打扰</string>
     <string name="heads_up_blacklist_title">黑名单</string>
-    <string name="heads_up_disabled_notice">若要允许程序以浮动的通知进行交互，请开启浮动通知。</string>
+    <string name="heads_up_disabled_notice">若要允许应用以浮动的通知进行交互，请开启浮动通知。</string>
 
     <!-- Heads up timeout -->
     <string name="heads_up_time_out_title">超时</string>
     <string name="heads_up_time_out_summary">通知将在 <xliff:g id="number">%d</xliff:g> 秒后过期</string>
     <string name="heads_up_time_out_never_summary">通知将会持续显示直至被移除</string>
-    <string name="heads_up_time_out_2sec">2 秒</string>
-    <string name="heads_up_time_out_4sec">4 秒</string>
-    <string name="heads_up_time_out_6sec">6 秒</string>
-    <string name="heads_up_time_out_8sec">8 秒</string>
-    <string name="heads_up_time_out_10sec">10 秒</string>
+    <string name="heads_up_time_out_2sec">2秒</string>
+    <string name="heads_up_time_out_4sec">4秒</string>
+    <string name="heads_up_time_out_6sec">6秒</string>
+    <string name="heads_up_time_out_8sec">8秒</string>
+    <string name="heads_up_time_out_10sec">10秒</string>
     <string name="heads_up_time_out_never">从不</string>
+
+    <!-- Heads up snooze -->
+    <string name="heads_up_snooze_title">睡眠定时</string>
+    <string name="heads_up_snooze_summary">滑动浮动通知将会使其在<xliff:g id="number">%d</xliff:g>分钟内进入无提示状态</string>
+    <string name="heads_up_snooze_disabled_summary">睡眠定时已被关闭</string>
+    <string name="heads_up_snooze_1min">1分钟</string>
+    <string name="heads_up_snooze_3min">3分钟</string>
+    <string name="heads_up_snooze_5min">5分钟</string>
+    <string name="heads_up_snooze_10min">10分钟</string>
+    <string name="heads_up_snooze_15min">15分钟</string>
+    <string name="heads_up_snooze_20min">20分钟</string>
 
     <!-- Superuser indicator-->
     <string name="su_indicator">超级用户指示器</string>
-    <string name="su_indicator_summary">当会话使用root权限时显示超级用户指示器</string>
+    <string name="su_indicator_summary">当应用使用root权限时状态栏显示超级用户图标</string>
 
     <!-- Screen recorder -->
     <string name="screen_recorder_title">屏幕录制</string>
@@ -298,18 +375,20 @@
     <string name="privacy_guard_notification_title">通知</string>
     <string name="privacy_guard_notifiation_summary">当隐私守护激活时显示通知</string>
 
-    <!-- Display settings screen, setting options for LCD density -->
-    <string name="lcd_density">LCD 密度</string>
-    <string name="lcd_density_summary">%d DPI</string>
-    <string name="lcd_density_default">设备默认</string>
-    <string name="lcd_density_unsupported">不支持</string>
-    <string name="restarting_ui">重启中</string>
-
-    <!-- Navring targets (enable/disable) -->
+    <!-- Navring targets -->
+    <string name="navigation_ring_category">导航环</string>
     <string name="navigation_ring_enable_title">开启导航环</string>
+    <string name="navigation_ring_title_eos">功能与布局</string>
+
+    <!-- Display & Lights screen, setting options for LCD density -->
+    <string name="lcd_density">LCD密度</string>
+    <string name="dialog_title_lcd_density">LCD密度</string>
+    <string name="lcd_density_value_format">%d DPI</string>
+    <string name="lcd_density_default_value_format">%d DPI（默认）</string>
+    <string name="restarting_ui">正在重启UI\u2026</string>
 
     <!-- AOKP custom system animations -->
-    <string name="animation_title">动画</string>  
+    <string name="animation_title">动画</string>
     <string name="system_animation_title">系统</string>
     <string name="activity_open_title">打开活动</string>
     <string name="activity_close_title">关闭活动</string>
@@ -323,8 +402,8 @@
     <string name="wallpaper_intra_close_title">壁纸内部关闭</string>
     <string name="task_open_behind_title">后台开启任务</string>
     <string name="animation_duration_title">持续动画</string>
-    <string name="title_animation_no_override">阻止程序覆盖</string>
-    <string name="summary_animation_no_override">阻止程序覆盖过渡动画</string>
+    <string name="title_animation_no_override">阻止应用覆盖</string>
+    <string name="summary_animation_no_override">阻止应用覆盖过渡动画</string>
     <string name="animation_duration_default">默认</string>
 
     <!-- Toast Animation -->
@@ -371,6 +450,8 @@
     <string name="listview_bounce_interpolator">弹跳</string>
 
     <!-- Doze pulse (ambient display) options -->
+    <string name="summary_doze_enabled">已开启</string>
+    <string name="summary_doze_disabled">已关闭</string>
     <string name="doze_overwrite_value_title">覆盖参数</string>
     <string name="doze_overwrite_value_summary">允许用户设置覆盖默认参数</string>
 
@@ -378,7 +459,7 @@
     <string name="doze_list_mode_summary">配置主动显示模式</string>
 
     <string name="doze_pulse_title">时间设置</string>
-    <string name="doze_pulse_duration_in_title">渐强</string>
+    <string name="doze_pulse_duration_in_title">渐现</string>
     <string name="doze_pulse_duration_in_summary"></string>
 
     <string name="doze_pulse_duration_visible_title">可视持续时间</string>
@@ -404,23 +485,29 @@
     <string name="doze_time_mode_title">显示时间和日期</string>
     <string name="doze_time_mode_summary">没有未读通知时强制显示时间</string>
 
-    <string name="twohundred_ms">200 毫秒</string>
-    <string name="fivehundred_ms">500 毫秒</string>
-    <string name="one_second">1 秒</string>
-    <string name="one_second_default">1 秒（默认）</string>
-    <string name="onehalf_second">1.5 秒</string>
-    <string name="two_second">2 秒</string>
-    <string name="twohalf_second">2.5 秒</string>
-    <string name="three_second">3 秒</string>
-    <string name="three_second_default">3 秒（默认）</string>
-    <string name="threehalf_second">3.5 秒</string>
-    <string name="four_second">4 秒</string>
-    <string name="fourhalf_second">4.5 秒</string>
-    <string name="five_second">5 秒</string>
+    <string name="doze_brightness_category_title">亮度</string>
+    <string name="doze_brightness_title">亮度程度</string>
+
+    <string name="doze_auto_brightness_title">自动调节亮度</string>
+    <string name="doze_auto_brightness_summary">根据所处环境的光线自动调节屏幕亮度</string>
+
+    <string name="twohundred_ms">200毫秒</string>
+    <string name="fivehundred_ms">500毫秒</string>
+    <string name="one_second">1秒</string>
+    <string name="one_second_default">1秒（默认）</string>
+    <string name="onehalf_second">1.5秒</string>
+    <string name="two_second">2秒</string>
+    <string name="twohalf_second">2.5秒</string>
+    <string name="three_second">3秒</string>
+    <string name="three_second_default">3秒（默认）</string>
+    <string name="threehalf_second">3.5秒</string>
+    <string name="four_second">4秒</string>
+    <string name="fourhalf_second">4.5秒</string>
+    <string name="five_second">5秒</string>
 
     <string name="veryeasy_shake">很轻</string>
     <string name="easy_shake">轻</string>
-    <string name="medium_shake">Default</string>
+    <string name="medium_shake">默认</string>
     <string name="hard_shake">重</string>
     <string name="veryhard_shake">很重</string>
     <string name="strong_shake">极重</string>
@@ -431,4 +518,40 @@
     <string name="pocket_only_mode">口袋模式</string>
     <string name="shake_pulse_mode">晃动模式和主动模式</string>
     <string name="pulse_only_mode">主动模式（默认）</string>
+
+    <!-- Long press on lock screen lock icon to sleep -->
+    <string name="longpress_lock_icon_to_sleep_title">长按锁屏图标休眠</string>
+    <string name="longpress_lock_icon_to_sleep_summary">该设置不会在智能锁屏和触摸辅助功能开启的情况下生效</string>
+
+    <!-- Double tap gesture anywhere on the lock screen put device to sleep -->
+    <string name="double_tap_sleep_anywhere_title">任意处双击以睡眠</string>
+    <string name="double_tap_sleep_anywhere_summary">在锁屏界面任意地方双击使设备休眠</string>
+
+    <!-- Vibrate options -->
+    <string name="vibrate_when_ringing_title_eos">来电振动</string>
+    <string name="vibrate_on_touch_title_eos">触摸反馈</string>
+
+    <!-- Disable torch when screen goes off -->
+    <string name="disable_torch_screen_off_title">在屏幕关闭时禁止手电筒</string>
+    <string name="disable_torch_screen_off_delay_title">延时</string>
+    <string name="torch_screen_off_one_second">1秒</string>
+    <string name="torch_screen_off_ten_second">10秒（默认）</string>
+    <string name="torch_screen_off_thirty_second">30秒</string>
+    <string name="torch_screen_off_one_minute">1分钟</string>
+    <string name="torch_screen_off_five_minutes">5分钟</string>
+    <string name="torch_screen_off_ten_minutes">10分钟</string>
+
+    <!-- Task Manager -->
+    <string name="enable_task_manager_title">活动管理器</string>
+    <string name="enable_task_manager_summary">在状态栏扩展区域显示活动管理器的按钮</string>
+
+    <!-- Breathing Notifications -->
+    <string name="breathing_notifications_title">呼吸动态提醒</string>
+    <string name="sms_breath_title">短信呼吸提醒</string>
+    <string name="sms_breath_summary">未读短信的图标在状态栏以呼吸灯效果闪动提醒</string>
+    <string name="missed_call_breath_title">未接来电呼吸提醒</string>
+    <string name="missed_call_breath_summary">接来电的图标在状态栏未以呼吸灯闪动提醒</string>
+    <string name="voicemail_breath_title">语音信箱呼吸提醒</string>
+    <string name="voicemail_breath_summary">未读语音的图标在状态栏以呼吸灯效果闪动提醒</string>
+
 </resources>
