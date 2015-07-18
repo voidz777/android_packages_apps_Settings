@@ -100,7 +100,7 @@
             android:id="@+id/device_section"
             android:title="@string/header_category_device" >
 
-    <!-- Sound -->
+        <!-- Sound -->
         <dashboard-tile
                 android:id="@+id/sound_settings"
                 android:title="@string/category_sounds"
@@ -257,15 +257,6 @@
                 android:title="@string/location_settings_title"
                 android:fragment="com.android.settings.location.LocationSettings"
                 android:icon="@drawable/ic_settings_location"
-                />
-
-        <!-- Custom -->
-        <dashboard-tile
-                android:id="@+id/custom_settings"
-                android:fragment="com.android.settings.euphoria.CustomSettings"
-                android:title="@string/radio_controls_title"
-                android:icon="@drawable/ic_settings_more"
-                settings:advanced="true"
                 />
 
     </dashboard-category>
