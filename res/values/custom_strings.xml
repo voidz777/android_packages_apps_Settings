@@ -37,6 +37,9 @@
     <string name="changelog_title_summary">View recent changes in the ROM</string>
     <string name="changelog_error">Unable to load changelog</string>
 
+    <!-- General category -->
+    <string name="general_options_title">General</string>
+
     <!-- Notification drawer -->
     <string name="notification_drawer_title">Notification drawer</string>
 
@@ -54,10 +57,14 @@
     <string name="show_carrier_enabled">Enabled</string>
 
     <!-- Status bar temperature -->
-    <string name="status_bar_temperature_title">Temperature style</string>
+    <string name="status_bar_temperature_title">Status bar temperature</string>
     <string name="status_bar_temperature_hidden">Hidden</string>
-    <string name="status_bar_temperature_show_scale">Scale showing</string>
-    <string name="status_bar_temperature_hide_scale">Scale hidden</string>
+    <string name="status_bar_temperature_show_scale">Show with scale</string>
+    <string name="status_bar_temperature_hide_scale">Show without scale</string>
+    <string name="status_bar_temperature_location_title">Placement</string>
+    <string name="status_bar_temperature_location_summary">Select where the weather temperature is shown on the statusbar</string>
+    <string name="status_bar_temperature_location_right">Show on right</string>
+    <string name="status_bar_temperature_location_left">Show on left</string>
 
     <!--Power category -->
     <string name="power_category">Power button</string>
