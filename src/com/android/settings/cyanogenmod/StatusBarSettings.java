@@ -36,11 +36,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String SHOW_CARRIER_LABEL = "status_bar_show_carrier";
+    private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
 
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
 
     private ListPreference mShowCarrierLabel;
+    private ListPreference mStatusBarTemperature;
     private PreferenceScreen mLockClock;
 
     @Override
@@ -67,6 +69,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             prefSet.removePreference(mShowCarrierLabel);
         }
 
+        mStatusBarTemperature = (ListPreference) findPreference(STATUS_BAR_TEMPERATURE_STYLE);
+        int temperatureStyle = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0);
+        mStatusBarTemperature.setValue(String.valueOf(temperatureStyle));
+        mStatusBarTemperature.setSummary(mStatusBarTemperature.getEntry());
+        mStatusBarTemperature.setOnPreferenceChangeListener(this);
+
         mLockClock = (PreferenceScreen) findPreference(KEY_LOCK_CLOCK);
         if (!Utils.isPackageInstalled(getActivity(), KEY_LOCK_CLOCK_PACKAGE_NAME)) {
             prefSet.removePreference(mLockClock);
@@ -92,6 +101,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putIntForUser(resolver, Settings.System.
                 STATUS_BAR_SHOW_CARRIER, showCarrierLabel, UserHandle.USER_CURRENT);
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarTemperature) {
+            int temperatureStyle = Integer.valueOf((String) newValue);
+            int index = mStatusBarTemperature.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, temperatureStyle);
+            mStatusBarTemperature.setSummary(
+                    mStatusBarTemperature.getEntries()[index]);
             return true;
         }
         return false;
