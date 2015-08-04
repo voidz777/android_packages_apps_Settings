@@ -28,10 +28,7 @@ LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
     --extra-packages android.support.v7.cardview
 
-LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
-
 include frameworks/opt/setupwizard/navigationbar/common.mk
-
 include $(BUILD_PACKAGE)
 
 # Use the following include to make our test apk.

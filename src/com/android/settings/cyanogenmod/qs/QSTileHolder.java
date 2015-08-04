@@ -172,7 +172,7 @@ public class QSTileHolder {
                 stringId = R.string.qs_screen_off_tile;
                 break;
             case QSConstants.TILE_AMBIENT_DISPLAY:
-                resourceName = "ic_qs_doze";
+                resourceName = "ic_qs_ambientdisplay_on";
                 stringId = R.string.qs_ambient_display_tile;
                 break;
             case QSConstants.TILE_USB_TETHER:

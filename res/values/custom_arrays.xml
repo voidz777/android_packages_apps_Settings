@@ -457,8 +457,6 @@
         <item>@string/torch_screen_off_ten_second</item>
         <item>@string/torch_screen_off_thirty_second</item>
         <item>@string/torch_screen_off_one_minute</item>
-        <item>@string/torch_screen_off_five_minutes</item>
-        <item>@string/torch_screen_off_ten_minutes</item>
     </string-array>
 
     <string-array name="torch_screen_off_delay_values" translatable="false">
@@ -491,6 +489,31 @@
     </string-array>
 
     <string-array name="weather_condition_icon_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="weather_hide_panel_entries">
+        <item>@string/weather_hide_panel_auto_title</item>
+        <item>@string/weather_hide_panel_custom_title</item>
+        <item>@string/weather_hide_panel_never_title</item>
+    </string-array>
+
+    <string-array name="weather_hide_panel_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Status bar temperature -->
+    <string-array name="status_bar_temperature_entries" translatable="false">
+        <item>@string/status_bar_temperature_hidden</item>
+        <item>@string/status_bar_temperature_show_scale</item>
+        <item>@string/status_bar_temperature_hide_scale</item>
+    </string-array>
+
+    <string-array name="status_bar_temperature_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>

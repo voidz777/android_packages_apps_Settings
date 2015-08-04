@@ -88,6 +88,8 @@ import com.android.settings.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.android.internal.util.cm.QSUtils;
+
 import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_2G3G4G;
 import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_BLUETOOTH;
 import static cyanogenmod.profiles.ConnectionSettings.PROFILE_CONNECTION_GPS;
@@ -249,7 +251,7 @@ public class SetupActionsFragment extends SettingsPreferenceFragment
         mItems.add(new BrightnessItem(mProfile.getBrightness()));
 
         final Activity activity = getActivity();
-        if (Utils.isDozeAvailable(activity)) {
+        if (QSUtils.isDozeAvailable(activity)) {
             mItems.add(new DozeModeItem(mProfile));
         }
 
