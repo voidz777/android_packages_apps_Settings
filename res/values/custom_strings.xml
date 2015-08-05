@@ -673,4 +673,9 @@
     <string name="media_art_title">Media cover art</string>
     <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 
+    <!-- Doze notification color invert -->
+    <string name="doze_notification_color_invert_title">Color inversion</string>
+    <string name="doze_notification_color_invert_summary_off">Ambient display notifications will not be inverted. Use for dark themes.</string>
+    <string name="doze_notification_color_invert_summary_on">Ambient display notifications will show as inverted. Use for light/stock theme.</string>
+
 </resources>
