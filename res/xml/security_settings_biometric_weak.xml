@@ -70,15 +70,34 @@
         android:title="@string/title_general">
 
         <PreferenceScreen
-            android:key="owner_info_settings"
-            android:fragment="com.android.settings.OwnerInfoSettings"
-            android:title="@string/owner_info_settings_title"
-            android:summary="@string/owner_info_settings_summary"/>
-
-        <PreferenceScreen
             android:key="lockscreen_shortcuts_settings"
             android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
-            android:title="@string/lockscreen_targets_message"
+            android:title="@string/lockscreen_targets_message_eos"
+            settings:advanced="true"/>
+
+        <PreferenceScreen
+            android:key="lockscreen_wallpaper"
+            android:title="@string/lockscreen_wallpaper_title"
+            android:persistent="false"
+            android:fragment="com.android.settings.euphoria.LockscreenWallpaper"
+            settings:advanced="true"/>
+
+        <PreferenceScreen
+            android:key="lockscreen_weather"
+            android:title="@string/lock_screen_weather_settings_title"
+            android:fragment="com.android.settings.euphoria.LockScreenWeatherSettings"
+            settings:advanced="true"/>
+
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="long_press_lock_icon_to_sleep"
+            android:title="@string/longpress_lock_icon_to_sleep_title"
+            android:summary="@string/longpress_lock_icon_to_sleep_summary"
+            settings:advanced="true"/>
+
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="double_tap_sleep_anywhere"
+            android:title="@string/double_tap_sleep_anywhere_title"
+            android:summary="@string/double_tap_sleep_anywhere_summary"
             settings:advanced="true"/>
 
         <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
@@ -86,6 +105,13 @@
             android:title="@string/lockscreen_visualizer_title"
             android:defaultValue="true"
             settings:advanced="true"/>
+
+        <PreferenceScreen
+            android:key="owner_info_settings"
+            android:fragment="com.android.settings.OwnerInfoSettings"
+            android:title="@string/owner_info_settings_title"
+            android:summary="@string/owner_info_settings_summary"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

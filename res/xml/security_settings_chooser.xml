@@ -40,6 +40,13 @@
             settings:advanced="true"/>
 
         <PreferenceScreen
+            android:key="lockscreen_wallpaper"
+            android:title="@string/lockscreen_wallpaper_title"
+            android:persistent="false"
+            android:fragment="com.android.settings.euphoria.LockscreenWallpaper"
+            settings:advanced="true"/>
+
+        <PreferenceScreen
             android:key="lockscreen_weather"
             android:title="@string/lock_screen_weather_settings_title"
             android:fragment="com.android.settings.euphoria.LockScreenWeatherSettings"
