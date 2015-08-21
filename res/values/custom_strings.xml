@@ -622,4 +622,8 @@
     <string name="trigger_top_summary">Adjust the vertical postion of the trigger area</string>
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
+
+    <!-- Device policy override -->
+    <string name="device_policy_override_title">Device policy override</string>
+    <string name="device_policy_override_summary">Allow apps to force secure lock screen and override profile settings</string>
 </resources>
