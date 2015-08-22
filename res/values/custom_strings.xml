@@ -560,4 +560,9 @@
     <!-- Screenshot delay -->
     <string name="powermenu_screenshot_delay_title">Screenshot delay</string>
 
+    <!--Time Contexual Header -->
+    <string name="notification_title">Notification panel</string>
+    <string name="status_bar_custom_header_title">Custom header image</string>
+    <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+
 </resources>
