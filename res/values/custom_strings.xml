@@ -658,4 +658,6 @@
     <!-- Toast Icons -->
     <string name="toast_icon_title">Toast icon</string>
 
+    <!-- Pie control -->
+    <string name="pa_pie_control_title">Pie Control</string>
 </resources>
