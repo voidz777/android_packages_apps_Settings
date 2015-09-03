@@ -187,6 +187,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_heads_up_on";
                 stringId = R.string.qs_tile_heads_up;
                 break;
+            case QSConstants.TILE_PA_PIE:
+                resourceName = "ic_qs_pie_global_on";
+                stringId = R.string.qs_pa_pie_tile;
+                break;
 
             // Dynamic tiles
             case QSConstants.DYNAMIC_TILE_NEXT_ALARM:
