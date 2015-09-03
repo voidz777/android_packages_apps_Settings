@@ -31,4 +31,9 @@
     <!-- Updater -->
     <string name="updater_title">Updates</string>
     <string name="updater_summary">Check for updates</string>
+
+    <!-- Change Log -->
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_title_summary">View recent changes in the ROM</string>
+    <string name="changelog_error">Unable to load changelog</string>
 </resources>
