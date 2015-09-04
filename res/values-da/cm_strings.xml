@@ -482,6 +482,7 @@
   <string name="ok">OK</string>
   <string name="profile_menu_delete_title">Slet</string>
   <string name="profile_action_none">Efterlad uændret</string>
+  <string name="profile_action_system">Systemstandard</string>
   <string name="profile_action_disable">Sluk</string>
   <string name="profile_action_enable">Tænd</string>
   <string name="profile_trigger_a2dp_connect">Ved tilslutning til A2DP</string>
@@ -900,11 +901,13 @@
   <string name="fingerprint_dialog_title_max_fingers_reached">Det maksimale antal fingeraftryk er nået</string>
   <string name="fingerprint_dialog_msg_max_fingers_reached">Du kan kun optage <xliff:g id="finger" example="5 fingerprints">%d</xliff:g> fingeraftryk. Slet et eksisterende fingeraftryk.</string>
   <string name="fingerprint_title_manage_fingerprints">Administrere fingeraftryk <xliff:g id="finger">%d </xliff:g> / <xliff:g id="max"> %d </xliff:g></string>
+  <string name="manage_fingerprints_description">Fingeraftryk tillader dig hurtigt at låse din telefon op og tage billeder.</string>
   <string name="fingerprint_enrollment_introduction_title">Find din sensor</string>
   <string name="fingerprint_enrollment_introduction_instructions">Fingeraftrykssensoren er placeret på forsiden eller bagsiden af telefonen.</string>
   <string name="fingerprint_enrollment_scan_title">Hold i 3 sekunder</string>
   <string name="fingerprint_enrollment_scan_instructions">Placér pegefingeren på fingeraftrykssensoren for at begynde installationen. Løft fingeren, når du mærker en vibration.</string>
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Prøv venligst igen</string>
+  <string name="fingerprint_enrollment_error_message">Placer fingeren solidt på fingeraftrykssensoren for at sikre en nøjagtig scanning. Sørg også for at du bruger den samme finger som før. Løft fingeren, når du mærker en vibration.</string>
   <string name="fingerprint_enrollment_scan_instructions">Placér pegefingeren på fingeraftrykssensoren for at begynde installationen. Løft fingeren, når du mærker en vibration.</string>
   <string name="fingerprint_enrollment_break_title">Fortsæt med nuværende aftryk</string>
   <string name="fingerprint_enrollment_break_instructions">Fortsæt med at scanne enderne af dit aftryk. Løft fingeren, når du mærker en vibration.</string>
@@ -931,6 +934,7 @@
   <string name="fingerprint_enrollment_error_title_3">Hmm, der gik noget galt</string>
   <string name="fingerprint_enrollment_error_title_4">Prøv igen</string>
   <string name="fingerprint_enrollment_error_title_5">Ups, der var en fejl</string>
+  <string name="lockscreen_settings_and_fingerprint">Skærmlås &amp; fingeraftryk</string>
   <string name="menu_stats_reset">Nulstil statistikker</string>
   <string name="reset_stats_msg">Batterihistoriestatistik vil blive nulstillet</string>
   <string name="dock_battery_not_present">Dockbatteri findes ikke</string>
@@ -938,5 +942,8 @@
   <string name="battery_info_status_charging_dock_usb">Oplader via dock USB</string>
   <string name="setup_lock_pattern_size_title">Mønsterkompleksitet</string>
   <string name="setup_lock_pattern_size_details">Hvor mange noder vil du bruge til mønsteret? Jo flere noder, jo mere komplekse kan mønstrene være.</string>
+  <string name="lto_download_data_wifi_only">GPS-assisteret data-download</string>
+  <string name="lto_download_data_wifi_only_on">Via alle netværk</string>
+  <string name="lto_download_data_wifi_only_off">Kun via Wi\u2011Fi netværk</string>
 </resources>
 

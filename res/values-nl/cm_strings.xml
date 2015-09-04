@@ -888,7 +888,6 @@
   <string name="wifi_countrycode_entries_sg">Israël, Singapore</string>
   <string name="wifi_countrycode_entries_br">Brazilië</string>
   <string name="wifi_countrycode_entries_in">India</string>
-  <string name="unlock_set_unlock_launch_picker_title_with_fingerprint">Schermvergrendeling &amp; vingerafdruk</string>
   <string name="unlock_set_unlock_mode_fingerprint">Vingerafdruk</string>
   <string name="unlock_set_unlock_fingerprint_title">Vingerafdruk</string>
   <string name="fingerprint_item_add_new_fingerprint">Nieuwe vingerafdruk toevoegen</string>
@@ -940,4 +939,7 @@
   <string name="battery_info_status_charging_dock_usb">Opladen via dock (USB)</string>
   <string name="setup_lock_pattern_size_title">Complexiteit patroon</string>
   <string name="setup_lock_pattern_size_details">Hoe groot moet het raster zijn waarop u uw patroon tekent? Hoe meer punten, hoe complexer uw patroon kan worden.</string>
+  <string name="lto_download_data_wifi_only">GPS-ondersteunende gegevens downloaden</string>
+  <string name="lto_download_data_wifi_only_on">Via alle netwerken</string>
+  <string name="lto_download_data_wifi_only_off">Alleen via wifi-netwerken</string>
 </resources>

@@ -167,14 +167,14 @@
   <string name="sunlight_enhancement_summary">Migliora la luminosità del display e la leggibilità sotto la luce del sole</string>
   <string name="color_enhancement_title">Miglioramento colore</string>
   <string name="color_enhancement_summary">Migliora dinamicamente il colore del display</string>
-  <string name="blacklist_title">Elenco chiamanti bloccati</string>
+  <string name="blacklist_title">Elenco bloccati</string>
   <string name="blacklist_edit_dialog_title">Modifica il numero telefonico bloccato</string>
   <string name="blacklist_prefs">Impostazioni</string>
   <string name="blacklist_button_delete">Elimina</string>
   <string name="blacklist_empty_text">Non hai nessun numero bloccato. Aggiungi un elemento toccando il pulsante Aggiungi (+).</string>
-  <string name="blacklist_disabled_empty_text">Per prevenire chiamate e messaggi da numeri telefonici, attiva la lista dei chiamanti bloccati.</string>
+  <string name="blacklist_disabled_empty_text">Per prevenire chiamate e messaggi da numeri telefonici, attiva la lista bloccati.</string>
   <string name="blacklist_summary_disabled">Disattivata</string>
-  <string name="blacklist_summary">Non riceverai nessuna chiamata o messaggio da numeri nella lista dei chiamanti bloccati</string>
+  <string name="blacklist_summary">Non riceverai nessuna chiamata o messaggio da numeri nella lista bloccati</string>
   <string name="blacklist_notify">Mostra notifiche</string>
   <string name="blacklist_private_numbers_title">Numeri privati</string>
   <string name="blacklist_private_numbers_summary_disabled">Non bloccare le chiamate provenienti da numeri privati</string>
@@ -189,7 +189,7 @@
   <string name="blacklist_regex_summary">Usa . come carattere jolly e * per la ripetizione. Ad esempio 123.* blocca i numeri che iniziano con 123 e .*123.* blocca i numeri che contengono 123</string>
   <string name="blacklist_policy_block_calls">Blocca chiamate in arrivo</string>
   <string name="blacklist_policy_block_messages">Blocca messaggi in arrivo</string>
-  <string name="blacklist_bad_number_add">Impossibile aggiungere un numero non valido alla lista dei chiamanti bloccati</string>
+  <string name="blacklist_bad_number_add">Impossibile aggiungere un numero non valido alla lista bloccati</string>
   <string name="remove_blacklist_number_title">Rimuovi numero</string>
   <string name="remove_blacklist_entry">Vuoi rimuovere questo numero bloccato?</string>
   <string name="select_contact">Seleziona contatto</string>
@@ -482,6 +482,7 @@
   <string name="ok">OK</string>
   <string name="profile_menu_delete_title">Elimina</string>
   <string name="profile_action_none">Lascia invariato</string>
+  <string name="profile_action_system">Sistema predefinito</string>
   <string name="profile_action_disable">Disattiva</string>
   <string name="profile_action_enable">Attiva</string>
   <string name="profile_trigger_a2dp_connect">Alla connessione A2DP</string>
@@ -863,7 +864,7 @@
   <string name="sim_card_status_title">Status SIM %d</string>
   <string name="sim_card_lock_settings_title">Impostazioni blocco SIM %d</string>
   <string name="sim_card_summary_empty">SIM non inserita</string>
-  <string name="sim_mobile_network_settings_category_title">Impostazioni rete mobile</string>
+  <string name="sim_mobile_network_settings_category_title">Impostazioni rete cellulare</string>
   <string name="sim_mobile_network_settings_title">Impostazioni SIM %d</string>
   <string name="factory_reset_instructions_title">Dati personali &amp; applicazioni</string>
   <string name="factory_reset_instructions_summary">Questo cancellerà tutti gli account, applicazioni, dati delle app e impostazioni di sistema su questo dispositivo</string>
@@ -902,11 +903,13 @@
   <string name="fingerprint_dialog_title_max_fingers_reached">Limite di impronte raggiunto</string>
   <string name="fingerprint_dialog_msg_max_fingers_reached">Puoi registrare solo <xliff:g id="finger" example="5 fingerprints">%d</xliff:g> impronte. Eliminane una esistente.</string>
   <string name="fingerprint_title_manage_fingerprints">Gestione impronte <xliff:g id="finger">%d</xliff:g>/<xliff:g id="max">%d</xliff:g></string>
+  <string name="manage_fingerprints_description">Le impronte digitali ti consentono di sbloccare velocemente il tuo telefono e scattare foto.</string>
   <string name="fingerprint_enrollment_introduction_title">Trova il sensore</string>
   <string name="fingerprint_enrollment_introduction_instructions">Il sensore è posizionato nel retro del tuo telefono.</string>
   <string name="fingerprint_enrollment_scan_title">Tieni premuto per 3 secondi</string>
   <string name="fingerprint_enrollment_scan_instructions">Posiziona il dito sul sensore d\'impronte per iniziare il setup. Solleva il dito quando senti una vibrazione.</string>
   <string name="fingerprint_enrollment_error_title_wrong_sensor">Prova di nuovo</string>
+  <string name="fingerprint_enrollment_error_message">Posiziona saldamente il dito sul sensore d\'impronte per una scansione accurata. Assicurati anche di usare lo stesso dito di prima. Sollevalo quando senti una vibrazione.</string>
   <string name="fingerprint_enrollment_scan_instructions">Posiziona il dito sul sensore d\'impronte per iniziare il setup. Solleva il dito quando senti una vibrazione.</string>
   <string name="fingerprint_enrollment_break_title">Tienilo premuto ancora</string>
   <string name="fingerprint_enrollment_break_instructions">Continua a scansionare i bordi della tua impronta. Solleva il dito quando senti una vibrazione.</string>
@@ -933,6 +936,7 @@
   <string name="fingerprint_enrollment_error_title_3">Hmm, qualcosa è andato storto</string>
   <string name="fingerprint_enrollment_error_title_4">Uh oh, riprova</string>
   <string name="fingerprint_enrollment_error_title_5">Whoos, c\'è stato un problema</string>
+  <string name="lockscreen_settings_and_fingerprint">Blocco schermo &amp; impronta digitale</string>
   <string name="menu_stats_reset">Reimposta statistiche</string>
   <string name="reset_stats_msg">Le statistiche delle batteria saranno resettate</string>
   <string name="dock_battery_not_present">Batteria dock non presente</string>
@@ -940,4 +944,25 @@
   <string name="battery_info_status_charging_dock_usb">Ricarica su Dock USB</string>
   <string name="setup_lock_pattern_size_title">Complessità  sequenza</string>
   <string name="setup_lock_pattern_size_details">Quanti punti vorresti avere per la tua sequenza? Più ne hai più complessa sarà.</string>
+  <string name="lto_download_data_wifi_only">Download dati GPS-A</string>
+  <string name="lto_download_data_wifi_only_on">Da tutte le reti</string>
+  <string name="lto_download_data_wifi_only_off">Solo da reti Wi\u2011Fi</string>
+  <string name="keep_screen_on_never">Mai</string>
+  <string name="keep_screen_on_debugging">Durante il debug USB</string>
+  <string name="keep_screen_on_charging">Durante la ricarica</string>
+  <string name="contributors_cloud_fragment_title">Collaboratori</string>
+  <string name="contributors_cloud_loading_message">Caricamento dati collaboratori\u2026</string>
+  <string name="contributors_cloud_failed_message">Impossibile caricare dati collaboratori</string>
+  <string name="contributor_info_menu">Info collaboratore</string>
+  <string name="contributor_info_msg">
+        <![CDATA[<b>Nome:</b> <xliff:g id="name">%1$s</xliff:g><br/><br/>
+                 <b>Nick:</b> <xliff:g id="nick">%2$s</xliff:g><br/><br/>
+                 <b>Commit:</b> <xliff:g id="commits">%3$s</xliff:g><br/><br/>
+                 <b>Numero:</b> <xliff:g id="rank">%4$s</xliff:g>]]></string>
+  <string name="contributions_info_menu">Info contributi</string>
+  <string name="contributions_info_msg">
+        <![CDATA[<b>Totale collaboratori:</b> <xliff:g id="total_contributors">%1$s</xliff:g><br/><br/>
+                 <b>Totale commit:</b> <xliff:g id="total_commits">%2$s</xliff:g><br/><br/>
+                 <b>Ultimo aggiornamento:</b> <xliff:g id="date">%3$s</xliff:g>]]></string>
+  <string name="quick_settings_reset_message">Reimpostare tile rapidi?</string>
 </resources>
