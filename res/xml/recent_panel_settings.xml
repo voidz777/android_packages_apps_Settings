@@ -24,6 +24,12 @@
         android:title="@string/show_running_tasks_title"
         android:defaultValue="false" />
 
+    <!-- App sidebar -->
+    <PreferenceScreen
+        android:key="app_sidebar"
+        android:fragment="com.android.settings.euphoria.AppSidebar"
+        android:title="@string/app_sidebar_title"/>
+
     <PreferenceCategory
         android:key="aosp_recents_panel"
         android:title="@string/aosp_recents_panel" >
