@@ -17,6 +17,7 @@
 package com.android.settings.cyanogenmod;
 
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
@@ -45,7 +46,8 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PowerMenuActions extends SettingsPreferenceFragment {
+public class PowerMenuActions extends SettingsPreferenceFragment
+        implements OnPreferenceChangeListener {
     final static String TAG = "PowerMenuActions";
 
     private static final String ACTION_CATEGORY = "action_category";
@@ -62,11 +64,14 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
     private CheckBoxPreference mLockdownPref;
     private CheckBoxPreference mBugReportPref;
     private CheckBoxPreference mSilentPref;
+    private CheckBoxPreference mOnTheGoPref;
 
     Context mContext;
     private ArrayList<String> mLocalUserConfig = new ArrayList<String>();
     private String[] mAvailableActions;
     private String[] mAllActions;
+
+    private ContentResolver mCr;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
         if (!lockPatternUtils.isSecure()) {
             prefScreen.removePreference(mPowerMenuLockscreen);
         }
+
+        mCr = getActivity().getContentResolver();
 
         mAvailableActions = getActivity().getResources().getStringArray(
                 R.array.power_menu_actions_array);
@@ -114,6 +121,8 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
                 mBugReportPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_BUGREPORT);
             } else if (action.equals(GLOBAL_ACTION_KEY_SILENT)) {
                 mSilentPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_SILENT);
+            } else if (action.equals(GLOBAL_ACTION_KEY_ONTHEGO)) {
+                mOnTheGoPref = (CheckBoxPreference) findPreference(GLOBAL_ACTION_KEY_ONTHEGO);
             }
         }
 
@@ -173,6 +182,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
             mSilentPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_SILENT));
         }
 
+        if (mOnTheGoPref != null) {
+            mOnTheGoPref.setChecked(settingsArrayContains(GLOBAL_ACTION_KEY_ONTHEGO));
+        }
+
         updatePreferences();
     }
 
@@ -221,6 +234,10 @@ public class PowerMenuActions extends SettingsPreferenceFragment {
         } else if (preference == mSilentPref) {
             value = mSilentPref.isChecked();
             updateUserConfig(value, GLOBAL_ACTION_KEY_SILENT);
+
+        } else if (preference == mOnTheGoPref) {
+            value = mOnTheGoPref.isChecked();
+            updateUserConfig(value, GLOBAL_ACTION_KEY_ONTHEGO);
 
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
