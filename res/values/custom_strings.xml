@@ -222,4 +222,9 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (off)</string>
+
+    <!-- Lockscreen blur/see through -->
+    <string name="lockscreen_see_through_title">Lockscreen blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string>
 </resources>
