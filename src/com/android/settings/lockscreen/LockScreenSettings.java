@@ -51,6 +51,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
+import com.android.settings.euphoria.SeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +81,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String KEY_MANAGE_TRUST_AGENTS = "manage_trust_agents";
     private static final String KEY_SHOW_VISUALIZER = "lockscreen_visualizer";
     private static final String KEY_LONGPRESS_LOCK_FOR_TORCH = "long_press_lock_icon_torch";
+    private static final String KEY_BLUR_RADIUS = "lockscreen_blur_radius";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -104,6 +106,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private SwitchPreference mVisibleDots;
     private SwitchPreference mPowerButtonInstantlyLocks;
     private SwitchPreference mLongPressForTorch;
+    private SeekBarPreference mBlurRadius;
 
     private DevicePolicyManager mDPM;
 
@@ -250,6 +253,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             if (mLongPressForTorch != null) {
                 generalCategory.removePreference(mLongPressForTorch);
             }
+        }
+
+        mBlurRadius =
+                (SeekBarPreference) findPreference(KEY_BLUR_RADIUS);
+        if (mBlurRadius != null) {
+            int blurRadius = Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, 14);
+            mBlurRadius.setValue(blurRadius);
+            mBlurRadius.setOnPreferenceChangeListener(this);
         }
 
         // Trust Agent preferences
@@ -485,6 +497,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             }
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             mLockPatternUtils.setPowerButtonInstantlyLocks((Boolean) value);
+        } else if (KEY_BLUR_RADIUS.equals(key)) {
+            int bluRadius = (Integer) value;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, bluRadius);
         }
         return result;
     }

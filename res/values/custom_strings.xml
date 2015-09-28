@@ -631,4 +631,9 @@
     <!-- Device policy override -->
     <string name="device_policy_override_title">Device policy override</string>
     <string name="device_policy_override_summary">Allow apps to force secure lock screen and override profile settings</string>
+
+    <!-- Lockscreen blur/see through -->
+    <string name="lockscreen_see_through_title">Lockscreen blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string>
 </resources>
