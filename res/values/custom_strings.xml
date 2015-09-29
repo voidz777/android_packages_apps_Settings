@@ -68,6 +68,10 @@
     <!--Status bar -->
     <string name="status_bar_category">Status bar</string>
 
+    <!--Status bar data and wifi activity -->
+    <string name="show_activity_indicators_title">Activity indicators</string>
+    <string name="show_activity_indicators_summary">Show indicators in signal bars</string>
+
     <!--Status bar carrier -->
     <string name="show_carrier_title">Carrier label</string>
     <string name="show_carrier_disabled">Disabled</string>
