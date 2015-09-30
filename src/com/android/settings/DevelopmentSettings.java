@@ -70,7 +70,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.android.settings.cyanogenmod.SecureSettingSwitchPreference;
+import com.android.settings.cyanogenmod.CMSecureSettingSwitchPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.widget.SwitchBar;
@@ -195,7 +195,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     public static final String KEY_ADVANCED_MODE = "advanced_mode";
 
-    SecureSettingSwitchPreference mAdvancedSettings;
+    CMSecureSettingSwitchPreference mAdvancedSettings;
 
     private IWindowManager mWindowManager;
     private IBackupManager mBackupManager;
@@ -314,7 +314,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.development_prefs);
 
-        mAdvancedSettings = (SecureSettingSwitchPreference) findPreference(KEY_ADVANCED_MODE);
+        mAdvancedSettings = (CMSecureSettingSwitchPreference) findPreference(KEY_ADVANCED_MODE);
 
         final PreferenceGroup debugDebuggingCategory = (PreferenceGroup)
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);

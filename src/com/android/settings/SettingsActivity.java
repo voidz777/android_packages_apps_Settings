@@ -134,6 +134,8 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.WifiCallingSettings;
 
+import cyanogenmod.providers.CMSettings;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -1478,8 +1480,8 @@ public class SettingsActivity extends Activity
     }
 
     public static boolean showAdvancedPreferences(Context context) {
-        return android.provider.Settings.Secure.getInt(
+        return CMSettings.Secure.getInt(
                 context.getContentResolver(),
-                android.provider.Settings.Secure.ADVANCED_MODE, 1) == 1;
+                CMSettings.Secure.ADVANCED_MODE, 1) == 1;
     }
 }
