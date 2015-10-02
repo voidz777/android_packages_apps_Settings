@@ -122,6 +122,10 @@
     <string name="network_traffic_autohide">Auto hide</string>
     <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
     <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
+    <string name="show_statusbar_network_traffic">Placement</string>
+    <string name="show_network_traffic_statusbar">Show in status bar</string>
+    <string name="show_network_traffic_header">Show in header</string>
+    <string name="show_network_traffic">Show in status bar and header</string>
 
     <!-- Notification ticker -->
     <string name="status_bar_ticker_title">Notification ticker</string>
