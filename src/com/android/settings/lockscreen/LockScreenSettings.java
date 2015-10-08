@@ -51,6 +51,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
+import com.android.settings.euphoria.SeekBarPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String KEY_LOCK_ENABLED = "lockenabled";
     private static final String KEY_VISIBLE_PATTERN = "visiblepattern";
     private static final String KEY_VISIBLE_ERROR_PATTERN = "visible_error_pattern";
+    private static final String KEY_DIRECTLY_SHOW = "directlyshow";
     private static final String KEY_VISIBLE_DOTS = "visibledots";
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
     private static final String KEY_POWER_INSTANTLY_LOCKS = "power_button_instantly_locks";
@@ -79,6 +81,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String KEY_MANAGE_TRUST_AGENTS = "manage_trust_agents";
     private static final String KEY_SHOW_VISUALIZER = "lockscreen_visualizer";
     private static final String KEY_LONGPRESS_LOCK_FOR_TORCH = "long_press_lock_icon_torch";
+    private static final String KEY_BLUR_RADIUS = "lockscreen_blur_radius";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -99,16 +102,18 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private SwitchPreference mBiometricWeakLiveliness;
     private SwitchPreference mVisiblePattern;
     private SwitchPreference mVisibleErrorPattern;
+    private SwitchPreference mDirectlyShow;
     private SwitchPreference mVisibleDots;
     private SwitchPreference mPowerButtonInstantlyLocks;
     private SwitchPreference mLongPressForTorch;
+    private SeekBarPreference mBlurRadius;
 
     private DevicePolicyManager mDPM;
 
     // These switch preferences need special handling since they're not all stored in Settings.
     private static final String SWITCH_PREFERENCE_KEYS[] = { KEY_LOCK_AFTER_TIMEOUT,
-            KEY_LOCK_ENABLED, KEY_VISIBLE_PATTERN, KEY_VISIBLE_ERROR_PATTERN, KEY_VISIBLE_DOTS,
-            KEY_BIOMETRIC_WEAK_LIVELINESS, KEY_POWER_INSTANTLY_LOCKS };
+            KEY_LOCK_ENABLED, KEY_VISIBLE_PATTERN, KEY_VISIBLE_ERROR_PATTERN, KEY_DIRECTLY_SHOW,
+            KEY_VISIBLE_DOTS, KEY_BIOMETRIC_WEAK_LIVELINESS, KEY_POWER_INSTANTLY_LOCKS };
 
 
     @Override
@@ -139,6 +144,9 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         }
         if (mVisibleErrorPattern != null) {
             mVisibleErrorPattern.setChecked(lockPatternUtils.isShowErrorPath());
+        }
+        if (mDirectlyShow != null) {
+            mDirectlyShow.setChecked(lockPatternUtils.shouldPassToSecurityView());
         }
         if (mVisibleDots != null) {
             mVisibleDots.setChecked(lockPatternUtils.isVisibleDotsEnabled());
@@ -195,6 +203,9 @@ public class LockScreenSettings extends SettingsPreferenceFragment
         // visible error pattern
         mVisibleErrorPattern = (SwitchPreference) root.findPreference(KEY_VISIBLE_ERROR_PATTERN);
 
+        // directly show
+        mDirectlyShow = (SwitchPreference) root.findPreference(KEY_DIRECTLY_SHOW);
+
         // visible dots
         mVisibleDots = (SwitchPreference) root.findPreference(KEY_VISIBLE_DOTS);
 
@@ -242,6 +253,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             if (mLongPressForTorch != null) {
                 generalCategory.removePreference(mLongPressForTorch);
             }
+        }
+
+        mBlurRadius =
+                (SeekBarPreference) findPreference(KEY_BLUR_RADIUS);
+        if (mBlurRadius != null) {
+            int blurRadius = Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, 14);
+            mBlurRadius.setValue(blurRadius);
+            mBlurRadius.setOnPreferenceChangeListener(this);
         }
 
         // Trust Agent preferences
@@ -449,6 +469,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             lockPatternUtils.setLockPatternEnabled((Boolean) value);
         } else if (KEY_VISIBLE_PATTERN.equals(key)) {
             lockPatternUtils.setVisiblePatternEnabled((Boolean) value);
+        } else if (KEY_DIRECTLY_SHOW.equals(key)) {
+            lockPatternUtils.setPassToSecurityView((Boolean) value);
         } else if (KEY_VISIBLE_ERROR_PATTERN.equals(key)) {
             lockPatternUtils.setShowErrorPath((Boolean) value);
         } else if (KEY_VISIBLE_DOTS.equals(key)) {
@@ -475,6 +497,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             }
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             mLockPatternUtils.setPowerButtonInstantlyLocks((Boolean) value);
+        } else if (KEY_BLUR_RADIUS.equals(key)) {
+            int bluRadius = (Integer) value;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, bluRadius);
         }
         return result;
     }

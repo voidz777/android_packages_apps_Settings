@@ -249,6 +249,7 @@
   <string name="privacy_guard_reset_text">לאפס הרשאות?</string>
   <string name="privacy_guard_help_text">בחלון זה אתה יכול לבחור עבור אילו יישומים שומר הפרטיות יפעל. הייישומים הנבחרים לא יקבלו גישה למידע הפרטי שלך כמו אנשי קשר, הודעות ויומן שיחות. לחיצה ארוכה על יישום תפתח את פרטי ההרשאות שלו.\n\nיישומים מובנים לא מוצגים כברירת מחדל, אבל יכולים להיחשף על ידי בחירת ההגדרה המתאימה.</string>
   <string name="privacy_guard_manager_show_system_apps">הצג יישומים מובנים</string>
+  <string name="privacy_guard_notification_title">הצג התראה</string>
   <string name="app_ops_btn_text">שנה</string>
   <string name="increasing_ring_volume_option_title">עוצמת צלצול מתגברת</string>
   <string name="increasing_ring_min_volume_title">עוצמה התחלתית</string>
@@ -342,6 +343,8 @@
   <string name="notification_light_default_value">ברירת מחדל</string>
   <string name="notification_light_missed_call_title">שיחה שלא נענתה</string>
   <string name="notification_light_voicemail_title">תא קולי</string>
+  <string name="notification_light_screen_on">תאורת התראה כאשר המסך דולק</string>
+  <string name="keywords_lights_brightness_level">עמעם בהירות נוריות</string>
   <string name="notification_ringtone_title_cm">צליל התראה</string>
   <string name="headset_connect_player_title">הפעל נגן מוזיקה</string>
   <string name="headset_connect_player_summary">הפעל את נגן המוזיקה המוגדר כברירת המחדל בעת חיבור אוזניות</string>
@@ -683,6 +686,9 @@
   <string name="settings_cmlicense_activity_title">CyanogenMod משפטי</string>
   <string name="lockpattern_settings_enable_error_path_title">הצג שגיאות דפוס</string>
   <string name="lockpattern_settings_enable_dots_title">הצג דפוס נקודות</string>
+  <string name="lock_directly_show_password">הצג ישירות את הזנת הסיסמה</string>
+  <string name="lock_directly_show_pattern">הצג ישירות את תצוגת הדפוס הנעילה</string>
+  <string name="lock_directly_show_pin">הצג ישירות את הכנסת קוד ה-PIN</string>
   <string name="unlock_quick_unlock_control_title">פתיחה מהירה</string>
   <string name="unlock_quick_unlock_control_summary">פתח אוטומטית כאשר הסיסמה/קוד מוכנס</string>
   <string name="unlock_scramble_pin_layout_title">ערבב פריסה</string>
@@ -701,6 +707,7 @@
   <string name="status_bar_show_weather_summary">הראה את מזג האוויר מעל לוח ההגדרות המהירות</string>
   <string name="qs_category_title">לוח ההגדרות המהירות</string>
   <string name="qs_brightness_slider_title">הצג מחוון בהירות</string>
+  <string name="qs_hide_tiles_with_sensitive_data">הסתר אריחים רגישים כאשר המכשיר נעול</string>
   <string name="qs_order_title">בחר ושנה את סדר האריחים</string>
   <string name="add_qs">הוסף אריח חדש</string>
   <string name="qs_action_delete">מחק</string>
@@ -723,11 +730,13 @@
   <string name="qs_tile_compass">מצפן</string>
   <string name="qs_tile_lockscreen">מסך נעילה</string>
   <string name="qs_tile_lte">LTE</string>
+  <string name="qs_tile_volume_panel">לוח עוצמות שמע</string>
   <string name="qs_tile_screen_timeout">פרק הזמן לכיבוי מסך</string>
   <string name="qs_tile_usb_tether">קשירת USB</string>
   <string name="qs_tile_heads_up">התראות קופצות</string>
   <string name="qs_tile_ambient_display">התראות ברקע</string>
   <string name="qs_tile_sync">סנכרון</string>
+  <string name="qs_tile_battery_saver">שומר סוללה</string>
   <string name="qs_dynamic_tile_next_alarm">ההתראה הבאה</string>
   <string name="qs_dynamic_tile_ime_selector">בורר שיטות קלט</string>
   <string name="qs_dynamic_tile_su">גישת שורש (Root)</string>

@@ -44,6 +44,7 @@
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"/>
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
     <uses-permission android:name="android.permission.BATTERY_STATS"/>
+    <uses-permission android:name="android.permission.RESET_BATTERY_STATS"/>
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.MOVE_PACKAGE" />
@@ -1989,6 +1990,18 @@
                        android:resource="@id/display_and_lights_settings" />
         </activity-alias>
 
+        <!-- Network traffic settings activity. -->
+        <activity android:name="Settings$NetworkTrafficSettingsActivity"
+                android:label="@string/network_traffic_title"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.euphoria.NetworkTrafficSettings" />
+        </activity>
+
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
                 android:label="@string/crypt_keeper_encrypt_title">
@@ -2391,25 +2404,6 @@
                 <action android:name="cyanogenmod.intent.action.PACKAGE_PROTECTED" />
             </intent-filter>
         </receiver>
-
-        <activity android:name=".applications.ProtectedAppsActivity"
-                  android:label="@string/protected_apps"
-                  android:excludeFromRecents="true"
-                  android:configChanges="orientation">
-            <intent-filter>
-                <action android:name=".applications.ProtectedAppsActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".applications.LockPatternActivity"
-                  android:label="@string/protected_apps"
-                  android:excludeFromRecents="true">
-            <intent-filter>
-                <action android:name=".applications.LockPatternActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
     </application>
 </manifest>

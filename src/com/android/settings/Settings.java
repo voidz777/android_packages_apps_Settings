@@ -114,5 +114,6 @@ public class Settings extends SettingsActivity {
     public static class LockScreenSettingsActivity extends SettingsActivity { /* empty */ }
     public static class DisplayRotationActivity extends SettingsActivity { /* empty */ }
     public static class ChangeLog extends SettingsActivity { /* empty */ }
+    public static class NetworkTrafficSettingsActivity extends SettingsActivity { /* empty */ }
 }
 

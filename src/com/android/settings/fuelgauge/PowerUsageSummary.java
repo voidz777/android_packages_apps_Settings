@@ -17,9 +17,12 @@
 package com.android.settings.fuelgauge;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
@@ -75,8 +78,9 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
 
     private static final int MENU_STATS_TYPE = Menu.FIRST;
     private static final int MENU_STATS_REFRESH = Menu.FIRST + 1;
-    private static final int MENU_BATTERY_SAVER = Menu.FIRST + 2;
-    private static final int MENU_HELP = Menu.FIRST + 3;
+    private static final int MENU_STATS_RESET = Menu.FIRST + 2;
+    private static final int MENU_BATTERY_SAVER = Menu.FIRST + 3;
+    private static final int MENU_HELP = Menu.FIRST + 4;
 
     private UserManager mUm;
 
@@ -269,6 +273,12 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
         refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
+        MenuItem reset = menu.add(0, MENU_STATS_RESET, 0, R.string.menu_stats_reset)
+                .setIcon(R.drawable.ic_actionbar_delete)
+                .setAlphabeticShortcut('d');
+        reset.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
+                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
         MenuItem batterySaver = menu.add(0, MENU_BATTERY_SAVER, 0, R.string.battery_saver);
         batterySaver.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 
@@ -289,6 +299,9 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
                     mStatsType = BatteryStats.STATS_SINCE_CHARGED;
                 }
                 refreshStats();
+                return true;
+            case MENU_STATS_RESET:
+                resetStats();
                 return true;
             case MENU_STATS_REFRESH:
                 mStatsHelper.clearStats();
@@ -348,6 +361,24 @@ public class PowerUsageSummary extends SettingsPreferenceFragment
         }
         mPerfProfilePref.setValue(mPowerManager.getPowerProfile());
         updatePerformanceSummary();
+    }
+
+    private void resetStats() {
+        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+            .setTitle(R.string.menu_stats_reset)
+            .setMessage(R.string.reset_stats_msg)
+            .setPositiveButton(android.R.string.ok, new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Reset stats and request a refresh to initialize vars
+                    mStatsHelper.resetStatistics();
+                    refreshStats();
+                    mHandler.removeMessages(MSG_REFRESH_STATS);
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, null)
+            .create();
+        dialog.show();
     }
 
     private void refreshStats() {

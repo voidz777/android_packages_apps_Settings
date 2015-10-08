@@ -343,6 +343,8 @@
   <string name="notification_light_default_value">Predvolené</string>
   <string name="notification_light_missed_call_title">Zmeškaný hovor</string>
   <string name="notification_light_voicemail_title">Hlasový hovor</string>
+  <string name="notification_light_screen_on">Upozorňovať pomocou LED pri zapnutej obrazovke</string>
+  <string name="keywords_lights_brightness_level">stlmiť jas LED svetiel</string>
   <string name="notification_ringtone_title_cm">Tón oznámenia</string>
   <string name="headset_connect_player_title">Spustiť aplikáciu na prehrávanie hudby</string>
   <string name="headset_connect_player_summary">Spustiť predvolenú aplikáciu na prehrávanie hudby po pripojení slúchadiel</string>
@@ -702,6 +704,7 @@
   <string name="status_bar_show_weather_summary">Zobraziť počasie nad panelom rýchlych nastavení</string>
   <string name="qs_category_title">Panel rýchlych nastavení</string>
   <string name="qs_brightness_slider_title">Zobraziť posuvník jasu</string>
+  <string name="qs_hide_tiles_with_sensitive_data">Skryť citlivé dlaždice pri zamknutí</string>
   <string name="qs_order_title">Vybrať a zmeniť poradie prepínačov</string>
   <string name="add_qs">Pridať novú dlaždicu</string>
   <string name="qs_action_delete">Odstrániť</string>
@@ -724,6 +727,7 @@
   <string name="qs_tile_compass">Kompas</string>
   <string name="qs_tile_lockscreen">Obrazovka uzamknutia</string>
   <string name="qs_tile_lte">LTE</string>
+  <string name="qs_tile_volume_panel">Panel hlasitosti</string>
   <string name="qs_tile_screen_timeout">Časový limit obrazovky</string>
   <string name="qs_tile_usb_tether">Zdieľanie cez USB</string>
   <string name="qs_tile_heads_up">Plávajúce oznámenia</string>
