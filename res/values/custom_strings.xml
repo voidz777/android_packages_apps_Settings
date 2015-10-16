@@ -40,6 +40,10 @@
     <!-- Notification drawer -->
     <string name="notification_drawer_title">Notification drawer</string>
 
+    <!-- Button settings  -->
+    <string name="button_settings_title">Buttons</string>
+
+
     <!-- Quick settings quick pull down -->
     <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
     <string name="status_bar_quick_qs_pulldown_summary">Right edge of the status bar pulls down Quick Settings</string>
@@ -63,4 +67,5 @@
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Advanced reboot</string>
     <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
+
 </resources>
