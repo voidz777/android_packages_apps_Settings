@@ -173,6 +173,14 @@
             android:key="@string/category_key_personal"
             android:title="@string/header_category_personal" >
 
+        <!-- Status bar -->
+        <dashboard-tile
+                android:id="@+id/status_bar_settings"
+                android:title="@string/status_bar_title"
+                android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
+                android:icon="@drawable/ic_settings_extdesk_hidenavbar"
+                />
+
         <!-- Notification drawer -->
         <dashboard-tile
                 android:id="@+id/notification_drawer_settings"
