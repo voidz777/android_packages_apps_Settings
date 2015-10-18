@@ -157,6 +157,13 @@
             android:summaryOn="@string/summary_heads_up_enabled"
             android:summaryOff="@string/summary_heads_up_disabled" />
 
+        <!-- Heads up button -->
+        <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
+            android:key="heads_up_show_status_button"
+            android:title="@string/show_headsup_button_title"
+            android:summary="@string/show_headsup_button_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
