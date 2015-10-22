@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
@@ -35,6 +36,8 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import java.util.Date;
+
 public class StatusBarSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
@@ -43,6 +46,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
     private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
+    private static final String STATUS_BAR_DATE_STYLE = "status_bar_date";
+    private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
 
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_LOCK_CLOCK_PACKAGE_NAME = "com.cyanogenmod.lockclock";
@@ -52,6 +57,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarTemperatureStyle;
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
+    private ListPreference mStatusBarDate;
+    private ListPreference mStatusBarDateFormat;
     private PreferenceScreen mLockClock;
 
     @Override
@@ -96,6 +103,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
+        mStatusBarDate = (ListPreference) findPreference(STATUS_BAR_DATE_STYLE);
+        mStatusBarDateFormat = (ListPreference) findPreference(STATUS_BAR_DATE_FORMAT);
 
         int clockStyle = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CLOCK, 1);
@@ -114,12 +123,26 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mStatusBarAmPm.setOnPreferenceChangeListener(this);
         }
 
+        int dateStyle = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_DATE, 0);
+        mStatusBarDate.setValue(String.valueOf(dateStyle));
+        mStatusBarDate.setSummary(mStatusBarDate.getEntry());
+        mStatusBarDate.setOnPreferenceChangeListener(this);
+
+        mStatusBarDateFormat.setOnPreferenceChangeListener(this);
+        mStatusBarDateFormat.setSummary(mStatusBarDateFormat.getEntry());
+        if (mStatusBarDateFormat.getValue() == null) {
+            mStatusBarDateFormat.setValue("EEE");
+        }
+
         mLockClock = (PreferenceScreen) findPreference(KEY_LOCK_CLOCK);
         if (!Utils.isPackageInstalled(getActivity(), KEY_LOCK_CLOCK_PACKAGE_NAME)) {
             prefSet.removePreference(mLockClock);
         }
 
         enableStatusBarTemperatureDependents();
+        enableStatusBarClockDependents();
+        parseClockDateFormats();
     }
 
     @Override
@@ -174,6 +197,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putInt(
                     resolver, STATUS_BAR_CLOCK_STYLE, clockStyle);
             mStatusBarClock.setSummary(mStatusBarClock.getEntries()[index]);
+            enableStatusBarClockDependents();
             return true;
         } else if (preference == mStatusBarAmPm) {
             int statusBarAmPm = Integer.valueOf((String) newValue);
@@ -181,6 +205,21 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putInt(
                     resolver, STATUS_BAR_AM_PM, statusBarAmPm);
             mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarDate) {
+            int statusBarDate = Integer.valueOf((String) newValue);
+            int index = mStatusBarDate.findIndexOfValue((String) newValue);
+            Settings.System.putInt(
+                    resolver, STATUS_BAR_DATE_STYLE, statusBarDate);
+            mStatusBarDate.setSummary(mStatusBarDate.getEntries()[index]);
+            return true;
+        } else if (preference ==  mStatusBarDateFormat) {
+            int index = mStatusBarDateFormat.findIndexOfValue((String) newValue);
+            if ((String) newValue != null) {
+                Settings.System.putString(getActivity().getContentResolver(),
+                   Settings.System.STATUS_BAR_DATE_FORMAT, (String) newValue);
+            mStatusBarDateFormat.setSummary(mStatusBarDateFormat.getEntries()[index]);
+            }
             return true;
         }
         return false;
@@ -196,4 +235,37 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mStatusBarTemperatureStyle.setEnabled(true);
         }
     }
+
+    private void enableStatusBarClockDependents() {
+        int clockStyle = Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUS_BAR_CLOCK, 1);
+        if (clockStyle == 0) {
+            mStatusBarDate.setEnabled(false);
+            mStatusBarDateFormat.setEnabled(false);
+        } else {
+            mStatusBarDate.setEnabled(true);
+            mStatusBarDateFormat.setEnabled(true);
+        }
+    }
+
+    private void parseClockDateFormats() {
+        // Parse and repopulate mClockDateFormats's entries based on current date.
+        String[] dateEntries = getResources().getStringArray(R.array.status_bar_date_format_entries_values);
+        CharSequence parsedDateEntries[];
+        parsedDateEntries = new String[dateEntries.length];
+        Date now = new Date();
+        int lastEntry = dateEntries.length - 1;
+        for (int i = 0; i < dateEntries.length; i++) {
+            if (i == lastEntry) {
+                parsedDateEntries[i] = dateEntries[i];
+            } else {
+                String newDate;
+                CharSequence dateString = DateFormat.format(dateEntries[i], now);
+                newDate = dateString.toString().toLowerCase();
+                parsedDateEntries[i] = newDate;
+            }
+        }
+        mStatusBarDateFormat.setEntries(parsedDateEntries);
+    }
+
 }
