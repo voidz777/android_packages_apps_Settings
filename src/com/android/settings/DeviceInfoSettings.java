@@ -67,6 +67,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String FILENAME_PROC_CPUINFO = "/proc/cpuinfo";
     private static final String FILENAME_PROC_MEMINFO = "/proc/meminfo";
 
+    private static final String KEY_MANUAL = "manual";
     private static final String KEY_REGULATORY_INFO = "regulatory_info";
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
     private static final String PROPERTY_SELINUX_STATUS = "ro.build.selinux";
@@ -177,6 +178,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
          * info.
          */
         final Activity act = getActivity();
+
+        // Remove manual entry if none present.
+        removePreferenceIfBoolFalse(KEY_MANUAL, R.bool.config_show_manual);
 
         // Remove regulatory information if none present.
         final Intent intent = new Intent(Settings.ACTION_SHOW_REGULATORY_INFO);
