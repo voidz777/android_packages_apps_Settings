@@ -181,6 +181,10 @@ public class WifiConfigController implements TextWatcher,
         mProxySettingsSpinner = (Spinner) mView.findViewById(R.id.proxy_settings);
         mProxySettingsSpinner.setOnItemSelectedListener(this);
 
+        final boolean editOrEphemeral = mEdit || (mAccessPoint != null
+                && mAccessPoint.networkId == INVALID_NETWORK_ID
+                && !mAccessPoint.isActive());
+
         if (mAccessPoint == null) { // new network
             mConfigUi.setTitle(R.string.wifi_add_network);
 
@@ -242,8 +246,7 @@ public class WifiConfigController implements TextWatcher,
                 }
             }
 
-            if ((mAccessPoint.networkId == INVALID_NETWORK_ID && !mAccessPoint.isActive())
-                    || mEdit) {
+            if (editOrEphemeral) {
                 showSecurityFields();
                 showIpConfigFields();
                 showProxyFields();
@@ -256,7 +259,7 @@ public class WifiConfigController implements TextWatcher,
                 }
             }
 
-            if (mEdit) {
+            if (editOrEphemeral) {
                 mConfigUi.setSubmitButton(res.getString(R.string.wifi_save));
             } else {
                 final DetailedState state = mAccessPoint.getState();
@@ -309,7 +312,7 @@ public class WifiConfigController implements TextWatcher,
             }
         }
 
-        if ((mEdit) || (mAccessPoint != null
+        if ((editOrEphemeral) || (mAccessPoint != null
                 && mAccessPoint.getState() == null && mAccessPoint.getLevel() != -1)){
             mConfigUi.setCancelButton(res.getString(R.string.wifi_cancel));
         }else{
